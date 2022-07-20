@@ -28,10 +28,10 @@ class Dropdowns{
        
         this.recipe.ingredients.forEach((ingrediant) => {
             
-            this.ingrediant+= `<li><a class="dropdown-item" href="#">${ingrediant.ingredient}</a></li>`;      
-           
+            this.ingrediant+= `<a class="dropdown-item" href="#">${ingrediant.ingredient}</a>`;      
+            console.log(ingrediant.ingredient)
             });
-            //console.log(this.recipe.appliance)
+            
 
         this.recipe.ustensils.forEach((ustensil) => {
             //console.log(this.recipe.ustensils)
@@ -52,7 +52,7 @@ class Dropdowns{
                 Ingredients
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li>${this.ingrediant}</li>
+                <li>${this.ingrediant}</li>
             </ul>
         </div>
 

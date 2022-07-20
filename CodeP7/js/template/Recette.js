@@ -31,7 +31,7 @@ class Recette_card{
         <div class="img"><img src="#" alt=""/></div>
         <div class="titre">
             <h2> ${this.recipe.name} </h2>
-            <p>${this.recipe.time} min</p>
+            <p><i class="fa-regular fa-clock"></i>${this.recipe.time} min</p>
         </div>
         <div class ="body_recette">
             <div class="ingredient">
