@@ -13,15 +13,12 @@ class Recette_card{
         this.recipe.ingredients.forEach((ingrediant) => { 
 
             if (ingrediant.unit) {
-                this.ingrediants += `<p>${ingrediant.ingredient}: ${ingrediant.quantity } ${ingrediant.unit } </p>`;
+                this.ingrediants += `<p><b>${ingrediant.ingredient}:</b> ${ingrediant.quantity } ${ingrediant.unit } </p>`;
+            }else if (!ingrediant.quantity){
+                this.ingrediants += `<p><b>${ingrediant.ingredient}</b>`
             }else{
-                this.ingrediants += `<p>${ingrediant.ingredient}: ${ingrediant.quantity } </p>`;
+                this.ingrediants += `<p><b>${ingrediant.ingredient}:</b> ${ingrediant.quantity }</p>`
             }
-
-         
-            
-            
-            //this.ingrediants += `<p>${ingrediant.ingredient}: ${ingrediant.quantity } ${ingrediant.unit } </p>`;
         //this.ingrediantjb.push(ingrediant); 
         //console.log(this.ingrediants)
         
@@ -38,7 +35,7 @@ class Recette_card{
         </div>
         <div class ="body_recette">
             <div class="ingredient">
-                <p> ${this.ingrediants} </p>
+               ${this.ingrediants} 
             </div>
             <p class ="description"> ${this.recipe.description}</p> 
         </div>       

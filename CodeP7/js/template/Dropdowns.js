@@ -35,7 +35,7 @@ class Dropdowns{
 
         this.recipe.ustensils.forEach((ustensil) => {
             //console.log(this.recipe.ustensils)
-            this.ustensil+= `<li><a class="dropdown-item" href="#">${ustensil}</a></li>`;      
+            this.ustensil+= `<a class="dropdown-item" href="#">${ustensil}</a>`;      
                
         });
 
@@ -52,7 +52,7 @@ class Dropdowns{
                 Ingredients
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                ${this.ingrediant}
+            <li>${this.ingrediant}</li>
             </ul>
         </div>
 
