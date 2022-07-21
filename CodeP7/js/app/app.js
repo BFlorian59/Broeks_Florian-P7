@@ -9,7 +9,7 @@ class App {
     
         const $recette = document.querySelector(".recette")
         //const $ingrediant = document.querySelector(".ingrediant")
-        const $link = document.querySelector("#dropdown")
+        const $link = document.querySelector("dropdowns")
 
 
         //Création d'une card pour chaque recette
@@ -19,7 +19,8 @@ class App {
 
             $recette.appendChild(pCardElement)
             const dropdowns = new Dropdowns(recipe);
-            dropdowns.createdropdowns();
+            dropdowns.createdropdowns();        
+
 
         });
 
@@ -27,14 +28,13 @@ class App {
 
     async main () {
         await this.fetch();   
-        
-        const dropdowns = new Dropdowns(this.recipe);
-        dropdowns.createdropdowns();
 
         const recette = new Recette_card(this.recipe);
         recette.createrecette();
 
-        
+        const dropdowns = new Dropdowns(this.recipe, this.ingredient);
+        dropdowns.createdropdowns();  
+       
     }
 
 }

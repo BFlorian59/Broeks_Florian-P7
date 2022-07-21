@@ -3,47 +3,33 @@ class Dropdowns{
     {
         this.$dropdowns = document.getElementById("dropdowns");
         this.recipe = recipe;
-        
-
+        this.ingrediant = '';
+        this.ustensil='';
+        this.appliance='';
     }
-
-    // addEventListeners () {
-    //     const listboxOptions = document.querySelector(".dropdown-content");
-    //     document.querySelector("#button").addEventListener("click", () => {
-    //         if (!listboxOptions.getAttribute("style") || listboxOptions.style.display === "none") {
-    //             listboxOptions.style.display = "block";
-    //             document.querySelector(".arrow--up").style.display = "block";
-    //             document.querySelector(".arrow--down").style.display = "none";
-    //         } else {
-    //             listboxOptions.style.display = "none";
-    //             document.querySelector(".arrow--up").style.display = "none";
-    //             document.querySelector(".arrow--down").style.display = "block";
-    //         }
-    //     });
-    // }
         
     createdropdowns(){
-
         //console.log(this.recipe.appliance)
        
-        this.recipe.ingredients.forEach((ingrediant) => {
-            
-            this.ingrediant+= `<a class="dropdown-item" href="#">${ingrediant.ingredient}</a>`;      
-            console.log(ingrediant.ingredient)
+        this.recipe.ingredients.forEach((ingrediant) => {   
+            this.ingrediant+= `<li><a class="dropdown-item" href="#">${ingrediant.ingredient}</a></li>`;      
+            //console.log(ingrediant.ingredient)
             });
             
 
         this.recipe.ustensils.forEach((ustensil) => {
             //console.log(this.recipe.ustensils)
-            this.ustensil+= `<a class="dropdown-item" href="#">${ustensil}</a>`;      
+            this.ustensil+= `<li><a class="dropdown-item" href="#">${ustensil}</a></li>`;      
                
         });
 
-        // this.recipe.appliances.forEach((appliences) => {
-        //     console.log(this.recipe.appliance)
-        //     this.appliances+= `<li><a class="dropdown-item" href="#">${appliences}</a></li>`;      
+        // this.recipe.appliance.forEach((appliances) => {
+        //     console.log(appliances)
+        //     this.appliances+= `<li><a class="dropdown-item" href="#">${appliances}</a></li>`;      
                
         // });
+
+
 
         const inner = `
 
@@ -52,7 +38,7 @@ class Dropdowns{
                 Ingredients
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li>${this.ingrediant}</li>
+                ${this.ingrediant}
             </ul>
         </div>
 
@@ -62,7 +48,7 @@ class Dropdowns{
                 Appareils
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    
+            ${this.appliances}
             </ul>
         </div>
 
