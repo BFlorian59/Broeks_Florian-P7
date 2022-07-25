@@ -11,18 +11,31 @@ class App {
         //const $ingrediant = document.querySelector(".ingrediant")
         const $link = document.querySelector("dropdowns")
 
+        let tabUstenssibles = [];
+        let tabIngrediants = [];
+        let tabAppareils = [];
 
         //Création d'une card pour chaque recette
         data.recipes.forEach((recipe) => {
             const pCard = new Recette_card(recipe);
             const pCardElement = pCard.createrecette();
 
-            $recette.appendChild(pCardElement)
-            const dropdowns = new Dropdowns(recipe);
-            dropdowns.createdropdowns();        
+            $recette.appendChild(pCardElement)  
+
+            Array.prototype.push.apply(tabIngrediants,recipe.ingredients);
+
+            Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
+            //tabUstenssibles.push(recipe.ustensils);
+            //tabIngrediants.push(recipe.ingredients);
+            tabAppareils.push(recipe.appliance);
 
 
         });
+
+
+
+        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants);
+        dropdowns.createdropdowns();
 
     }
 
@@ -32,7 +45,7 @@ class App {
         const recette = new Recette_card(this.recipe);
         recette.createrecette();
 
-        const dropdowns = new Dropdowns(this.recipe, this.ingredient);
+        const dropdowns = new Dropdowns(this.recipe);
         dropdowns.createdropdowns();  
        
     }

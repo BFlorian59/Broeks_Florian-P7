@@ -8,7 +8,7 @@ class Recette_card{
 
     createrecette(){
         //console.log(this.recipe.appliance)
-        //console.log(this.recipe)
+        console.log(this.recipe)
         
         this.recipe.ingredients.forEach((ingrediant) => { 
 
