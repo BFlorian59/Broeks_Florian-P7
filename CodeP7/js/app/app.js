@@ -23,7 +23,6 @@ class App {
             $recette.appendChild(pCardElement)  
 
             Array.prototype.push.apply(tabIngrediants,recipe.ingredients);
-
             Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
             //tabUstenssibles.push(recipe.ustensils);
             //tabIngrediants.push(recipe.ingredients);

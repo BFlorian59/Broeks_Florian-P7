@@ -13,25 +13,30 @@ class Dropdowns{
 
 
     addEventListeners () {
-        document.querySelector("#fleche").style.display = "none";
+        document.querySelector("#fleche_up").style.display = "none";
         document.querySelector("#Recherche1").style.display = "none";
         const listboxOptions = document.querySelector("#dropdown-menu1");
         document.querySelector("#dropdownMenuButton1").addEventListener("click", () => {
             if (!listboxOptions.getAttribute("style") || listboxOptions.style.display === "none") {
                 document.querySelector("#dropdownMenuButton1").setAttribute("aria-expanded", true);
-
+                document.querySelector("#fleche_down").style.display = "none";
                 document.querySelector("#Ingredients").style.display = "none";
                 document.querySelector("#Recherche1").style.display = "block";
-                document.querySelector("#fleche").style.display = "block";
+                document.querySelector("#fleche_up").style.display = "block";
                 document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 133%;");
+                listboxOptions.style.display = "block";
+                
             } else {
 
+                document.querySelector("#fleche_up").style.display = "none";
+                document.querySelector("#fleche_down").style.display = "block";
                 document.querySelector("#dropdownMenuButton1").setAttribute("aria-expanded", false);
                 document.querySelector("#Ingredients").style.display = "block";
                 document.querySelector("#Recherche1").style.display = "none";
+                listboxOptions.style.display = "none";
             }
         })
-
+        document.querySelector("#fleche_up2").style.display = "none";
         document.querySelector("#Recherche2").style.display = "none";
         const listboxOptions2 = document.querySelector("#dropdown-menu2");
         document.querySelector("#dropdownMenuButton2").addEventListener("click", () => {
@@ -40,13 +45,20 @@ class Dropdowns{
                 document.querySelector("#Appareils").style.display = "none";
                 document.querySelector("#Recherche2").style.display = "block";
                 document.querySelector("#dropdownMenuButton2").setAttribute("style", "border-radius: 0%; width: 133%;");
+                document.querySelector("#fleche_down2").style.display = "none";
+                document.querySelector("#fleche_up2").style.display = "block";
+                listboxOptions2.style.display = "block";
+
             } else {
+                document.querySelector("#fleche_up2").style.display = "none";
+                document.querySelector("#fleche_down2").style.display = "block";
                 document.querySelector("#dropdownMenuButton2").setAttribute("aria-expanded", false);
                 document.querySelector("#Appareils").style.display = "block";
                 document.querySelector("#Recherche2").style.display = "none";
+                listboxOptions2.style.display = "none";
             }
         });
-
+        document.querySelector("#fleche_up3").style.display = "none";
         document.querySelector("#Recherche3").style.display = "none";
         const listboxOptions3 = document.querySelector("#dropdown-menu3");
         document.querySelector("#dropdownMenuButton3").addEventListener("click", () => {
@@ -55,27 +67,42 @@ class Dropdowns{
                 document.querySelector("#Ustensils").style.display = "none";
                 document.querySelector("#Recherche3").style.display = "block";
                 document.querySelector("#dropdownMenuButton3").setAttribute("style", "border-radius: 0%; width: 133%;");
+                document.querySelector("#fleche_down3").style.display = "none";
+                document.querySelector("#fleche_up3").style.display = "block";
+                listboxOptions3.style.display = "block";
             } else {
                 document.querySelector("#dropdownMenuButton3").setAttribute("aria-expanded", false);
                 document.querySelector("#Ustensils").style.display = "block";
                 document.querySelector("#Recherche3").style.display = "none";
+                document.querySelector("#fleche_up3").style.display = "none";
+                document.querySelector("#fleche_down3").style.display = "block";
+                listboxOptions3.style.display = "none";
             }
         });
     }
         
     createdropdowns(){
-        //console.log(this.recipe.appliance)
-       //console.log(this.ingrediant)
+        
+        console.log(this.ingrediants)
+        const filteredArray = this.ingrediants.filter(function(ingre , pos){
+             this.ingrediants.indexOf(ingre) == pos;
+        }) 
+        
+        console.log("The filtered array ",filteredArray);
        this.ingrediants.forEach((ingre) => {  
-        //console.log(lala)
-        //console.log(lala.ingredient) 
-            this.ingrediant+= `<li><a class="dropdown-item" href="#">${ingre.ingredient}</a></li>`;      
-            console.log(ingre.ingredient)
+
+            
+        
+            this.ingrediant+= `<li><a class="dropdown-item" href="#">${ingre.ingredient}</a></li>`;
+           
+
+        
             });
             
 
         this.ustensils.forEach((ustensil) => {
         //console.log(this.recipe.ustensils)
+        
         this.ustensil+= `<li><a class="dropdown-item" href="#">${ustensil}</a></li>`;      
                
         });
@@ -96,9 +123,10 @@ class Dropdowns{
                         </div>
                     </form>
             </div>
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
                 <b id ="Ingredients">Ingredients</b>
-                <i class="fa-solid fa-sort-up" id="fleche"></i>
+                <i class="fa-solid fa-sort-up" id="fleche_up"></i>
+                <i class="fa-solid fa-sort-down" id="fleche_down"></i>
                 
             </button>
             <ul class="dropdown-menu" id="dropdown-menu1" aria-labelledby="dropdownMenuButton1">
@@ -117,6 +145,8 @@ class Dropdowns{
             </div>
             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <b id ="Appareils">Appareils</b>
+                <i class="fa-solid fa-sort-up" id="fleche_up2"></i>
+                <i class="fa-solid fa-sort-down" id="fleche_down2"></i>
             </button>
             <ul class="dropdown-menu" id="dropdown-menu2" aria-labelledby="dropdownMenuButton2">
             ${this.appliance}
@@ -132,8 +162,9 @@ class Dropdowns{
                 </form>
             </div>
             <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-            <b id ="Ustensils">Ustensils</b>
-                
+                <b id ="Ustensils">Ustensils</b>
+                <i class="fa-solid fa-sort-up" id="fleche_up3"></i>
+                <i class="fa-solid fa-sort-down" id="fleche_down3"></i>
             </button>
             <ul class="dropdown-menu" id="dropdown-menu3" aria-labelledby="dropdownMenuButton3">
                ${this.ustensil}

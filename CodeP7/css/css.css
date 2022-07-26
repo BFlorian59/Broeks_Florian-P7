@@ -178,5 +178,7 @@
     width: 133%;
 }
 
-
+.dropdown-toggle::after{
+    display: none;
+}
   
