@@ -33,7 +33,7 @@ class App {
 
 
 
-        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants);
+        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants, this.recipe);
         dropdowns.createdropdowns();
 
     }

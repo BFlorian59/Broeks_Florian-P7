@@ -1,8 +1,8 @@
 class Dropdowns{
-    constructor(tabUstenssibles,tabAppareils,tabIngrediants)
+    constructor(tabUstenssibles,tabAppareils,tabIngrediants, recipe)
     {
         this.$dropdowns = document.getElementById("dropdowns");
-        //this.recipe = recipe;
+        this.recipe = recipe;
         this.ingrediants = tabIngrediants;
         this.ingrediant='';
         this.ustensils=tabUstenssibles;
@@ -82,35 +82,41 @@ class Dropdowns{
     }
         
     createdropdowns(){
-        
-        console.log(this.ingrediants)
-        const filteredArray = this.ingrediants.filter(function(ingre , pos){
-             this.ingrediants.indexOf(ingre) == pos;
-        }) 
-        
-        console.log("The filtered array ",filteredArray);
-       this.ingrediants.forEach((ingre) => {  
-
-            
-        
-            this.ingrediant+= `<li><a class="dropdown-item" href="#">${ingre.ingredient}</a></li>`;
-           
-
-        
+        let uniqueingre = []
+        this.ingrediants.forEach((ingre) => {  
+                if (!uniqueingre.includes(ingre.ingredient)) {
+                    uniqueingre.push(ingre.ingredient);
+                    uniqueingre.filter((item,
+                        index) => uniqueingre.indexOf(item) === index);
+                    //console.log(ingre.ingredient);
+                    this.ingrediant+= `<li><a class="dropdown-item" href="#">${ingre.ingredient}</a></li>`;
+                }
             });
-            
+            //console.log(uniqueingre);
 
+
+        let unique_ustensil = []
         this.ustensils.forEach((ustensil) => {
-        //console.log(this.recipe.ustensils)
+        if (!unique_ustensil.includes(ustensil)) {
+            unique_ustensil.push(ustensil);
+            unique_ustensil.filter((item,
+                index) => unique_ustensil.indexOf(item) === index);
+            //console.log(ustensil);
+            this.ustensil+= `<li><a class="dropdown-item" href="#">${ustensil}</a></li>`;
+            }
         
-        this.ustensil+= `<li><a class="dropdown-item" href="#">${ustensil}</a></li>`;      
-               
         });
+        //console.log(unique_ustensil)
 
+        let unique_appliances = []
         this.appliances.forEach((appliances) => {
-            //console.log(appliances)
-            this.appliance+= `<li><a class="dropdown-item" href="#">${appliances}</a></li>`;      
-               
+            if (!unique_appliances.includes(appliances)) {
+                unique_appliances.push(appliances);
+                unique_appliances.filter((item,
+                    index) => unique_appliances.indexOf(item) === index);
+                //console.log(ustensil);
+                this.appliance+= `<li><a class="dropdown-item" href="#">${appliances}</a></li>`;  
+                }
         });
 
         const inner = `
