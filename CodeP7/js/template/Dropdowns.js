@@ -23,16 +23,19 @@ class Dropdowns{
                 document.querySelector("#Ingredients").style.display = "none";
                 document.querySelector("#Recherche1").style.display = "block";
                 document.querySelector("#fleche_up").style.display = "block";
-                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 133%;");
+                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 408%;");
+                document.querySelector(".dropdown1").setAttribute("style", "margin-right: 48%;")
                 listboxOptions.style.display = "block";
                 
             } else {
 
+                document.querySelector("#dropdownMenuButton1").setAttribute("style", "width: 133%;");
                 document.querySelector("#fleche_up").style.display = "none";
                 document.querySelector("#fleche_down").style.display = "block";
                 document.querySelector("#dropdownMenuButton1").setAttribute("aria-expanded", false);
                 document.querySelector("#Ingredients").style.display = "block";
                 document.querySelector("#Recherche1").style.display = "none";
+                document.querySelector(".dropdown1").setAttribute("style", "margin-right: 8%;")
                 listboxOptions.style.display = "none";
             }
         })
@@ -44,18 +47,23 @@ class Dropdowns{
                 document.querySelector("#dropdownMenuButton2").setAttribute("aria-expanded", true);
                 document.querySelector("#Appareils").style.display = "none";
                 document.querySelector("#Recherche2").style.display = "block";
-                document.querySelector("#dropdownMenuButton2").setAttribute("style", "border-radius: 0%; width: 133%;");
+                document.querySelector("#dropdownMenuButton2").setAttribute("style", "border-radius: 0%; width: 166%;");
                 document.querySelector("#fleche_down2").style.display = "none";
                 document.querySelector("#fleche_up2").style.display = "block";
+                document.querySelector(".dropdown2").setAttribute("style", "margin-right: 20%;")
                 listboxOptions2.style.display = "block";
 
             } else {
+                document.querySelector("#dropdownMenuButton2").setAttribute("style", "width: 133%;");
                 document.querySelector("#fleche_up2").style.display = "none";
                 document.querySelector("#fleche_down2").style.display = "block";
                 document.querySelector("#dropdownMenuButton2").setAttribute("aria-expanded", false);
                 document.querySelector("#Appareils").style.display = "block";
                 document.querySelector("#Recherche2").style.display = "none";
+                document.querySelector(".dropdown2").setAttribute("style", "margin-right: 8%;")
+                
                 listboxOptions2.style.display = "none";
+                
             }
         });
         document.querySelector("#fleche_up3").style.display = "none";
@@ -66,12 +74,13 @@ class Dropdowns{
                 document.querySelector("#dropdownMenuButton3").setAttribute("aria-expanded", true);
                 document.querySelector("#Ustensils").style.display = "none";
                 document.querySelector("#Recherche3").style.display = "block";
-                document.querySelector("#dropdownMenuButton3").setAttribute("style", "border-radius: 0%; width: 133%;");
+                document.querySelector("#dropdownMenuButton3").setAttribute("style", "border-radius: 0%; width: 200%;");
                 document.querySelector("#fleche_down3").style.display = "none";
                 document.querySelector("#fleche_up3").style.display = "block";
                 listboxOptions3.style.display = "block";
             } else {
                 document.querySelector("#dropdownMenuButton3").setAttribute("aria-expanded", false);
+                document.querySelector("#dropdownMenuButton3").setAttribute("style", "width: 133%;");
                 document.querySelector("#Ustensils").style.display = "block";
                 document.querySelector("#Recherche3").style.display = "none";
                 document.querySelector("#fleche_up3").style.display = "none";
@@ -121,7 +130,7 @@ class Dropdowns{
 
         const inner = `
 
-        <div class="dropdown">
+        <div class="dropdown1">
             <div id="Recherche1">
                     <form class="Form-Inline My-2 My-Lg-0" id="form">
                         <div class="Recherche-Barr">
@@ -141,7 +150,7 @@ class Dropdowns{
         </div>
 
 
-        <div class="dropdown">
+        <div class="dropdown2">
             <div id="Recherche2">
                 <form class="Form-Inline My-2 My-Lg-0">
                     <div class="Recherche-Barr">
@@ -159,7 +168,7 @@ class Dropdowns{
             </ul>
         </div>
 
-        <div class="dropdown">
+        <div class="dropdown3">
             <div id="Recherche3">
                 <form class="Form-Inline My-2 My-Lg-0">
                     <div class="Recherche-Barr">
