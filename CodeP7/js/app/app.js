@@ -9,11 +9,15 @@ class App {
     
         const $recette = document.querySelector(".recette")
         //const $ingrediant = document.querySelector(".ingrediant")
-        const $link = document.querySelector("dropdowns")
+        
 
         let tabUstenssibles = [];
         let tabIngrediants = [];
         let tabAppareils = [];
+
+
+        // Tableau du resultat de ta recherche
+        // tableau de tes tags selectionnés
 
         //Création d'une card pour chaque recette
         data.recipes.forEach((recipe) => {
@@ -22,12 +26,16 @@ class App {
 
             $recette.appendChild(pCardElement)  
 
+            // ajout de tableau
             Array.prototype.push.apply(tabIngrediants,recipe.ingredients);
             Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
             //tabUstenssibles.push(recipe.ustensils);
             //tabIngrediants.push(recipe.ingredients);
             tabAppareils.push(recipe.appliance);
 
+            //TODO Aller chercher le bouton de la recherche
+            // ajouter eventlisterner click
+            // pour executer la recherche
 
         });
 
@@ -36,6 +44,8 @@ class App {
         const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants, this.recipe);
         dropdowns.createdropdowns();
 
+        const recherche = new Recherche();
+        recherche.createrecherche();  
     }
 
     async main () {
@@ -43,10 +53,13 @@ class App {
 
         const recette = new Recette_card(this.recipe);
         recette.createrecette();
-
-        const dropdowns = new Dropdowns(this.recipe);
-        dropdowns.createdropdowns();  
        
+    }
+
+    async search (){
+
+        
+
     }
 
 }

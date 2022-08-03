@@ -9,6 +9,8 @@ class Dropdowns{
         this.ustensil ='';
         this.appliances=tabAppareils;
         this.appliance='';
+        this.$wrapper = document.createElement('div');
+        this.uniqueingre =[]
     }
 
 
@@ -88,21 +90,35 @@ class Dropdowns{
                 listboxOptions3.style.display = "none";
             }
         });
-    }
         
-    createdropdowns(){
-        let uniqueingre = []
-        this.ingrediants.forEach((ingre) => {  
-                if (!uniqueingre.includes(ingre.ingredient)) {
-                    uniqueingre.push(ingre.ingredient);
-                    uniqueingre.filter((item,
-                        index) => uniqueingre.indexOf(item) === index);
-                    //console.log(ingre.ingredient);
-                    this.ingrediant+= `<li><a class="dropdown-item" href="#">${ingre.ingredient}</a></li>`;
-                }
-            });
-            //console.log(uniqueingre);
 
+    }
+
+      
+    createdropdowns(){
+        
+        this.ingrediants.forEach((ingre) => {  
+                if (!this.uniqueingre.includes(ingre.ingredient)) {
+                    this.uniqueingre.push(ingre.ingredient);
+                    this.uniqueingre.filter((item,
+                        index) => this.uniqueingre.indexOf(item) === index);
+                    //console.log(ingre.ingredient);
+                   
+                        this.ingrediant+= `<li id="items"><a class="dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
+
+                    
+                    // TODO Ici affecter un addEventListener à chaque tag.
+                        document.querySelector('dropdown-item').addEventListener("click", () => {
+                            let listtag=[]
+                            listtag.push(ingre.ingredient);
+                            console.log(ingre.ingredient);
+                        })
+
+                    // Ajouter le tag dans list des tags
+                    // cet event va permettre d'afficher le tag en-dessous de la bar de recherche et executer la recherche
+                }
+                
+            });
 
         let unique_ustensil = []
         this.ustensils.forEach((ustensil) => {
@@ -189,6 +205,7 @@ class Dropdowns{
         `;
         this.$dropdowns.innerHTML = inner
         this.addEventListeners();
-
+        this.add();
+ 
     }
 }
