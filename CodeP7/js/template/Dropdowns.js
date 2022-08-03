@@ -96,30 +96,33 @@ class Dropdowns{
 
       
     createdropdowns(){
-        
-        this.ingrediants.forEach((ingre) => {  
+        var removed = this.ingrediants.splice(10, 50)
+        removed.forEach((ingre) => {    
                 if (!this.uniqueingre.includes(ingre.ingredient)) {
                     this.uniqueingre.push(ingre.ingredient);
                     this.uniqueingre.filter((item,
                         index) => this.uniqueingre.indexOf(item) === index);
-                    //console.log(ingre.ingredient);
-                   
-                        this.ingrediant+= `<li id="items"><a class="dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
-
                     
+                    //console.log(ingre.ingredient);
+                     
+                    this.ingrediant+= `<li id="items"><a class="dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
+
                     // TODO Ici affecter un addEventListener à chaque tag.
-                        let listtag=[]
-                        document.querySelector('.dropdown-item').addEventListener("click", () => {
+                        // let listtag=[]
+                        // document.querySelector('li').addEventListener("click", () => {
                             
-                            listtag.push(ingre.ingredient);
-                            console.log(listtag);
-                        })
+                        //     listtag.push(ingre.ingredient);
+                        //     console.log(listtag);
+                        // })
 
                     // Ajouter le tag dans list des tags
                     // cet event va permettre d'afficher le tag en-dessous de la bar de recherche et executer la recherche
+                    
                 }
                 
+                
             });
+           
 
         let unique_ustensil = []
         this.ustensils.forEach((ustensil) => {
@@ -206,6 +209,31 @@ class Dropdowns{
         `;
         this.$dropdowns.innerHTML = inner
         this.addEventListeners();
+
+        // this.uniqueingre.forEach((ingre) => {    
+        //     let listtag=[]                        
+        //     listtag.push(ingre);
+        //     console.log(listtag);
+
+                    
+        //         console.log(this.ingrediant);
+                 
+        //        this.ingrediant+= `<li id="items"><a class="dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
+
+                
+        //         TODO Ici affecter un addEventListener à chaque tag.
+        //         let listtag=[]
+        //         document.querySelector('li').addEventListener("click", () => {
+                        
+        //         listtag.push(ingre.ingredient);
+        //         console.log(listtag);
+        //      })
+
+        //          Ajouter le tag dans list des tags
+        //          cet event va permettre d'afficher le tag en-dessous de la bar de recherche et executer la recherche
+            
+            
+        // });
 
  
     }
