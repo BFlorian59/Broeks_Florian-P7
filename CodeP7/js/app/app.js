@@ -44,8 +44,6 @@ class App {
         const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants, this.recipe);
         dropdowns.createdropdowns();
 
-        const recherche = new Recherche();
-        recherche.createrecherche();  
     }
 
     async main () {
