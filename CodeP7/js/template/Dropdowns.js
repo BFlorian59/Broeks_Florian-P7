@@ -108,7 +108,7 @@ class Dropdowns{
 
                     
                     // TODO Ici affecter un addEventListener à chaque tag.
-                        document.querySelector('dropdown-item').addEventListener("click", () => {
+                        document.querySelector('.dropdown-item').addEventListener("click", () => {
                             let listtag=[]
                             listtag.push(ingre.ingredient);
                             console.log(ingre.ingredient);
