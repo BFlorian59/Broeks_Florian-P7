@@ -2,6 +2,7 @@ class Dropdowns{
     constructor(tabUstenssibles,tabAppareils,tabIngrediants, recipe)
     {
         this.$dropdowns = document.getElementById("dropdowns");
+        this.$tag = document.getElementById("tag");
         this.recipe = recipe;
         this.ingrediants = tabIngrediants;
         this.ingrediant='';
@@ -11,6 +12,7 @@ class Dropdowns{
         this.appliance='';
         this.$wrapper = document.createElement('div');
         this.uniqueingre =[]
+        this.tag ='';
     }
 
 
@@ -94,33 +96,79 @@ class Dropdowns{
 
     }
 
+    displaytag(){
+        document.querySelectorAll('#items').forEach(item => {
+            item.addEventListener('click', () => {
+                console.log(item.innerHTML)
+                this.$tag.innerHTML += `
+                <div class = 'liste_tag'>
+                    <b>${item.innerHTML}</b>
+                    <a href="#" class="delete">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </a>
+                </div>`
+                //this.deletetag();
+            })
+        })
+
+        document.querySelectorAll('#items2').forEach(item => {
+            item.addEventListener('click', () => {
+                console.log(item.innerHTML)
+                this.$tag.innerHTML += `
+                <div class = 'liste_tag2'>
+                    <b>${item.innerHTML}</b>
+                    <a href="#" class="delete">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </a>
+                </div>`
+                //this.deletetag();
+            })
+        })
+
+        document.querySelectorAll('#items3').forEach(item => {
+            item.addEventListener('click', () => {
+                console.log(item.innerHTML)
+                this.$tag.innerHTML += `
+                <div class = 'liste_tag3'>
+                    <b>${item.innerHTML}</b>
+                    <a href="#" class="delete">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </a>
+                </div>`
+                //this.deletetag();
+            })
+        })
+
+        
+    }
+
+    // deletetag(){
+    //     document.querySelectorAll('.delete').forEach(item => {
+    //         item.addEventListener('click', () => {
+       
+    //             document.querySelector('.liste_tag').style.display = 'none'
+    //             console.log('deletes')
+    //         })
+    //     })
+    // }
+
       
     createdropdowns(){
-        var removed = this.ingrediants.splice(10, 50)
+        
+        var removed = this.ingrediants.splice(10, 41)
         removed.forEach((ingre) => {    
                 if (!this.uniqueingre.includes(ingre.ingredient)) {
                     this.uniqueingre.push(ingre.ingredient);
                     this.uniqueingre.filter((item,
                         index) => this.uniqueingre.indexOf(item) === index);
-                    
-                    //console.log(ingre.ingredient);
                      
-                    this.ingrediant+= `<li id="items"><a class="dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
+                    this.ingrediant+= `<li ><a id="items" class="dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
 
                     // TODO Ici affecter un addEventListener à chaque tag.
-                        // let listtag=[]
-                        // document.querySelector('li').addEventListener("click", () => {
-                            
-                        //     listtag.push(ingre.ingredient);
-                        //     console.log(listtag);
-                        // })
-
                     // Ajouter le tag dans list des tags
                     // cet event va permettre d'afficher le tag en-dessous de la bar de recherche et executer la recherche
                     
-                }
-                
-                
+                }   
             });
            
 
@@ -131,7 +179,7 @@ class Dropdowns{
             unique_ustensil.filter((item,
                 index) => unique_ustensil.indexOf(item) === index);
             //console.log(ustensil);
-            this.ustensil+= `<li><a class="dropdown-item" href="#">${ustensil}</a></li>`;
+            this.ustensil+= `<li><a id="items2" class="dropdown-item" href="#">${ustensil}</a></li>`;
             }
         
         });
@@ -144,7 +192,7 @@ class Dropdowns{
                 unique_appliances.filter((item,
                     index) => unique_appliances.indexOf(item) === index);
                 //console.log(ustensil);
-                this.appliance+= `<li><a class="dropdown-item" href="#">${appliances}</a></li>`;  
+                this.appliance+= `<li><a id="items3" class="dropdown-item" href="#">${appliances}</a></li>`;  
                 }
         });
 
@@ -209,32 +257,8 @@ class Dropdowns{
         `;
         this.$dropdowns.innerHTML = inner
         this.addEventListeners();
+        this.displaytag();
 
-        // this.uniqueingre.forEach((ingre) => {    
-        //     let listtag=[]                        
-        //     listtag.push(ingre);
-        //     console.log(listtag);
-
-                    
-        //         console.log(this.ingrediant);
-                 
-        //        this.ingrediant+= `<li id="items"><a class="dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
-
-                
-        //         TODO Ici affecter un addEventListener à chaque tag.
-        //         let listtag=[]
-        //         document.querySelector('li').addEventListener("click", () => {
-                        
-        //         listtag.push(ingre.ingredient);
-        //         console.log(listtag);
-        //      })
-
-        //          Ajouter le tag dans list des tags
-        //          cet event va permettre d'afficher le tag en-dessous de la bar de recherche et executer la recherche
-            
-            
-        // });
-
- 
+       
     }
 }

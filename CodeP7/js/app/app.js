@@ -36,6 +36,12 @@ class App {
             //TODO Aller chercher le bouton de la recherche
             // ajouter eventlisterner click
             // pour executer la recherche
+            var buttonsearch = document.querySelector(".Recherche-Icone")
+            buttonsearch.addEventListener('click', () => {
+                //executer la recherche
+            })
+
+
 
         });
 
@@ -55,6 +61,7 @@ class App {
     }
 
     async search (){
+        
 
         
 
