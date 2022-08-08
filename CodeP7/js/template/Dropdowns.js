@@ -11,7 +11,9 @@ class Dropdowns{
         this.appliances=tabAppareils;
         this.appliance='';
         this.$wrapper = document.createElement('div');
-        this.uniqueingre =[]
+        this.uniqueingre =[];
+        this.unique_appliances =[];
+        this.unique_ustensil =[];
         this.tag ='';
     }
 
@@ -142,6 +144,66 @@ class Dropdowns{
         
     }
 
+    search(){
+        const Ingredientinput = document.querySelector('#Ingredient');
+        Ingredientinput.addEventListener('keyup', () =>{
+            const input = Ingredientinput.value;
+            console.log(input);
+            const result = this.uniqueingre.filter(ingres => ingres.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
+            console.log(result)
+
+            let suggestion ='';
+            result.forEach(resultItems =>
+                suggestion += 
+                `<li ><a id="items" class="dropdown-item"  href="#" >${resultItems}</a></li>`
+                    
+            )
+            
+            document.getElementById('dropdown-menu1').innerHTML = suggestion;
+            this.displaytag();
+
+        })
+
+        const Appareilinput = document.querySelector('.Recherche-Appareil');
+        Appareilinput.addEventListener('keyup', () =>{
+            const input_appareil = Appareilinput.value;
+            console.log(input_appareil);
+            const result_appareils = this.unique_appliances.filter(appareils => appareils.toLocaleLowerCase().includes(input_appareil.toLocaleLowerCase()));
+            console.log(result_appareils)
+
+            let suggestion ='';
+            result_appareils.forEach(resultItems =>
+                suggestion += 
+                `<li ><a id="items3" class="dropdown-item"  href="#" >${resultItems}</a></li>`
+                    
+            )
+            
+            document.getElementById('dropdown-menu2').innerHTML = suggestion;
+            this.displaytag();
+        })
+
+
+        const Ustensilsinput = document.querySelector('.Recherche-Ustensil');
+        Ustensilsinput.addEventListener('keyup', () =>{
+            const input_ustensils = Ustensilsinput.value;
+            console.log(input_ustensils);
+            const result_ustensils = this.unique_ustensil.filter(ustensils => ustensils.toLocaleLowerCase().includes(input_ustensils.toLocaleLowerCase()));
+            console.log(result_ustensils)
+
+            let suggestion ='';
+            result_ustensils.forEach(resultItems =>
+                suggestion += 
+                `<li ><a id="items2" class="dropdown-item"  href="#" >${resultItems}</a></li>`
+                    
+            )
+            
+            document.getElementById('dropdown-menu3').innerHTML = suggestion;
+            this.displaytag();
+        })
+
+
+    }
+
     // deletetag(){
     //     document.querySelectorAll('.delete').forEach(item => {
     //         item.addEventListener('click', () => {
@@ -154,7 +216,7 @@ class Dropdowns{
 
       
     createdropdowns(){
-        
+       
         var removed = this.ingrediants.splice(10, 41)
         removed.forEach((ingre) => {    
                 if (!this.uniqueingre.includes(ingre.ingredient)) {
@@ -172,12 +234,11 @@ class Dropdowns{
             });
            
 
-        let unique_ustensil = []
         this.ustensils.forEach((ustensil) => {
-        if (!unique_ustensil.includes(ustensil)) {
-            unique_ustensil.push(ustensil);
-            unique_ustensil.filter((item,
-                index) => unique_ustensil.indexOf(item) === index);
+        if (!this.unique_ustensil.includes(ustensil)) {
+            this.unique_ustensil.push(ustensil);
+            this.unique_ustensil.filter((item,
+                index) => this.unique_ustensil.indexOf(item) === index);
             //console.log(ustensil);
             this.ustensil+= `<li><a id="items2" class="dropdown-item" href="#">${ustensil}</a></li>`;
             }
@@ -185,12 +246,11 @@ class Dropdowns{
         });
         //console.log(unique_ustensil)
 
-        let unique_appliances = []
         this.appliances.forEach((appliances) => {
-            if (!unique_appliances.includes(appliances)) {
-                unique_appliances.push(appliances);
-                unique_appliances.filter((item,
-                    index) => unique_appliances.indexOf(item) === index);
+            if (!this.unique_appliances.includes(appliances)) {
+                this.unique_appliances.push(appliances);
+                this.unique_appliances.filter((item,
+                    index) => this.unique_appliances.indexOf(item) === index);
                 //console.log(ustensil);
                 this.appliance+= `<li><a id="items3" class="dropdown-item" href="#">${appliances}</a></li>`;  
                 }
@@ -202,7 +262,7 @@ class Dropdowns{
             <div id="Recherche1">
                     <form class="Form-Inline My-2 My-Lg-0" id="form">
                         <div class="Recherche-Barr">
-                            <input class="Recherche-Ingredient btn-primary" type="Search" Placeholder="Rechercher un ingredient">
+                            <input id ="Ingredient" class="Recherche-Ingredient btn-primary" type="Search" Placeholder="Rechercher un ingredient">
                         </div>
                     </form>
             </div>
@@ -258,6 +318,7 @@ class Dropdowns{
         this.$dropdowns.innerHTML = inner
         this.addEventListeners();
         this.displaytag();
+        this.search();
 
        
     }

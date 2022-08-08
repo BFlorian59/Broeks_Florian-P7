@@ -26,7 +26,7 @@ class App {
 
             $recette.appendChild(pCardElement)  
 
-            // ajout de tableau
+            // ajouter les tableaux ingredients, ustensils et appareils
             Array.prototype.push.apply(tabIngrediants,recipe.ingredients);
             Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
             //tabUstenssibles.push(recipe.ustensils);
@@ -38,32 +38,36 @@ class App {
             // pour executer la recherche
             var buttonsearch = document.querySelector(".Recherche-Icone")
             buttonsearch.addEventListener('click', () => {
-                //executer la recherche
+                const input = document.querySelector('.Recherche-Input');
+                const input_search = input.value;
+                console.log(input_search);
+                const result_search = data.recipes.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                console.log(result_search)
+
             })
-
-
-
         });
 
 
 
-        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants, this.recipe);
+
+        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants);
         dropdowns.createdropdowns();
 
     }
 
     async main () {
         await this.fetch();   
-
+        await this.search();
         const recette = new Recette_card(this.recipe);
         recette.createrecette();
+
+        const dropdowns = new Dropdowns(this.recipe);
+        dropdowns.createdropdowns();
        
     }
 
     async search (){
-        
 
-        
 
     }
 

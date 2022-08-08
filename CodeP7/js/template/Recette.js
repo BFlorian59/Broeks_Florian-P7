@@ -7,9 +7,7 @@ class Recette_card{
     }
 
     createrecette(){
-        //console.log(this.recipe.appliance)
-        console.log(this.recipe)
-        
+        //console.log(this.recipe.appliance)        
         this.recipe.ingredients.forEach((ingrediant) => { 
 
             if (ingrediant.unit) {
@@ -42,5 +40,7 @@ class Recette_card{
         `
         $section.innerHTML = Card_recette
         return $section;
+        
+
     }
 }
