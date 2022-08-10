@@ -15,6 +15,8 @@ class App {
         let tabIngrediants = [];
         let tabAppareils = [];
 
+        
+
 
         // Tableau du resultat de ta recherche
         // tableau de tes tags selectionnés
@@ -36,13 +38,22 @@ class App {
             //TODO Aller chercher le bouton de la recherche
             // ajouter eventlisterner click
             // pour executer la recherche
+            const result_search = data.recipes;
             var buttonsearch = document.querySelector(".Recherche-Icone")
+            const input = document.querySelector('.Recherche-Input');
+
             buttonsearch.addEventListener('click', () => {
-                const input = document.querySelector('.Recherche-Input');
-                const input_search = input.value;
-                console.log(input_search);
-                const result_search = data.recipes.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-                console.log(result_search)
+                console.log(input.value.lenght)
+                //TODO commencer la recherche si tu as plus de 3 caracteres
+                if (input.value.lenght > 3 ) {
+                    console.log(input.value.lenght)
+                    const input_search = input.value;
+                     //console.log(Search.globalSearch(result_search,Search.tabTag,Search.strSearch));
+                    console.log(input_search);
+                    var result_searchs = result_search.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase())||search.description.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                    console.log(result_searchs)
+                }
+               
 
             })
         });
@@ -57,7 +68,6 @@ class App {
 
     async main () {
         await this.fetch();   
-        await this.search();
         const recette = new Recette_card(this.recipe);
         recette.createrecette();
 
@@ -66,8 +76,8 @@ class App {
        
     }
 
-    async search (){
-
+     search (){
+        
 
     }
 

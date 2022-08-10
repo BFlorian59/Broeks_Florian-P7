@@ -99,44 +99,52 @@ class Dropdowns{
     }
 
     displaytag(){
-        document.querySelectorAll('#items').forEach(item => {
-            item.addEventListener('click', () => {
-                console.log(item.innerHTML)
+        document.querySelectorAll('.items').forEach(item1 => {
+            item1.addEventListener('click', () => {
+                console.log(item1)
+                console.log(item1.innerHTML)
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag'>
-                    <b>${item.innerHTML}</b>
+                    <b>${item1.innerHTML}</b>
                     <a href="#" class="delete">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
+
+                Search.tabTag.push(item1.innerHTML)
+                console.log(Search.tabTag)
                 //this.deletetag();
             })
         })
 
-        document.querySelectorAll('#items2').forEach(item => {
-            item.addEventListener('click', () => {
-                console.log(item.innerHTML)
+        document.querySelectorAll('.items2').forEach(item2 => {
+            item2.addEventListener('click', () => {
+                console.log(item2.innerHTML)
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag2'>
-                    <b>${item.innerHTML}</b>
+                    <b>${item2.innerHTML}</b>
                     <a href="#" class="delete">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
                 //this.deletetag();
+                Search.tabTag.push(item2.innerHTML)
+                console.log(Search.tabTag)
             })
         })
 
-        document.querySelectorAll('#items3').forEach(item => {
-            item.addEventListener('click', () => {
-                console.log(item.innerHTML)
+        document.querySelectorAll('.items3').forEach(item3 => {
+            item3.addEventListener('click', () => {
+                console.log(item3.innerHTML)
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag3'>
-                    <b>${item.innerHTML}</b>
+                    <b>${item3.innerHTML}</b>
                     <a href="#" class="delete">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
+                Search.tabTag.push(item3.innerHTML)
+                console.log(Search.tabTag)
                 //this.deletetag();
             })
         })
@@ -145,62 +153,173 @@ class Dropdowns{
     }
 
     search(){
-        const Ingredientinput = document.querySelector('#Ingredient');
+        var Ingredientinput = document.querySelector('#Ingredient');
         Ingredientinput.addEventListener('keyup', () =>{
-            const input = Ingredientinput.value;
-            console.log(input);
-            const result = this.uniqueingre.filter(ingres => ingres.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
-            console.log(result)
-
-            let suggestion ='';
-            result.forEach(resultItems =>
-                suggestion += 
-                `<li ><a id="items" class="dropdown-item"  href="#" >${resultItems}</a></li>`
-                    
-            )
-            
-            document.getElementById('dropdown-menu1').innerHTML = suggestion;
-            this.displaytag();
-
+            if ( Ingredientinput.value.length > 2) {
+                const input = Ingredientinput.value;
+                const result = this.uniqueingre.filter(ingres => ingres.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
+                let suggestion1 ='';
+                result.forEach(resultItems1 =>
+                    suggestion1 += 
+                    `<li ><a class="items dropdown-item"  href="#" >${resultItems1}</a></li>`
+                )
+                document.getElementById('dropdown-menu1').innerHTML = suggestion1;
+                document.querySelectorAll('.items').forEach(item1 => {
+                    item1.addEventListener('click', () => {
+                        this.$tag.innerHTML += `
+                        <div class = 'liste_tag'>
+                            <b>${item1.innerHTML}</b>
+                            <a href="#" class="delete">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </a>
+                        </div>`
+                        Search.tabTag.push(item1.innerHTML)
+                        console.log(Search.tabTag)
+                        //this.deletetag();
+                        const result_tag = App.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                    })
+                })
+                                
+            }
+            else if (Ingredientinput.value.length < 3) {
+                let suggestion1 ='';
+                const result = this.uniqueingre
+                result.forEach(resultItems1 =>
+                suggestion1 += 
+                    `<li ><a class="items dropdown-item"  href="#" >${resultItems1}</a></li>`
+                )
+                document.getElementById('dropdown-menu1').innerHTML = suggestion1;
+                document.querySelectorAll('.items').forEach(item1 => {
+                    item1.addEventListener('click', () => {
+                        this.$tag.innerHTML += `
+                        <div class = 'liste_tag'>
+                            <b>${item1.innerHTML}</b>
+                            <a href="#" class="delete">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </a>
+                        </div>`
+                        Search.tabTag.push(item1.innerHTML)
+                        console.log(Search.tabTag)
+                        //this.deletetag();
+                    })
+                })
+                        
+            }
         })
+       
+        
+        
+
 
         const Appareilinput = document.querySelector('.Recherche-Appareil');
         Appareilinput.addEventListener('keyup', () =>{
-            const input_appareil = Appareilinput.value;
-            console.log(input_appareil);
-            const result_appareils = this.unique_appliances.filter(appareils => appareils.toLocaleLowerCase().includes(input_appareil.toLocaleLowerCase()));
-            console.log(result_appareils)
-
-            let suggestion ='';
-            result_appareils.forEach(resultItems =>
+            if ( Appareilinput.value.length > 2) {
+                const input_appareil = Appareilinput.value;
+                const result_appareils = this.unique_appliances.filter(appareils => appareils.toLocaleLowerCase().includes(input_appareil.toLocaleLowerCase()));
+                let suggestion ='';
+                result_appareils.forEach(resultItems2 =>
                 suggestion += 
-                `<li ><a id="items3" class="dropdown-item"  href="#" >${resultItems}</a></li>`
-                    
-            )
+                    `<li ><a class="items3 dropdown-item"  href="#" >${resultItems2}</a></li>`
+                )
+                document.getElementById('dropdown-menu2').innerHTML = suggestion;
+                document.querySelectorAll('.items3').forEach(item3 => {
+                    item3.addEventListener('click', () => {
+                        console.log(item3.innerHTML)
+                        this.$tag.innerHTML += `
+                        <div class = 'liste_tag3'>
+                            <b>${item3.innerHTML}</b>
+                            <a href="#" class="delete">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </a>
+                        </div>`
+                        Search.tabTag.push(item3.innerHTML)
+                        console.log(Search.tabTag)
+                        //this.deletetag();
+                    })
+                })
+            }
+            else if (Appareilinput.value.length < 3) {
+                let suggestion ='';
+                const result = this.unique_appliances
+                result.forEach(resultItems2 =>
+                suggestion += 
+                    `<li ><a class="items3 dropdown-item"  href="#" >${resultItems2}</a></li>`
+                )
+                document.getElementById('dropdown-menu2').innerHTML = suggestion;
+                document.querySelectorAll('.items3').forEach(item3 => {
+                    item3.addEventListener('click', () => {
+                        this.$tag.innerHTML += `
+                        <div class = 'liste_tag3'>
+                            <b>${item3.innerHTML}</b>
+                            <a href="#" class="delete">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </a>
+                        </div>`
+                        Search.tabTag.push(item3.innerHTML)
+                        console.log(Search.tabTag)
+                        //this.deletetag();
+                    })
+                })
+                        
+            }
             
-            document.getElementById('dropdown-menu2').innerHTML = suggestion;
-            this.displaytag();
         })
 
 
         const Ustensilsinput = document.querySelector('.Recherche-Ustensil');
         Ustensilsinput.addEventListener('keyup', () =>{
-            const input_ustensils = Ustensilsinput.value;
-            console.log(input_ustensils);
-            const result_ustensils = this.unique_ustensil.filter(ustensils => ustensils.toLocaleLowerCase().includes(input_ustensils.toLocaleLowerCase()));
-            console.log(result_ustensils)
-
-            let suggestion ='';
-            result_ustensils.forEach(resultItems =>
+            if ( Ustensilsinput.value.length > 2) {
+                const input_ustensils = Ustensilsinput.value;
+                const result_ustensils = this.unique_ustensil.filter(ustensils => ustensils.toLocaleLowerCase().includes(input_ustensils.toLocaleLowerCase()));
+                let suggestion ='';
+                result_ustensils.forEach(resultItems3 =>
+                    suggestion += 
+                    `<li ><a class="items2 dropdown-item"  href="#" >${resultItems3}</a></li>`
+                )
+                document.getElementById('dropdown-menu3').innerHTML = suggestion;
+                document.querySelectorAll('.items2').forEach(item2 => {
+                    item2.addEventListener('click', () => {
+                        console.log(item2.innerHTML)
+                        this.$tag.innerHTML += `
+                        <div class = 'liste_tag2'>
+                            <b>${item2.innerHTML}</b>
+                            <a href="#" class="delete">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </a>
+                        </div>`
+                        //this.deletetag();
+                        Search.tabTag.push(item2.innerHTML)
+                        console.log(Search.globalSearch(Search.tabTag))
+                        console.log(Search.tabTag)
+                    })
+                })
+            }
+            else if (Ustensilsinput.value.length < 3) {
+                let suggestion ='';
+                const result =  this.unique_ustensil
+                result.forEach(resultItems3 =>
                 suggestion += 
-                `<li ><a id="items2" class="dropdown-item"  href="#" >${resultItems}</a></li>`
-                    
-            )
+                    `<li ><a class="items2 dropdown-item"  href="#" >${resultItems3}</a></li>`
+                )
+                document.getElementById('dropdown-menu3').innerHTML = suggestion;
+                document.querySelectorAll('.items2').forEach(item2 => {
+                    item2.addEventListener('click', () => {
+                        this.$tag.innerHTML += `
+                        <div class = 'liste_tag2'>
+                            <b>${item2.innerHTML}</b>
+                            <a href="#" class="delete">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </a>
+                        </div>`
+                        //this.deletetag();
+                        Search.tabTag.push(item2.innerHTML)
+                        console.log(Search.tabTag)
+                    })
+                })
+                        
+            }
             
-            document.getElementById('dropdown-menu3').innerHTML = suggestion;
-            this.displaytag();
         })
-
 
     }
 
@@ -224,7 +343,7 @@ class Dropdowns{
                     this.uniqueingre.filter((item,
                         index) => this.uniqueingre.indexOf(item) === index);
                      
-                    this.ingrediant+= `<li ><a id="items" class="dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
+                    this.ingrediant+= `<li ><a class=" items dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
 
                     // TODO Ici affecter un addEventListener à chaque tag.
                     // Ajouter le tag dans list des tags
@@ -240,7 +359,7 @@ class Dropdowns{
             this.unique_ustensil.filter((item,
                 index) => this.unique_ustensil.indexOf(item) === index);
             //console.log(ustensil);
-            this.ustensil+= `<li><a id="items2" class="dropdown-item" href="#">${ustensil}</a></li>`;
+            this.ustensil+= `<li><a class="items2 dropdown-item" href="#">${ustensil}</a></li>`;
             }
         
         });
@@ -252,7 +371,7 @@ class Dropdowns{
                 this.unique_appliances.filter((item,
                     index) => this.unique_appliances.indexOf(item) === index);
                 //console.log(ustensil);
-                this.appliance+= `<li><a id="items3" class="dropdown-item" href="#">${appliances}</a></li>`;  
+                this.appliance+= `<li><a class="items3 dropdown-item" href="#">${appliances}</a></li>`;  
                 }
         });
 
@@ -317,8 +436,9 @@ class Dropdowns{
         `;
         this.$dropdowns.innerHTML = inner
         this.addEventListeners();
-        this.displaytag();
         this.search();
+        this.displaytag();
+        
 
        
     }
