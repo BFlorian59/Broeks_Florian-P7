@@ -257,3 +257,8 @@
 #tag i{
     color: white;
 }
+
+#error{
+    margin-top: 5%;
+    font-size: 120%;
+}

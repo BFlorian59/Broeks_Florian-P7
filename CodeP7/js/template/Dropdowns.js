@@ -111,9 +111,7 @@ class Dropdowns{
                     </a>
                 </div>`
 
-                Search.tabTag.push(item1.innerHTML)
-                console.log(Search.tabTag)
-                //this.deletetag();
+                this.deletetag();
             })
         })
 
@@ -127,7 +125,7 @@ class Dropdowns{
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-                //this.deletetag();
+                this.deletetag();
                 Search.tabTag.push(item2.innerHTML)
                 console.log(Search.tabTag)
             })
@@ -145,7 +143,7 @@ class Dropdowns{
                 </div>`
                 Search.tabTag.push(item3.innerHTML)
                 console.log(Search.tabTag)
-                //this.deletetag();
+                this.deletetag();
             })
         })
 
@@ -323,15 +321,15 @@ class Dropdowns{
 
     }
 
-    // deletetag(){
-    //     document.querySelectorAll('.delete').forEach(item => {
-    //         item.addEventListener('click', () => {
-       
-    //             document.querySelector('.liste_tag').style.display = 'none'
-    //             console.log('deletes')
-    //         })
-    //     })
-    // }
+    deletetag(){
+        document.querySelectorAll('.delete').forEach(item => {
+            item.addEventListener('click', () => {
+                console.log(item)
+                document.querySelector('.liste_tag').remove();
+                
+            })
+        })
+    }
 
       
     createdropdowns(){
@@ -344,7 +342,6 @@ class Dropdowns{
                         index) => this.uniqueingre.indexOf(item) === index);
                      
                     this.ingrediant+= `<li ><a class=" items dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
-
                     // TODO Ici affecter un addEventListener à chaque tag.
                     // Ajouter le tag dans list des tags
                     // cet event va permettre d'afficher le tag en-dessous de la bar de recherche et executer la recherche
@@ -438,6 +435,8 @@ class Dropdowns{
         this.addEventListeners();
         this.search();
         this.displaytag();
+        const searchtag = new Search();
+        searchtag.addTagSearch();
         
 
        
