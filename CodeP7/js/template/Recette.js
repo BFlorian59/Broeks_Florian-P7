@@ -6,8 +6,7 @@ class Recette_card{
       
     }
 
-    createrecette(){
-        //console.log(this.recipe.appliance)        
+    createrecette(){       
         this.recipe.ingredients.forEach((ingrediant) => { 
 
             if (ingrediant.unit) {
@@ -18,9 +17,10 @@ class Recette_card{
                 this.ingrediants += `<p><b>${ingrediant.ingredient}:</b> ${ingrediant.quantity }</p>`
             }
         //this.ingrediantjb.push(ingrediant); 
-        //console.log(this.ingrediants)
+        
         
         });
+        //console.log(this.ingrediants)
         const $section = document.createElement('div');
         $section.classList.add('recette_card_wrapper');
         

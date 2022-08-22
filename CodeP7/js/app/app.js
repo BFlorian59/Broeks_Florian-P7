@@ -1,3 +1,4 @@
+var tabIngrediants = [];
 class App {
     constructor() {
         this.ingrediants = '';
@@ -12,7 +13,7 @@ class App {
         
 
         let tabUstenssibles = [];
-        let tabIngrediants = [];
+        
         let tabAppareils = [];
 
 
@@ -30,7 +31,7 @@ class App {
             //TODO boucler sur les tableaux et associer par exemple l'ingrédient à la recette
 
             // tabIngrediants = [{ingredient:'thon',[2,14,3]}, ... ]
-            Array.prototype.push.apply(tabIngrediants,recipe.ingredients)
+            //Array.prototype.push.apply(tabIngrediants,recipe.ingredients)
             Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
             //tabUstenssibles.push(recipe.ustensils);
             //tabIngrediants.push(recipe.ingredients);
@@ -40,32 +41,43 @@ class App {
             //console.log(tabid)
             
 
-            
-            // recipe.ingredients.forEach(ingre => {
-            //     let tab = [];
-            //     tab.push(recipe.id)
-            //     let recette = [{
-            //         ingredient: ingre.ingredient,
-            //         id: tab
-            //     }];
-            //     //tab.push(ingre.ingredient)
-            //     //console.log(recette)
-            //     tabIngrediants.push(recette)
-            //     console.log(recette)
-            // });
+            let recette = null;
+            recipe.ingredients.forEach(ingre => {   
+                recette = null;
+                 recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
+                console.log(recette)
+                if(recette != undefined){
+                    //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
+                    //console.log(recette)
+                    if(!recette.id.includes(recipe.id)){
+                        recette.id.push(recipe.id);
+                    }
+
+                    tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+                }else{              
+                recette = {
+                    ingredient: ingre.ingredient,
+                    id: [recipe.id]
+                };
+                }
+                
+                //tab.push(ingre.ingredient)
+                //console.log(recette)
+                tabIngrediants.push(recette)
+                //console.log(recette)
+            });
             
             //TODO Aller chercher le bouton de la recherche
             // ajouter eventlisterner click
             // pour executer la recherche    
-            
-            const search = new Search(data.recipes);
-            search.globalSearch();
+
 
             // const searchtag = new Search(data.recipes);
             // searchtag.addTagSearch();
         });
         //console.log(tabIngrediants)
-
+        const search = new Search(data.recipes);
+        search.globalSearch();
         const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants);
         dropdowns.createdropdowns();
 
