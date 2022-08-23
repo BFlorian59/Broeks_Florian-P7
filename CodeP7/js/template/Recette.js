@@ -3,6 +3,7 @@ class Recette_card{
     {
         this.recipe = recipe;
         this.ingrediants = '';
+
       
     }
 

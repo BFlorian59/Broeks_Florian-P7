@@ -1,8 +1,12 @@
  class  Search{
 
     constructor(recipe){
-        this.ingrediants =' '
-        this.recipe = recipe
+        this.ingrediants =' ';
+        this.recipe = recipe;
+        this.tagingre = [];
+        this.tagapp = [];
+        this.tagust = [];
+        this.tag =[];
     }
    
 
@@ -21,7 +25,7 @@
                 //console.log(Search.globalSearch(result_search,Search.tabTag,Search.strSearch));
                 // TODO ici compléter la recherche (sur les ingrédients ... description )
                 var result_searchs = result_search.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase())||search.description.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()) ||tabIngrediants.includes(input_search));
-                
+                console.log(tabIngrediants)
                 result_searchs.forEach((filtres) => {
                     this.ingrediants = '';
                     filtres.ingredients.forEach((ingre) => { 
@@ -33,7 +37,6 @@
                         }else{
                             this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
                         }
-                        console.log(this.ingrediants)
                     });
                     //console.log(filtre) 
                     
@@ -90,56 +93,8 @@
     }
 
 
-    addTagSearch(){
-        // const $recette = document.querySelector(".recette")
-        // var tag ='';
-        // document.querySelectorAll('.items').forEach(item1 => {
-        //     item1.addEventListener('click', () => {
-        //         console.log(this.recipe)
-        //         const result_tag = this.recipe.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-
-        //         result_tag.forEach((ingrediant) => { 
-        //             //console.log(ingrediant)
-        //             ingrediant.ingredients.forEach((filtre) => { 
-        //                 console.log(filtre)
-        //                 if (filtre.unit) {
-        //                     this.ingrediants += `<p><b>${filtre.ingredient}:</b> ${filtre.quantity } ${filtre.unit } </p>`;
-        //                 }else if (!filtre.quantity){
-        //                     this.ingrediants += `<p><b>${filtre.ingredient}</b>`
-        //                 }else{
-        //                     this.ingrediants += `<p><b>${filtre.ingredient}:</b> ${filtre.quantity }</p>`
-        //                 }
-        //             });
-        //         });
-        //         result_tag.forEach(resulttag =>
-                            
-        //             tag += 
-        //             `
-        //             <div class="filtre_card_wrapper">
-        //                 <div class="img"><img src="#" alt=""/></div>
-        //                     <div class="titre">
-        //                         <h2> ${resulttag.name} </h2>
-        //                         <p><i class="fa-regular fa-clock"></i>${resulttag.time} min</p>
-        //                     </div>
-        //                     <div class ="body_recette">
-        //                         <div class="ingredient">
-        //                             ${this.ingrediants} 
-        //                         </div>
-        //                         <p class ="description"> ${resulttag.description}</p> 
-        //                     </div>
-        //                 </div>   
-        //             </div>                                
-        //             `)
-                        
-        //         $recette.innerHTML = tag;
-        //         //this.deletetag();
-               
-        //     })
-        // })
-    }
-
     removeTagSearch(){
-        
+
     }
 
 

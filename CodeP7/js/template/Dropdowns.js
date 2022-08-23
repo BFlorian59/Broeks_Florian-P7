@@ -14,7 +14,10 @@ class Dropdowns{
         this.uniqueingre =[];
         this.unique_appliances =[];
         this.unique_ustensil =[];
-        this.tag ='';
+        this.tagingre = [];
+        this.tagapp = [];
+        this.tagust = [];
+        this.tag =[];
     }
 
 
@@ -101,8 +104,6 @@ class Dropdowns{
     displaytag(){
         document.querySelectorAll('.items').forEach(item1 => {
             item1.addEventListener('click', () => {
-                console.log(item1)
-                console.log(item1.innerHTML)
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag'>
                     <b>${item1.innerHTML}</b>
@@ -110,7 +111,10 @@ class Dropdowns{
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-
+                
+                this.tagingre.push(item1.innerHTML)
+                //console.log(this.tagingre)
+                this.addTagSearch()
                 this.deletetag();
             })
         })
@@ -126,8 +130,9 @@ class Dropdowns{
                     </a>
                 </div>`
                 this.deletetag();
-                Search.tabTag.push(item2.innerHTML)
-                console.log(Search.tabTag)
+                this.tagust.push(item2.innerHTML)
+                this.addTagSearch()
+                //console.log(this.tagust)
             })
         })
 
@@ -141,8 +146,9 @@ class Dropdowns{
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-                Search.tabTag.push(item3.innerHTML)
-                console.log(Search.tabTag)
+                this.tagapp.push(item3.innerHTML)
+                //console.log(this.tagapp)
+                this.addTagSearch()
                 this.deletetag();
             })
         })
@@ -171,10 +177,10 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        Search.tabTag.push(item1.innerHTML)
-                        console.log(Search.tabTag)
+                        this.tagingre.push(item1.innerHTML)
+                        console.log(this.tagingre)
+                        this.addTagSearch()
                         //this.deletetag();
-                        const result_tag = App.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
                     })
                 })
                                 
@@ -196,8 +202,9 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        Search.tabTag.push(item1.innerHTML)
-                        console.log(Search.tabTag)
+                        this.tagingre.push(item1.innerHTML)
+                        console.log(this.tagingre)
+                        this.addTagSearch()
                         //this.deletetag();
                     })
                 })
@@ -230,8 +237,9 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        Search.tabTag.push(item3.innerHTML)
-                        console.log(Search.tabTag)
+                        this.tagapp.push(item3.innerHTML)
+                        console.log(this.tagapp)
+                        this.addTagSearch()
                         //this.deletetag();
                     })
                 })
@@ -253,8 +261,9 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        Search.tabTag.push(item3.innerHTML)
-                        console.log(Search.tabTag)
+                        this.tagapp.push(item3.innerHTML)
+                        console.log(this.tagapp)
+                        this.addTagSearch()
                         //this.deletetag();
                     })
                 })
@@ -286,9 +295,9 @@ class Dropdowns{
                             </a>
                         </div>`
                         //this.deletetag();
-                        Search.tabTag.push(item2.innerHTML)
-                        console.log(Search.globalSearch(Search.tabTag))
-                        console.log(Search.tabTag)
+                        this.tagust.push(item2.innerHTML)
+                        console.log(this.tagust)
+                        this.addTagSearch()
                     })
                 })
             }
@@ -310,8 +319,9 @@ class Dropdowns{
                             </a>
                         </div>`
                         //this.deletetag();
-                        Search.tabTag.push(item2.innerHTML)
-                        console.log(Search.tabTag)
+                        this.tagust.push(item2.innerHTML)
+                        console.log(this.tagust)
+                        this.addTagSearch()
                     })
                 })
                         
@@ -320,6 +330,8 @@ class Dropdowns{
         })
 
     }
+
+    
 
     deletetag(){
         document.querySelectorAll('.delete').forEach(item => {
@@ -331,9 +343,55 @@ class Dropdowns{
         })
     }
 
+    addTagSearch(){
+        const $recette = document.querySelector(".recette")
+        var searchtag ='';
+        const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
+        const tabtag = [...new Set(tag)]
+        console.log(tabIngrediants)
+        const result_tag = this.recipe.filter(tags => tags.name.toLocaleLowerCase().includes(tabtag.toString().toLowerCase())||tags.appliance.toLocaleLowerCase().includes(tabtag.toString().toLowerCase())||tags.ustensils.toString().toLocaleLowerCase().includes(tabtag.toString().toLowerCase())); 
+        console.log(result_tag)
+        result_tag.forEach((tagfiltres) => {
+            this.ingrediants = '';
+            tagfiltres.ingredients.forEach((ingre) => { 
+                
+                if (ingre.unit) {
+                    this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
+                }else if (!ingre.quantity){
+                    this.ingrediants += `<p><b>${ingre.ingredient}</b>`
+                }else{
+                    this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
+                }
+            });
+            //console.log(filtre) 
+            
+            searchtag += 
+                `
+                <div class="filtre_card_wrapper">
+                    <div class="img"><img src="#" alt=""/></div>
+                        <div class="titre">
+                            <h2> ${tagfiltres.name} </h2>
+                            <p><i class="fa-regular fa-clock"></i>${tagfiltres.time} min</p>
+                        </div>
+                        <div class ="body_recette">
+                            <div class="ingredient">
+                            ${this.ingrediants}
+                            </div>
+                            <p class ="description"> ${tagfiltres.description}</p> 
+                        </div>
+                    </div>   
+                </div>                                
+                `
+                //console.log(filtre)
+            
+        });
+           
+                    
+            $recette.innerHTML = searchtag;
+    }
       
     createdropdowns(){
-       
+      
         var removed = this.ingrediants.splice(10, 41)
         removed.forEach((ingre) => {    
                 if (!this.uniqueingre.includes(ingre.ingredient)) {
@@ -435,8 +493,6 @@ class Dropdowns{
         this.addEventListeners();
         this.search();
         this.displaytag();
-        const searchtag = new Search();
-        searchtag.addTagSearch();
         
 
        

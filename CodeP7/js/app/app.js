@@ -10,7 +10,6 @@ class App {
     
         const $recette = document.querySelector(".recette")
         //const $ingrediant = document.querySelector(".ingrediant")
-        
 
         let tabUstenssibles = [];
         
@@ -29,17 +28,8 @@ class App {
 
             // ajouter les tableaux ingredients, ustensils et appareils
             //TODO boucler sur les tableaux et associer par exemple l'ingrédient à la recette
-
-            // tabIngrediants = [{ingredient:'thon',[2,14,3]}, ... ]
-            //Array.prototype.push.apply(tabIngrediants,recipe.ingredients)
             Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
-            //tabUstenssibles.push(recipe.ustensils);
-            //tabIngrediants.push(recipe.ingredients);
-            tabAppareils.push(recipe.appliance);
-
-            
-            //console.log(tabid)
-            
+            tabAppareils.push(recipe.appliance);           
 
             let recette = null;
             recipe.ingredients.forEach(ingre => {   
@@ -48,7 +38,6 @@ class App {
                 console.log(recette)
                 if(recette != undefined){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
-                    //console.log(recette)
                     if(!recette.id.includes(recipe.id)){
                         recette.id.push(recipe.id);
                     }
@@ -60,25 +49,12 @@ class App {
                     id: [recipe.id]
                 };
                 }
-                
-                //tab.push(ingre.ingredient)
-                //console.log(recette)
                 tabIngrediants.push(recette)
-                //console.log(recette)
             });
-            
-            //TODO Aller chercher le bouton de la recherche
-            // ajouter eventlisterner click
-            // pour executer la recherche    
-
-
-            // const searchtag = new Search(data.recipes);
-            // searchtag.addTagSearch();
         });
-        //console.log(tabIngrediants)
         const search = new Search(data.recipes);
         search.globalSearch();
-        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants);
+        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants, data.recipes);
         dropdowns.createdropdowns();
 
     }
