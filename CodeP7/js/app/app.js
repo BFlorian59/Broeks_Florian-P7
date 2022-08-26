@@ -35,7 +35,7 @@ class App {
             recipe.ingredients.forEach(ingre => {   
                 recette = null;
                  recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
-                console.log(recette)
+                //console.log(recette)
                 if(recette != undefined){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
                     if(!recette.id.includes(recipe.id)){
@@ -54,6 +54,7 @@ class App {
         });
         const search = new Search(data.recipes);
         search.globalSearch();
+
         const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants, data.recipes);
         dropdowns.createdropdowns();
 
@@ -66,9 +67,6 @@ class App {
 
         const dropdowns = new Dropdowns(this.recipe);
         dropdowns.createdropdowns();
-
-        const search = new Search(this.recipe);
-        search.globalSearch();
     }
 }
 const app = new App();
