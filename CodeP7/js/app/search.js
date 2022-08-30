@@ -27,12 +27,23 @@
                 console.log(tabIngrediants)
                 var tabIngrediants_filtre =  tabIngrediants.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
                 console.log(tabIngrediants_filtre);
-                let id = null
+                let lstRecipesSelected = [];
+                let ingrs = [];
                 tabIngrediants_filtre.forEach(element => {
-                    id = tabIngrediants_filtre.find(x => x.id=== element.id);
-                });
-                var result_searchs = result_search.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase())||search.description.toLocaleLowerCase().includes(input_search.toLocaleLowerCase())||id.id.includes(search.id) );
-                result_searchs.forEach((filtres) => {
+                         element.id.forEach(id => {
+                             lstRecipesSelected.push(this.recipe[id-1])
+                             
+                        })           
+                     });
+                     lstRecipesSelected.forEach(element => { 
+                        ingrs.push(element)
+                     });
+                var result_searchs = result_search.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase())||search.description.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                console.log(result_searchs)
+                const result = result_searchs.concat(ingrs);
+                const resultset = [...new Set(result)]
+                console.log(resultset)
+                resultset.forEach((filtres) => {
                     this.ingrediants = '';
                     filtres.ingredients.forEach((ingre) => { 
                         
@@ -44,7 +55,6 @@
                             this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
                         }
                     });
-                    //console.log(filtre) 
                     filtre += 
                     `
                         <div class="filtre_card_wrapper">
@@ -64,6 +74,7 @@
                     `
                     //console.log(filtre)
                     $recette.innerHTML = filtre;
+                    
                 });
             
                                    
@@ -89,8 +100,10 @@
                 
                 });
             }  
+            
         })
-        //TODO return un array de recette       
+        //TODO return un array de recette   
+           
     }
 
     addTagSearch(){
@@ -98,74 +111,137 @@
         var searchtag ='';
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         const tabtag = [...new Set(tag)]
-        console.log(tabtag)
-        console.log(tabIngrediants)
-        var tabIngrediants_filtre =  tabIngrediants.filter(tab => tab.ingredient.toLocaleLowerCase().includes(tabtag.toString().toLocaleLowerCase()));
-        console.log(tabIngrediants_filtre);
-        let ok = " "
-        tabIngrediants_filtre.forEach(element => {
-            ok = tabIngrediants_filtre.find(x => x.id=== element.id);
-        });
-        console.log(ok)
-        const result_tag = this.recipe.filter(tags => tags.name.toLocaleLowerCase().includes(tabtag.toString().toLowerCase())||tags.appliance.toLocaleLowerCase().includes(tabtag.toString().toLowerCase())||tags.ustensils.toString().toLocaleLowerCase().includes(tabtag.toString().toLowerCase())||ok.id.includes(tags.id)); 
-        console.log(result_tag)
-        result_tag.forEach((tagfiltres) => {
-            this.ingrediants = '';
-            tagfiltres.ingredients.forEach((ingre) => { 
-                if (ingre.unit) {
-                    this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
-                }else if (!ingre.quantity){
-                    this.ingrediants += `<p><b>${ingre.ingredient}</b>`
-                }else{
-                    this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
-                }
-            });
-                    
-                    
-            searchtag += 
-            `
+        let result_tag = [];
+        
+        result_tag = this.recipe.forEach(recipe =>{
+
+            if(tabtag.includes(recipe.name)){
+                
+                return recipe;
+            }
+            if(tabtag.includes(recipe.appliance)){
+                this.ingrediants = '';
+                recipe.ingredients.forEach((ingre) => { 
+                    if (ingre.unit) {
+                        this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
+                    }else if (!ingre.quantity){
+                        this.ingrediants += `<p><b>${ingre.ingredient}</b>`
+                    }else{
+                        this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
+                    }
+                });
+                                
+                searchtag += 
+                `
                 <div class="filtre_card_wrapper">
                     <div class="img"><img src="#" alt=""/></div>
                         <div class="titre">
-                            <h2> ${tagfiltres.name} </h2>
-                            <p><i class="fa-regular fa-clock"></i>${tagfiltres.time} min</p>
+                            <h2> ${recipe.name} </h2>
+                                <p><i class="fa-regular fa-clock"></i>${recipe.time} min</p>
                         </div>
                         <div class ="body_recette">
                             <div class="ingredient">
                                 ${this.ingrediants}
                             </div>
-                            <p class ="description"> ${tagfiltres.description}</p> 
+                            <p class ="description"> ${recipe.description}</p> 
                         </div>
                     </div>   
                 </div>                                
-            `
-        });
-                
-        $recette.innerHTML = searchtag;
+                `
+            }
+            recipe.ustensils.forEach(element => {
+                if(tabtag.includes(element)){
+                    console.log(recipe)
+                    this.ingrediants = '';
+                    recipe.ingredients.forEach((ingre) => { 
+                        if (ingre.unit) {
+                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
+                        }else if (!ingre.quantity){
+                            this.ingrediants += `<p><b>${ingre.ingredient}</b>`
+                        }else{
+                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
+                        }
+                    });
+                                
+                    searchtag += 
+                    `
+                        <div class="filtre_card_wrapper">
+                            <div class="img"><img src="#" alt=""/></div>
+                                <div class="titre">
+                                    <h2> ${recipe.name} </h2>
+                                    <p><i class="fa-regular fa-clock"></i>${recipe.time} min</p>
+                                </div>
+                                <div class ="body_recette">
+                                    <div class="ingredient">
+                                        ${this.ingrediants}
+                                    </div>
+                                    <p class ="description"> ${recipe.description}</p> 
+                                </div>
+                            </div>   
+                        </div>                                
+                    `
+                }
+            }); 
+
+            recipe.ingredients.forEach(element =>{
+                if(tabtag.includes(element.ingredient)){
+                    this.ingrediants = '';
+                    recipe.ingredients.forEach((ingre) => { 
+                        if (ingre.unit) {
+                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
+                        }else if (!ingre.quantity){
+                            this.ingrediants += `<p><b>${ingre.ingredient}</b>`
+                        }else{
+                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
+                        }
+                    });
+                                
+                    searchtag += 
+                    `
+                        <div class="filtre_card_wrapper">
+                            <div class="img"><img src="#" alt=""/></div>
+                                <div class="titre">
+                                    <h2> ${recipe.name} </h2>
+                                    <p><i class="fa-regular fa-clock"></i>${recipe.time} min</p>
+                                </div>
+                                <div class ="body_recette">
+                                    <div class="ingredient">
+                                        ${this.ingrediants}
+                                    </div>
+                                    <p class ="description"> ${recipe.description}</p> 
+                                </div>
+                            </div>   
+                        </div>                                
+                    `              
+                }
+            })
+            $recette.innerHTML = searchtag;
+        })
 
     }
 
     addEventtag (){
         document.querySelectorAll('.items').forEach(item1 => {
             item1.addEventListener('click', () => {
-                
-                this.tagingre.push(item1.innerHTML)
-                console.log(this.tagingre)
-                this.addTagSearch()
+                console.log(item1);
+                this.tagingre.push(item1.innerHTML);
+                console.log(this.tagingre);
+                this.addTagSearch();
+                this.removeTagSearch();
             })
         })
 
         document.querySelectorAll('.items3').forEach(item2 => {
             item2.addEventListener('click', () => {
-                this.tagust.push(item2.innerHTML)
-                this.addTagSearch()
+                this.tagust.push(item2.innerHTML);
+                this.addTagSearch();
             })
         })
 
         document.querySelectorAll('.items2').forEach(item3 => {
             item3.addEventListener('click', () => {
-                this.tagingre.push(item3.innerHTML)
-                this.addTagSearch()
+                this.tagingre.push(item3.innerHTML);
+                this.addTagSearch();
             })
         })
 
@@ -174,9 +250,9 @@
             document.querySelectorAll('.items').forEach(item1 => {
                 item1.addEventListener('click', () => {
                     
-                    this.tagingre.push(item1.innerHTML)
-                    console.log(this.tagingre)
-                    this.addTagSearch()
+                    this.tagingre.push(item1.innerHTML);
+                    console.log(this.tagingre);
+                    this.addTagSearch();
                 })
             })
     
@@ -186,8 +262,8 @@
         Appareilinput.addEventListener('keyup', () =>{
             document.querySelectorAll('.items3').forEach(item2 => {
                 item2.addEventListener('click', () => {
-                    this.tagust.push(item2.innerHTML)
-                    this.addTagSearch()
+                    this.tagust.push(item2.innerHTML);
+                    this.addTagSearch();
                 })
             })
     
@@ -197,8 +273,8 @@
         Ustensilsinput.addEventListener('keyup', () =>{
             document.querySelectorAll('.items2').forEach(item3 => {
                 item3.addEventListener('click', () => {
-                    this.tagingre.push(item3.innerHTML)
-                    this.addTagSearch()
+                    this.tagingre.push(item3.innerHTML);
+                    this.addTagSearch();
                 })
             })
     
@@ -206,7 +282,29 @@
     }
 
     removeTagSearch(){
+        document.querySelectorAll('.liste_tag').forEach(item1 => {
+            item1.addEventListener('click', () => {
+                console.log(item1);
+                item1.remove();
+                console.log(item1.innerHTML)
+                item1.innerHTML.remove();
+                console.log(this.tagingre)
+            })
+        })
 
+        document.querySelectorAll('.liste_tag2').forEach(item => {
+            item.addEventListener('click', () => {
+                console.log(item);
+                item.remove();
+            })
+        })
+
+        document.querySelectorAll('.liste_tag3').forEach(item => {
+            item.addEventListener('click', () => {
+                console.log(item);
+                item.remove();
+            })
+        })
     }
 
 

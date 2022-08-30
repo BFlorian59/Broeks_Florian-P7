@@ -108,15 +108,13 @@ class Dropdowns{
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-                //console.log(this.tagingre)
-
-                this.deletetag();
+                const deletetag = new Search(this.recipe);
+                deletetag.removeTagSearch();
             })
         })
 
         document.querySelectorAll('.items2').forEach(item2 => {
             item2.addEventListener('click', () => {
-                console.log(item2.innerHTML)
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag2'>
                     <b>${item2.innerHTML}</b>
@@ -124,14 +122,13 @@ class Dropdowns{
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-                this.deletetag();
-                //console.log(this.tagust)
+                const deletetag = new Search(this.recipe);
+                deletetag.removeTagSearch();
             })
         })
 
         document.querySelectorAll('.items3').forEach(item3 => {
             item3.addEventListener('click', () => {
-                console.log(item3.innerHTML)
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag3'>
                     <b>${item3.innerHTML}</b>
@@ -139,7 +136,8 @@ class Dropdowns{
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-                this.deletetag();
+                const deletetag = new Search(this.recipe);
+                deletetag.removeTagSearch();
             })
         })
 
@@ -167,14 +165,15 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        //this.deletetag();
+                        const deletetag = new Search(this.recipe);
+                        deletetag.removeTagSearch();
                     })
                 })
                                 
             }
             else if (Ingredientinput.value.length < 3) {
                 let suggestion1 ='';
-                const result = this.uniqueingre
+                const result = this.uniqueingre;
                 result.forEach(resultItems1 =>
                 suggestion1 += 
                     `<li ><a class="items dropdown-item"  href="#" >${resultItems1}</a></li>`
@@ -189,7 +188,8 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        //this.deletetag();
+                        const deletetag = new Search(this.recipe);
+                        deletetag.removeTagSearch();
                     })
                 })
                         
@@ -213,7 +213,6 @@ class Dropdowns{
                 document.getElementById('dropdown-menu2').innerHTML = suggestion;
                 document.querySelectorAll('.items3').forEach(item3 => {
                     item3.addEventListener('click', () => {
-                        console.log(item3.innerHTML)
                         this.$tag.innerHTML += `
                         <div class = 'liste_tag3'>
                             <b>${item3.innerHTML}</b>
@@ -221,13 +220,14 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        //this.deletetag();
+                        const deletetag = new Search(this.recipe);
+                        deletetag.removeTagSearch();
                     })
                 })
             }
             else if (Appareilinput.value.length < 3) {
                 let suggestion ='';
-                const result = this.unique_appliances
+                const result = this.unique_appliances;
                 result.forEach(resultItems2 =>
                 suggestion += 
                     `<li ><a class="items3 dropdown-item"  href="#" >${resultItems2}</a></li>`
@@ -242,7 +242,8 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        //this.deletetag();
+                        const deletetag = new Search(this.recipe);
+                        deletetag.removeTagSearch();
                     })
                 })
                         
@@ -272,13 +273,14 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        //this.deletetag();
+                        const deletetag = new Search(this.recipe);
+                        deletetag.removeTagSearch();
                     })
                 })
             }
             else if (Ustensilsinput.value.length < 3) {
                 let suggestion ='';
-                const result =  this.unique_ustensil
+                const result =  this.unique_ustensil;
                 result.forEach(resultItems3 =>
                 suggestion += 
                     `<li ><a class="items2 dropdown-item"  href="#" >${resultItems3}</a></li>`
@@ -293,7 +295,8 @@ class Dropdowns{
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        //this.deletetag();
+                        const deletetag = new Search(this.recipe);
+                        deletetag.removeTagSearch();
                     })
                 })
                         
@@ -302,24 +305,11 @@ class Dropdowns{
         })
 
     }
-
-    
-
-    deletetag(){
-        document.querySelectorAll('.delete').forEach(item => {
-            item.addEventListener('click', () => {
-                console.log(item)
-                document.querySelector('.liste_tag').remove();
-                
-            })
-        })
-    }
-
-    
+   
       
     createdropdowns(){
       
-        var removed = this.ingrediants.splice(10, 41)
+        var removed = this.ingrediants.splice(10, 41);
         removed.forEach((ingre) => {    
                 if (!this.uniqueingre.includes(ingre.ingredient)) {
                     this.uniqueingre.push(ingre.ingredient);
@@ -416,12 +406,13 @@ class Dropdowns{
         </div>
 
         `;
-        this.$dropdowns.innerHTML = inner
+        this.$dropdowns.innerHTML = inner;
         this.addEventListeners();
         this.search();
         this.displaytag();      
         const searchtag = new Search(this.recipe);
         searchtag.addEventtag();
+
        
     }
 }
