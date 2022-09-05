@@ -1,6 +1,7 @@
  class  Search{
 
     constructor(recipe){
+        console.log("je passe par là")
         this.ingrediants =' ';
         this.recipe = recipe;
         this.tagingre = [];
@@ -13,21 +14,37 @@
    
 
     globalSearch(){
+        //condition tag selectionné
+        // recherche mot clé 
         const $recette = document.querySelector(".recette")
         const result_search = this.recipe;
-        
+        console.log(this.tabtag)
         var buttonsearch = document.querySelector(".Recherche-Icone")
         const input = document.querySelector('.Recherche-Input');
+        
+        
+
         var filtre ='';
         buttonsearch.addEventListener('click', () => {
+            
+        if(this.tabtag.length > 0){
+            result_search =  this.addTagSearch();
+            result_search = result_search.map(recipeId =>{
+                return recipeId.id;
+            })
+            console.log("mes id de recette selectionnées ")
+            console.log(result_search)
+        }
             //TODO commencer la recherche si tu as plus de 3 caracteres
             if (input.value.length > 2 ) {
 
                 const input_search = input.value;
                 //console.log(Search.globalSearch(result_search,Search.tabTag,Search.strSearch));
                 // TODO ici compléter la recherche (sur les ingrédients ... description )
+                console.log("tab ingredient ")
                 console.log(tabIngrediants)
                 var tabIngrediants_filtre =  tabIngrediants.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                console.log("result après add Carotte tab ingredient ")
                 console.log(tabIngrediants_filtre);
                 let lstRecipesSelected = [];
                 let ingrs = [];
@@ -41,10 +58,10 @@
                         ingrs.push(element)
                      });
                 var result_searchs = result_search.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase())||search.description.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-                console.log(result_searchs)
+                //console.log(result_searchs)
                 const result = result_searchs.concat(ingrs);
                 this.resultset = [...new Set(result)]
-                console.log(this.resultset)
+                //console.log(this.resultset)
                 this.resultset.forEach((filtres) => {
                     this.ingrediants = '';
                     filtres.ingredients.forEach((ingre) => { 
@@ -112,9 +129,11 @@
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         this.tabtag = [...new Set(tag)]
         var result_tag = [];        
-        result_tag = this.recipe.forEach(recipe =>{
+        //console.log(this.recipe)
+         this.recipe.forEach(recipe =>{
 
             if(this.tabtag.includes(recipe.appliance)){
+                
                 this.ingrediants = '';
                 recipe.ingredients.forEach((ingre) => { 
                     if (ingre.unit) {
@@ -143,6 +162,8 @@
                     </div>   
                 </div>                                
                 `
+                
+                result_tag.push(recipe);  
             }
             recipe.ustensils.forEach(element => {
                 if(this.tabtag.includes(element)){
@@ -175,6 +196,7 @@
                             </div>   
                         </div>                                
                     `
+                    result_tag.push(recipe);  
                 }
             }); 
 
@@ -207,21 +229,24 @@
                                 </div>
                             </div>   
                         </div>                                
-                    `              
+                    `  
+                    
+                    result_tag.push(recipe);            
                 }
-            })
+            });
             $recette.innerHTML = searchtag;            
         })
         
-
+        console.log(this.tabtag)
+        return result_tag;
     }
 
     addEventtag (){
         document.querySelectorAll('.items').forEach(ingredient => {
             ingredient.addEventListener('click', () => {
-                console.log(ingredient);
+                //console.log(ingredient);
                 this.tagingre.push(ingredient.innerHTML);
-                console.log(this.tagingre);
+                //console.log(this.tagingre);
                 this.removeTagSearch();
                 this.addTagSearch();
                
