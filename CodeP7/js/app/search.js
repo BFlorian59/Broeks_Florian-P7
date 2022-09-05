@@ -7,6 +7,7 @@
         this.tagapp = [];
         this.tagust = [];
         this.tag =[];
+        this.tabtag = [];
     }
    
 
@@ -110,16 +111,11 @@
         const $recette = document.querySelector(".recette")
         var searchtag ='';
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
-        const tabtag = [...new Set(tag)]
-        let result_tag = [];
-        
+        this.tabtag = [...new Set(tag)]
+        var result_tag = [];        
         result_tag = this.recipe.forEach(recipe =>{
 
-            if(tabtag.includes(recipe.name)){
-                
-                return recipe;
-            }
-            if(tabtag.includes(recipe.appliance)){
+            if(this.tabtag.includes(recipe.appliance)){
                 this.ingrediants = '';
                 recipe.ingredients.forEach((ingre) => { 
                     if (ingre.unit) {
@@ -150,8 +146,8 @@
                 `
             }
             recipe.ustensils.forEach(element => {
-                if(tabtag.includes(element)){
-                    console.log(recipe)
+                if(this.tabtag.includes(element)){
+                    //console.log(recipe)
                     this.ingrediants = '';
                     recipe.ingredients.forEach((ingre) => { 
                         if (ingre.unit) {
@@ -184,7 +180,7 @@
             }); 
 
             recipe.ingredients.forEach(element =>{
-                if(tabtag.includes(element.ingredient)){
+                if(this.tabtag.includes(element.ingredient)){
                     this.ingrediants = '';
                     recipe.ingredients.forEach((ingre) => { 
                         if (ingre.unit) {
@@ -215,44 +211,52 @@
                     `              
                 }
             })
-            $recette.innerHTML = searchtag;
+            $recette.innerHTML = searchtag;            
         })
+        
 
     }
 
     addEventtag (){
-        document.querySelectorAll('.items').forEach(item1 => {
-            item1.addEventListener('click', () => {
-                console.log(item1);
-                this.tagingre.push(item1.innerHTML);
+        document.querySelectorAll('.items').forEach(ingredient => {
+            ingredient.addEventListener('click', () => {
+                console.log(ingredient);
+                this.tagingre.push(ingredient.innerHTML);
                 console.log(this.tagingre);
+                this.removeTagSearch();
+                this.addTagSearch();
+               
+
+            })
+        })
+
+        
+
+        document.querySelectorAll('.items3').forEach(appliance => {
+            appliance.addEventListener('click', () => {
+                this.tagapp.push(appliance.innerHTML);
+                console.log(this.tagapp)
                 this.addTagSearch();
                 this.removeTagSearch();
             })
         })
 
-        document.querySelectorAll('.items3').forEach(item2 => {
-            item2.addEventListener('click', () => {
-                this.tagust.push(item2.innerHTML);
+        document.querySelectorAll('.items2').forEach(ustensils => {
+            ustensils.addEventListener('click', () => {
+                this.tagust.push(ustensils.innerHTML);
+                console.log(this.tagust)
                 this.addTagSearch();
-            })
-        })
-
-        document.querySelectorAll('.items2').forEach(item3 => {
-            item3.addEventListener('click', () => {
-                this.tagingre.push(item3.innerHTML);
-                this.addTagSearch();
+                this.removeTagSearch();
             })
         })
 
         var Ingredientinput = document.querySelector('#Ingredient');
         Ingredientinput.addEventListener('keyup', () =>{
-            document.querySelectorAll('.items').forEach(item1 => {
-                item1.addEventListener('click', () => {
-                    
-                    this.tagingre.push(item1.innerHTML);
-                    console.log(this.tagingre);
+            document.querySelectorAll('.items').forEach(ingredient => {
+                ingredient.addEventListener('click', () => {
+                    this.tagingre.push(ingredient.innerHTML);
                     this.addTagSearch();
+                    this.removeTagSearch();
                 })
             })
     
@@ -260,10 +264,11 @@
 
         const Appareilinput = document.querySelector('.Recherche-Appareil');
         Appareilinput.addEventListener('keyup', () =>{
-            document.querySelectorAll('.items3').forEach(item2 => {
-                item2.addEventListener('click', () => {
-                    this.tagust.push(item2.innerHTML);
+            document.querySelectorAll('.items3').forEach(appliance => {
+                appliance.addEventListener('click', () => {
+                    this.tagapp.push(appliance.innerHTML);
                     this.addTagSearch();
+                    this.removeTagSearch();
                 })
             })
     
@@ -271,44 +276,86 @@
 
         const Ustensilsinput = document.querySelector('.Recherche-Ustensil');
         Ustensilsinput.addEventListener('keyup', () =>{
-            document.querySelectorAll('.items2').forEach(item3 => {
-                item3.addEventListener('click', () => {
-                    this.tagingre.push(item3.innerHTML);
+            document.querySelectorAll('.items2').forEach(ustensils => {
+                ustensils.addEventListener('click', () => {
+                    this.tagust.push(ustensils.innerHTML);
                     this.addTagSearch();
+                    this.removeTagSearch();
                 })
             })
     
-        })
+        })       
     }
 
     removeTagSearch(){
-        document.querySelectorAll('.liste_tag').forEach(item1 => {
-            item1.addEventListener('click', () => {
-                console.log(item1);
-                item1.remove();
-                console.log(item1.innerHTML)
-                item1.innerHTML.remove();
-                console.log(this.tagingre)
+        const $recette = document.querySelector(".recette")
+        document.querySelectorAll('.liste_tag ').forEach(ingredients => {
+            ingredients.addEventListener('click', () => {
+                ingredients.remove();      
             })
         })
 
-        document.querySelectorAll('.liste_tag2').forEach(item => {
-            item.addEventListener('click', () => {
-                console.log(item);
-                item.remove();
+        document.querySelectorAll('.liste_tag b').forEach(ingredients => {
+            ingredients.addEventListener('click', () => {
+                this.tagingre.splice(this.tagingre.indexOf(ingredients.innerHTML),1);
+                this.addTagSearch();
+                if (this.tabtag.length < 1) {
+                    this.recipe.forEach((recipe) => {                    
+                        const pCard = new Recette_card(recipe);
+                        const pCardElement = pCard.createrecette();
+                        $recette.appendChild(pCardElement)
+                    
+                    })
+                
+                }               
             })
         })
 
-        document.querySelectorAll('.liste_tag3').forEach(item => {
-            item.addEventListener('click', () => {
-                console.log(item);
-                item.remove();
+        document.querySelectorAll('.liste_tag2 ').forEach(ustensils => {
+            ustensils.addEventListener('click', () => {
+                ustensils.remove();      
             })
         })
+
+        document.querySelectorAll('.liste_tag2 b').forEach(ustensils => {
+            ustensils.addEventListener('click', () => {
+                this.tagust.splice(this.tagust.indexOf(ustensils.innerHTML),1);
+                this.addTagSearch();
+                if (this.tabtag.length < 1) {           
+                    this.recipe.forEach((recipe) => {                    
+                        const pCard = new Recette_card(recipe);
+                        const pCardElement = pCard.createrecette();
+                        $recette.appendChild(pCardElement)
+                    
+                    })
+                
+                }      
+
+            })
+        })
+
+        document.querySelectorAll('.liste_tag3 ').forEach(appliance => {
+            appliance.addEventListener('click', () => {
+                appliance.remove();      
+            })
+        })
+
+        document.querySelectorAll('.liste_tag3 b').forEach(appliance => {
+            appliance.addEventListener('click', () => {
+                console.log(appliance.innerHTML)
+                this.tagapp.splice(this.tagapp.indexOf(appliance.innerHTML),1);
+                this.addTagSearch();             
+                if (this.tabtag.length < 1) {          
+                    this.recipe.forEach((recipe) => {                    
+                        const pCard = new Recette_card(recipe);
+                        const pCardElement = pCard.createrecette();
+                        $recette.appendChild(pCardElement)
+                    
+                    })
+                
+                }
+            })
+        })        
     }
-
-
-
-
 }
 

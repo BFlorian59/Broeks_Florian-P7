@@ -99,45 +99,40 @@ class Dropdowns{
     }
 
     displaytag(){
-        document.querySelectorAll('.items').forEach(item1 => {
-            item1.addEventListener('click', () => {
+        document.querySelectorAll('.items').forEach(ingredient => {
+            ingredient.addEventListener('click', () => {
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag'>
-                    <b>${item1.innerHTML}</b>
+                    <b>${ingredient.innerHTML}</b>
                     <a href="#" class="delete">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-                const deletetag = new Search(this.recipe);
-                deletetag.removeTagSearch();
+ 
             })
         })
 
-        document.querySelectorAll('.items2').forEach(item2 => {
-            item2.addEventListener('click', () => {
+        document.querySelectorAll('.items2').forEach(ustensil => {
+            ustensil.addEventListener('click', () => {
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag2'>
-                    <b>${item2.innerHTML}</b>
+                    <b>${ustensil.innerHTML}</b>
                     <a href="#" class="delete">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-                const deletetag = new Search(this.recipe);
-                deletetag.removeTagSearch();
             })
         })
 
-        document.querySelectorAll('.items3').forEach(item3 => {
-            item3.addEventListener('click', () => {
+        document.querySelectorAll('.items3').forEach(appliance => {
+            appliance.addEventListener('click', () => {
                 this.$tag.innerHTML += `
                 <div class = 'liste_tag3'>
-                    <b>${item3.innerHTML}</b>
+                    <b>${appliance.innerHTML}</b>
                     <a href="#" class="delete">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>`
-                const deletetag = new Search(this.recipe);
-                deletetag.removeTagSearch();
             })
         })
 
@@ -156,17 +151,15 @@ class Dropdowns{
                     `<li ><a class="items dropdown-item"  href="#" >${resultItems1}</a></li>`
                 )
                 document.getElementById('dropdown-menu1').innerHTML = suggestion1;
-                document.querySelectorAll('.items').forEach(item1 => {
-                    item1.addEventListener('click', () => {
+                document.querySelectorAll('.items').forEach(ingredient => {
+                    ingredient.addEventListener('click', () => {
                         this.$tag.innerHTML += `
                         <div class = 'liste_tag'>
-                            <b>${item1.innerHTML}</b>
+                            <b>${ingredient.innerHTML}</b>
                             <a href="#" class="delete">
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        const deletetag = new Search(this.recipe);
-                        deletetag.removeTagSearch();
                     })
                 })
                                 
@@ -179,17 +172,15 @@ class Dropdowns{
                     `<li ><a class="items dropdown-item"  href="#" >${resultItems1}</a></li>`
                 )
                 document.getElementById('dropdown-menu1').innerHTML = suggestion1;
-                document.querySelectorAll('.items').forEach(item1 => {
-                    item1.addEventListener('click', () => {
+                document.querySelectorAll('.items').forEach(ingredient => {
+                    ingredient.addEventListener('click', () => {
                         this.$tag.innerHTML += `
                         <div class = 'liste_tag'>
-                            <b>${item1.innerHTML}</b>
+                            <b>${ingredient.innerHTML}</b>
                             <a href="#" class="delete">
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        const deletetag = new Search(this.recipe);
-                        deletetag.removeTagSearch();
                     })
                 })
                         
@@ -211,17 +202,15 @@ class Dropdowns{
                     `<li ><a class="items3 dropdown-item"  href="#" >${resultItems2}</a></li>`
                 )
                 document.getElementById('dropdown-menu2').innerHTML = suggestion;
-                document.querySelectorAll('.items3').forEach(item3 => {
-                    item3.addEventListener('click', () => {
+                document.querySelectorAll('.items3').forEach(appareils => {
+                    appareils.addEventListener('click', () => {
                         this.$tag.innerHTML += `
                         <div class = 'liste_tag3'>
-                            <b>${item3.innerHTML}</b>
+                            <b>${appareils.innerHTML}</b>
                             <a href="#" class="delete">
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        const deletetag = new Search(this.recipe);
-                        deletetag.removeTagSearch();
                     })
                 })
             }
@@ -233,17 +222,15 @@ class Dropdowns{
                     `<li ><a class="items3 dropdown-item"  href="#" >${resultItems2}</a></li>`
                 )
                 document.getElementById('dropdown-menu2').innerHTML = suggestion;
-                document.querySelectorAll('.items3').forEach(item3 => {
-                    item3.addEventListener('click', () => {
+                document.querySelectorAll('.items3').forEach(appareils => {
+                    appareils.addEventListener('click', () => {
                         this.$tag.innerHTML += `
                         <div class = 'liste_tag3'>
-                            <b>${item3.innerHTML}</b>
+                            <b>${appareils.innerHTML}</b>
                             <a href="#" class="delete">
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        const deletetag = new Search(this.recipe);
-                        deletetag.removeTagSearch();
                     })
                 })
                         
@@ -263,18 +250,16 @@ class Dropdowns{
                     `<li ><a class="items2 dropdown-item"  href="#" >${resultItems3}</a></li>`
                 )
                 document.getElementById('dropdown-menu3').innerHTML = suggestion;
-                document.querySelectorAll('.items2').forEach(item2 => {
-                    item2.addEventListener('click', () => {
-                        console.log(item2.innerHTML)
+                document.querySelectorAll('.items2').forEach(ustensils => {
+                    ustensils.addEventListener('click', () => {
+                        console.log(ustensils.innerHTML)
                         this.$tag.innerHTML += `
                         <div class = 'liste_tag2'>
-                            <b>${item2.innerHTML}</b>
+                            <b>${ustensils.innerHTML}</b>
                             <a href="#" class="delete">
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        const deletetag = new Search(this.recipe);
-                        deletetag.removeTagSearch();
                     })
                 })
             }
@@ -286,17 +271,15 @@ class Dropdowns{
                     `<li ><a class="items2 dropdown-item"  href="#" >${resultItems3}</a></li>`
                 )
                 document.getElementById('dropdown-menu3').innerHTML = suggestion;
-                document.querySelectorAll('.items2').forEach(item2 => {
-                    item2.addEventListener('click', () => {
+                document.querySelectorAll('.items2').forEach(ustensils => {
+                    ustensils.addEventListener('click', () => {
                         this.$tag.innerHTML += `
                         <div class = 'liste_tag2'>
-                            <b>${item2.innerHTML}</b>
+                            <b>${ustensils.innerHTML}</b>
                             <a href="#" class="delete">
                                 <i class="fa-regular fa-circle-xmark"></i>
                             </a>
                         </div>`
-                        const deletetag = new Search(this.recipe);
-                        deletetag.removeTagSearch();
                     })
                 })
                         
@@ -316,11 +299,7 @@ class Dropdowns{
                     this.uniqueingre.filter((item,
                         index) => this.uniqueingre.indexOf(item) === index);
                      
-                    this.ingrediant+= `<li ><a class=" items dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;
-                    // TODO Ici affecter un addEventListener à chaque tag.
-                    // Ajouter le tag dans list des tags
-                    // cet event va permettre d'afficher le tag en-dessous de la bar de recherche et executer la recherche
-                    
+                    this.ingrediant+= `<li ><a class=" items dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;                    
                 }   
             });
            
