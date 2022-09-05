@@ -8,6 +8,7 @@
         this.tagust = [];
         this.tag =[];
         this.tabtag = [];
+        this.resultset =[];
     }
    
 
@@ -42,9 +43,9 @@
                 var result_searchs = result_search.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase())||search.description.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
                 console.log(result_searchs)
                 const result = result_searchs.concat(ingrs);
-                const resultset = [...new Set(result)]
-                console.log(resultset)
-                resultset.forEach((filtres) => {
+                this.resultset = [...new Set(result)]
+                console.log(this.resultset)
+                this.resultset.forEach((filtres) => {
                     this.ingrediants = '';
                     filtres.ingredients.forEach((ingre) => { 
                         
@@ -102,9 +103,7 @@
                 });
             }  
             
-        })
-        //TODO return un array de recette   
-           
+        })    
     }
 
     addTagSearch(){
