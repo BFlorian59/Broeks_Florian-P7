@@ -17,16 +17,16 @@
         //condition tag selectionné
         // recherche mot clé 
         const $recette = document.querySelector(".recette")
-        const result_search = this.recipe;
-        console.log(this.tabtag)
+        var result_search = this.recipe;
+       
         var buttonsearch = document.querySelector(".Recherche-Icone")
         const input = document.querySelector('.Recherche-Input');
         
         
-
+       
         var filtre ='';
         buttonsearch.addEventListener('click', () => {
-            
+            console.log(this.tabtag)
         if(this.tabtag.length > 0){
             result_search =  this.addTagSearch();
             result_search = result_search.map(recipeId =>{
@@ -249,6 +249,7 @@
                 //console.log(this.tagingre);
                 this.removeTagSearch();
                 this.addTagSearch();
+                this.globalSearch();
                
 
             })
@@ -262,6 +263,7 @@
                 console.log(this.tagapp)
                 this.addTagSearch();
                 this.removeTagSearch();
+                this.globalSearch();
             })
         })
 
@@ -271,6 +273,7 @@
                 console.log(this.tagust)
                 this.addTagSearch();
                 this.removeTagSearch();
+                this.globalSearch();
             })
         })
 
@@ -281,6 +284,7 @@
                     this.tagingre.push(ingredient.innerHTML);
                     this.addTagSearch();
                     this.removeTagSearch();
+                    this.globalSearch();
                 })
             })
     
@@ -293,6 +297,7 @@
                     this.tagapp.push(appliance.innerHTML);
                     this.addTagSearch();
                     this.removeTagSearch();
+                    this.globalSearch();
                 })
             })
     
@@ -305,6 +310,7 @@
                     this.tagust.push(ustensils.innerHTML);
                     this.addTagSearch();
                     this.removeTagSearch();
+                    this.globalSearch();
                 })
             })
     
