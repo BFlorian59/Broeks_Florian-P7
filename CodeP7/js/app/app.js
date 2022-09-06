@@ -58,6 +58,9 @@ class App {
         const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants, data.recipes);
         dropdowns.createdropdowns();
 
+        // const searche = new Resultsearch(data.recipes, this.resultset, this.tagingre, this.tagapp, this.tagust, this.tag, this.tabtag);
+        // searche.displaysearch();
+
     }
 
     async main () {
@@ -67,6 +70,10 @@ class App {
 
         const dropdowns = new Dropdowns(this.recipe);
         dropdowns.createdropdowns();
+
+        // const searche = new Resultsearch(recipe, resultset, this.tagingre, this.tagapp, this.tagust, this.tag, this.tabtag);
+        // searche.displaysearch();
+
     }
 }
 const app = new App();

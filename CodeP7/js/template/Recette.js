@@ -2,9 +2,7 @@ class Recette_card{
     constructor(recipe)
     {
         this.recipe = recipe;
-        this.ingrediants = '';
-
-      
+        this.ingrediants = '';     
     }
 
     createrecette(){       

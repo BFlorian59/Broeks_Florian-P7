@@ -27,14 +27,15 @@
         var filtre ='';
         buttonsearch.addEventListener('click', () => {
             console.log(this.tabtag)
-        if(this.tabtag.length > 0){
-            result_search =  this.addTagSearch();
-            result_search = result_search.map(recipeId =>{
-                return recipeId.id;
-            })
-            console.log("mes id de recette selectionnées ")
-            console.log(result_search)
-        }
+            if(this.tabtag.length > 0){
+                console.log(result_search)
+                result_search =  this.addTagSearch();
+                result_search = result_search.map(recipeId =>{
+                    return recipeId.id;
+                })
+                console.log("mes id de recette selectionnées ")
+                console.log(result_search)
+            }
             //TODO commencer la recherche si tu as plus de 3 caracteres
             if (input.value.length > 2 ) {
 
@@ -61,6 +62,8 @@
                 //console.log(result_searchs)
                 const result = result_searchs.concat(ingrs);
                 this.resultset = [...new Set(result)]
+                // const search = new Resultsearch(this.recipe, this.tagingre, this.tagapp, this.tagust, this.tag, this.tabtag, this.resultset);
+                // search.displaysearch();
                 //console.log(this.resultset)
                 this.resultset.forEach((filtres) => {
                     this.ingrediants = '';
@@ -95,6 +98,8 @@
                     $recette.innerHTML = filtre;
                     
                 });
+            
+    
             
                                    
                 if (result_searchs.length == 0) {
