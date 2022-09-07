@@ -1,7 +1,6 @@
  class  Search{
 
     constructor(recipe){
-        console.log("je passe par là")
         this.ingrediants =' ';
         this.recipe = recipe;
         this.tagingre = [];
@@ -241,8 +240,6 @@
             });
             $recette.innerHTML = searchtag;            
         })
-        
-        console.log(this.tabtag)
         return result_tag;
     }
 
@@ -324,11 +321,12 @@
 
     removeTagSearch(){
         const $recette = document.querySelector(".recette")
-        document.querySelectorAll('.liste_tag ').forEach(ingredients => {
+        document.querySelectorAll('.liste_tag').forEach(ingredients => {
             ingredients.addEventListener('click', () => {
                 ingredients.remove();      
             })
         })
+
 
         document.querySelectorAll('.liste_tag b').forEach(ingredients => {
             ingredients.addEventListener('click', () => {
@@ -339,12 +337,13 @@
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
                         $recette.appendChild(pCardElement)
-                    
                     })
-                
-                }               
+                        
+                } 
+                              
             })
-        })
+        })     
+        
 
         document.querySelectorAll('.liste_tag2 ').forEach(ustensils => {
             ustensils.addEventListener('click', () => {
