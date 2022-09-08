@@ -96,8 +96,6 @@
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         this.tabtag = [...new Set(tag)]
         var result_tag = [];   
-        console.log(this.recipe)     
-        //console.log(this.recipe)
         this.recipe.forEach(recipe =>{
             if(this.tabtag.includes(recipe.appliance)){
 
@@ -121,8 +119,7 @@
             });
         })
         result_tag = [...new Set(result_tag)];
-         //tamplateRecette(result_tag,$recette);
-
+        
         const searchtag = new Resultsearch();
         searchtag.displaysearchtag(result_tag,$recette);
         

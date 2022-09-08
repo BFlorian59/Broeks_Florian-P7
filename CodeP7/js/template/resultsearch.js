@@ -53,12 +53,10 @@ class Resultsearch{
 
 
     displaysearchtag(result_tag, $recette ){
-        console.log(result_tag)
         var searchtag ='';
         result_tag.forEach((recipe)=>{
             
             this.ingrediants = '';
-            console.log(recipe)
             recipe.ingredients.forEach((ingre) => { 
                 if (ingre.unit) {
                     this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
