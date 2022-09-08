@@ -12,28 +12,22 @@
     }
    
 
+    // recherche mot clé 
     globalSearch(){
-        //condition tag selectionné
-        // recherche mot clé 
-        const $recette = document.querySelector(".recette")
+        
+        const $recette = document.querySelector(".recette");
         var result_search = this.recipe;
        
-        var buttonsearch = document.querySelector(".Recherche-Icone")
+        var buttonsearch = document.querySelector(".Recherche-Icone");
         const input = document.querySelector('.Recherche-Input');
         
-        
-       
-        var filtre ='';
         buttonsearch.addEventListener('click', () => {
-            console.log(this.tabtag)
+
+            //condition tag selectionné
             if(this.tabtag.length > 0){
-                console.log(result_search)
                 result_search =  this.addTagSearch();
-                result_search = result_search.map(recipeId =>{
-                    return recipeId.id;
-                })
-                console.log("mes id de recette selectionnées ")
-                console.log(result_search)
+                console.log("mes id de recette selectionnées ");
+                console.log(result_search);
             }
             //TODO commencer la recherche si tu as plus de 3 caracteres
             if (input.value.length > 2 ) {
@@ -41,23 +35,23 @@
                 const input_search = input.value;
                 //console.log(Search.globalSearch(result_search,Search.tabTag,Search.strSearch));
                 // TODO ici compléter la recherche (sur les ingrédients ... description )
-                console.log("tab ingredient ")
-                console.log(tabIngrediants)
+                console.log("tab ingredient ");
+                console.log(tabIngrediants);
                 var tabIngrediants_filtre =  tabIngrediants.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-                console.log("result après add Carotte tab ingredient ")
+                console.log("result après add Carotte tab ingredient ");
                 console.log(tabIngrediants_filtre);
                 let lstRecipesSelected = [];
                 let ingrs = [];
                 tabIngrediants_filtre.forEach(element => {
-                         element.id.forEach(id => {
-                             lstRecipesSelected.push(this.recipe[id-1])
+                    element.id.forEach(id => {
+                        lstRecipesSelected.push(this.recipe[id-1]);
                              
-                        })           
-                     });
-                     lstRecipesSelected.forEach(element => { 
-                        ingrs.push(element)
-                     });
-                var result_searchs = result_search.filter(search => search.name.includes(input_search)||search.description.includes(input_search));
+                    })           
+                });
+                lstRecipesSelected.forEach(element => { 
+                    ingrs.push(element);
+                });
+                var result_searchs = result_search.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
                 const result = result_searchs.concat(ingrs);
                 this.resultset = [...new Set(result)];
 
@@ -77,13 +71,12 @@
                 }
             }else if (input.value.length < 3){
 
-                filtre = '';
                 $recette.innerHTML ='';
                
                 this.recipe.forEach((recipe) => {                    
                     const pCard = new Recette_card(recipe);
                     const pCardElement = pCard.createrecette();
-                    $recette.appendChild(pCardElement)  
+                    $recette.appendChild(pCardElement); 
                 
                 });
             }  
@@ -91,10 +84,11 @@
         })    
     }
 
+    //recherche par tag
     addTagSearch(){
         const $recette = document.querySelector(".recette");
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
-        this.tabtag = [...new Set(tag)]
+        this.tabtag = [...new Set(tag)];
         var result_tag = [];   
         this.recipe.forEach(recipe =>{
             if(this.tabtag.includes(recipe.appliance)){
@@ -126,12 +120,11 @@
         return result_tag;
     }
 
+    //appeler les méthodes et mettre les tags dans un tableau quand on appuie sur les tags
     addEventtag (){
         document.querySelectorAll('.items').forEach(ingredient => {
             ingredient.addEventListener('click', () => {
-                //console.log(ingredient);
                 this.tagingre.push(ingredient.innerHTML);
-                //console.log(this.tagingre);
                 this.removeTagSearch();
                 this.addTagSearch();
                 this.globalSearch();
@@ -155,7 +148,7 @@
         document.querySelectorAll('.items2').forEach(ustensils => {
             ustensils.addEventListener('click', () => {
                 this.tagust.push(ustensils.innerHTML);
-                console.log(this.tagust)
+                console.log(this.tagust);
                 this.addTagSearch();
                 this.removeTagSearch();
                 this.globalSearch();
@@ -202,7 +195,10 @@
         })       
     }
 
+
+    // enlever les tags
     removeTagSearch(){
+        
         const $recette = document.querySelector(".recette")
         document.querySelectorAll('.liste_tag').forEach(ingredients => {
             ingredients.addEventListener('click', () => {
@@ -219,7 +215,7 @@
                     this.recipe.forEach((recipe) => {                    
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
-                        $recette.appendChild(pCardElement)
+                        $recette.appendChild(pCardElement);
                     })
                         
                 } 
@@ -242,7 +238,7 @@
                     this.recipe.forEach((recipe) => {                    
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
-                        $recette.appendChild(pCardElement)
+                        $recette.appendChild(pCardElement);
                     
                     })
                 
@@ -266,7 +262,7 @@
                     this.recipe.forEach((recipe) => {                    
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
-                        $recette.appendChild(pCardElement)
+                        $recette.appendChild(pCardElement);
                     
                     })
                 

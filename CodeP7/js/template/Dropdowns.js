@@ -29,8 +29,8 @@ class Dropdowns{
                 document.querySelector("#Ingredients").style.display = "none";
                 document.querySelector("#Recherche1").style.display = "block";
                 document.querySelector("#fleche_up").style.display = "block";
-                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 408%;");
-                document.querySelector(".dropdown1").setAttribute("style", "margin-right: 48%;")
+                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 227%;");
+                document.querySelector(".dropdown1").setAttribute("style", "margin-right: 25%;")
                 listboxOptions.style.display = "block";
                 
             } else {
@@ -53,10 +53,10 @@ class Dropdowns{
                 document.querySelector("#dropdownMenuButton2").setAttribute("aria-expanded", true);
                 document.querySelector("#Appareils").style.display = "none";
                 document.querySelector("#Recherche2").style.display = "block";
-                document.querySelector("#dropdownMenuButton2").setAttribute("style", "border-radius: 0%; width: 166%;");
+                document.querySelector("#dropdownMenuButton2").setAttribute("style", "border-radius: 0%; width: 100%;");
                 document.querySelector("#fleche_down2").style.display = "none";
                 document.querySelector("#fleche_up2").style.display = "block";
-                document.querySelector(".dropdown2").setAttribute("style", "margin-right: 20%;")
+                document.querySelector(".dropdown2").setAttribute("style", "margin-right: 11%;")
                 listboxOptions2.style.display = "block";
 
             } else {
@@ -80,7 +80,7 @@ class Dropdowns{
                 document.querySelector("#dropdownMenuButton3").setAttribute("aria-expanded", true);
                 document.querySelector("#Ustensils").style.display = "none";
                 document.querySelector("#Recherche3").style.display = "block";
-                document.querySelector("#dropdownMenuButton3").setAttribute("style", "border-radius: 0%; width: 200%;");
+                document.querySelector("#dropdownMenuButton3").setAttribute("style", "border-radius: 0%; width: 150%;");
                 document.querySelector("#fleche_down3").style.display = "none";
                 document.querySelector("#fleche_up3").style.display = "block";
                 listboxOptions3.style.display = "block";
@@ -305,8 +305,8 @@ class Dropdowns{
            
 
         this.ustensils.forEach((ustensil) => {
-        if (!this.unique_ustensil.includes(ustensil)) {
-            this.unique_ustensil.push(ustensil);
+        if (!this.unique_ustensil.includes(ustensil.toLocaleLowerCase())) {
+            this.unique_ustensil.push(ustensil.toLocaleLowerCase());
             this.unique_ustensil.filter((item,
                 index) => this.unique_ustensil.indexOf(item) === index);
             //console.log(ustensil);

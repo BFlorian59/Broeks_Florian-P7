@@ -1,3 +1,7 @@
+body{
+    margin-bottom: 5%;
+}
+
 .logo{
     width: 25%;
     margin: auto;
@@ -129,10 +133,15 @@
     margin-right: 9%;
   }
 
-  .Recherche-Ingredient, .Recherche-Appareil, .Recherche-Ustensil{
+  .Recherche-Ingredient, .Recherche-Appareil{
     border: none;
     width: 100%;
 }
+.Recherche-Ustensil{
+    border: none;
+    width: 75%;
+}
+
 
 .Recherche-Ingredient::placeholder, .Recherche-Appareil::placeholder, .Recherche-Ustensil::placeholder{
     border: none;
@@ -160,7 +169,7 @@
 }
 
 #dropdown-menu1{
-    width: 408%;
+    width: 227%;
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
     transform: translate(0px, 0px);
@@ -168,7 +177,7 @@
 }
 
 #dropdown-menu3{
-    width: 200%;
+    width: 150%;
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
     transform: translate(0px, 0px);
@@ -177,21 +186,12 @@
 }
 
 #dropdown-menu2{
-    width: 166%;
+    width: 100%;
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
     transform: translate(0px, 0px);
 
 }
-
-#dropdown-menu3{
-    width: 200%;
-    border-top-right-radius: 0%;
-    border-top-left-radius: 0%;
-    transform: translate(0px, 0px);
-
-}
-
 
 #dropdownMenuButton1:hover{
     background-color: #0d6efd;
@@ -203,11 +203,11 @@
 }
 
 #Recherche1 {
-    width: 408%;
+    width: 227%;
 }
 
 #Recherche2 {
-    width: 166%;
+    width: 100%;
 }
 
 #Recherche3 {
