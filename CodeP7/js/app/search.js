@@ -90,30 +90,31 @@
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         this.tabtag = [...new Set(tag)];
         var result_tag = [];   
+
         this.recipe.forEach(recipe =>{
             if(this.tabtag.includes(recipe.appliance)){
-
                 result_tag.push(recipe);  
             }
 
             recipe.ustensils.forEach(element => {
-
                 if(this.tabtag.includes(element)){
                     result_tag.push(recipe);  
 
                 }
-
             });
+
             recipe.ingredients.forEach(element =>{
                 if(this.tabtag.includes(element.ingredient)){
                     result_tag.push(recipe);            
 
                 }
-
             });
         })
+        
         result_tag = [...new Set(result_tag)];
         
+        console.log(this.tabtag.length)
+    
         const searchtag = new Resultsearch();
         searchtag.displaysearchtag(result_tag,$recette);
         
@@ -198,7 +199,7 @@
 
     // enlever les tags
     removeTagSearch(){
-        
+
         const $recette = document.querySelector(".recette")
         document.querySelectorAll('.liste_tag').forEach(ingredients => {
             ingredients.addEventListener('click', () => {
