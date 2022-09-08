@@ -57,50 +57,14 @@
                      lstRecipesSelected.forEach(element => { 
                         ingrs.push(element)
                      });
-                var result_searchs = result_search.filter(search => search.name.toLocaleLowerCase().includes(input_search.toLocaleLowerCase())||search.description.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-                //console.log(result_searchs)
+                var result_searchs = result_search.filter(search => search.name.includes(input_search)||search.description.includes(input_search));
                 const result = result_searchs.concat(ingrs);
-                this.resultset = [...new Set(result)]
-                // const search = new Resultsearch(this.recipe, this.tagingre, this.tagapp, this.tagust, this.tag, this.tabtag, this.resultset);
-                // search.displaysearch();
-                //console.log(this.resultset)
-                this.resultset.forEach((filtres) => {
-                    this.ingrediants = '';
-                    filtres.ingredients.forEach((ingre) => { 
-                        
-                        if (ingre.unit) {
-                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
-                        }else if (!ingre.quantity){
-                            this.ingrediants += `<p><b>${ingre.ingredient}</b>`
-                        }else{
-                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
-                        }
-                    });
-                    filtre += 
-                    `
-                        <div class="filtre_card_wrapper">
-                            <div class="img"><img src="#" alt=""/></div>
-                                <div class="titre">
-                                    <h2> ${filtres.name} </h2>
-                                    <p><i class="fa-regular fa-clock"></i>${filtres.time} min</p>
-                                </div>
-                                <div class ="body_recette">
-                                    <div class="ingredient">
-                                    ${this.ingrediants}
-                                    </div>
-                                    <p class ="description"> ${filtres.description}</p> 
-                                </div>
-                            </div>   
-                        </div>                                
-                    `
-                    //console.log(filtre)
-                    $recette.innerHTML = filtre;
-                    
-                });
-            
-    
-            
-                                   
+                this.resultset = [...new Set(result)];
+
+                const search = new Resultsearch(this.recipe, this.resultset);
+                search.displaysearch();
+
+                console.log(this.resultset);                   
                 if (result_searchs.length == 0) {
                     var error ='';
                     error = `
@@ -128,118 +92,40 @@
     }
 
     addTagSearch(){
-        const $recette = document.querySelector(".recette")
-        var searchtag ='';
+        const $recette = document.querySelector(".recette");
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         this.tabtag = [...new Set(tag)]
-        var result_tag = [];        
+        var result_tag = [];   
+        console.log(this.recipe)     
         //console.log(this.recipe)
-         this.recipe.forEach(recipe =>{
-
+        this.recipe.forEach(recipe =>{
             if(this.tabtag.includes(recipe.appliance)){
-                
-                this.ingrediants = '';
-                recipe.ingredients.forEach((ingre) => { 
-                    if (ingre.unit) {
-                        this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
-                    }else if (!ingre.quantity){
-                        this.ingrediants += `<p><b>${ingre.ingredient}</b>`
-                    }else{
-                        this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
-                    }
-                });
-                                
-                searchtag += 
-                `
-                <div class="filtre_card_wrapper">
-                    <div class="img"><img src="#" alt=""/></div>
-                        <div class="titre">
-                            <h2> ${recipe.name} </h2>
-                                <p><i class="fa-regular fa-clock"></i>${recipe.time} min</p>
-                        </div>
-                        <div class ="body_recette">
-                            <div class="ingredient">
-                                ${this.ingrediants}
-                            </div>
-                            <p class ="description"> ${recipe.description}</p> 
-                        </div>
-                    </div>   
-                </div>                                
-                `
-                
+
                 result_tag.push(recipe);  
             }
-            recipe.ustensils.forEach(element => {
-                if(this.tabtag.includes(element)){
-                    //console.log(recipe)
-                    this.ingrediants = '';
-                    recipe.ingredients.forEach((ingre) => { 
-                        if (ingre.unit) {
-                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
-                        }else if (!ingre.quantity){
-                            this.ingrediants += `<p><b>${ingre.ingredient}</b>`
-                        }else{
-                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
-                        }
-                    });
-                                
-                    searchtag += 
-                    `
-                        <div class="filtre_card_wrapper">
-                            <div class="img"><img src="#" alt=""/></div>
-                                <div class="titre">
-                                    <h2> ${recipe.name} </h2>
-                                    <p><i class="fa-regular fa-clock"></i>${recipe.time} min</p>
-                                </div>
-                                <div class ="body_recette">
-                                    <div class="ingredient">
-                                        ${this.ingrediants}
-                                    </div>
-                                    <p class ="description"> ${recipe.description}</p> 
-                                </div>
-                            </div>   
-                        </div>                                
-                    `
-                    result_tag.push(recipe);  
-                }
-            }); 
 
+            recipe.ustensils.forEach(element => {
+
+                if(this.tabtag.includes(element)){
+                    result_tag.push(recipe);  
+
+                }
+
+            });
             recipe.ingredients.forEach(element =>{
                 if(this.tabtag.includes(element.ingredient)){
-                    this.ingrediants = '';
-                    recipe.ingredients.forEach((ingre) => { 
-                        if (ingre.unit) {
-                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
-                        }else if (!ingre.quantity){
-                            this.ingrediants += `<p><b>${ingre.ingredient}</b>`
-                        }else{
-                            this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
-                        }
-                    });
-                                
-                    searchtag += 
-                    `
-                        <div class="filtre_card_wrapper">
-                            <div class="img"><img src="#" alt=""/></div>
-                                <div class="titre">
-                                    <h2> ${recipe.name} </h2>
-                                    <p><i class="fa-regular fa-clock"></i>${recipe.time} min</p>
-                                </div>
-                                <div class ="body_recette">
-                                    <div class="ingredient">
-                                        ${this.ingrediants}
-                                    </div>
-                                    <p class ="description"> ${recipe.description}</p> 
-                                </div>
-                            </div>   
-                        </div>                                
-                    `  
-                    
                     result_tag.push(recipe);            
+
                 }
+
             });
-            $recette.innerHTML = searchtag;            
         })
+        result_tag = [...new Set(result_tag)];
+         //tamplateRecette(result_tag,$recette);
+
+        const searchtag = new Resultsearch();
+        searchtag.displaysearchtag(result_tag,$recette);
+        
         return result_tag;
     }
 

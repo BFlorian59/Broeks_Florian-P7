@@ -38,8 +38,7 @@ class Recette_card{
         </div>       
         `
         $section.innerHTML = Card_recette
-        return $section;
-        
+        return $section;  
 
     }
 }
