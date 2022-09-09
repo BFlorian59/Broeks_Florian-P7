@@ -112,8 +112,6 @@
         })
         
         result_tag = [...new Set(result_tag)];
-        
-        console.log(this.tabtag.length)
     
         const searchtag = new Resultsearch();
         searchtag.displaysearchtag(result_tag,$recette);
