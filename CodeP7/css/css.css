@@ -126,6 +126,27 @@ body{
     width: 177%;
 }
 
+#dropdownMenuButton1{
+    display: flex;
+    flex-direction: row;
+    width: 110%;
+}
+
+#dropdownMenuButton2{
+    display: flex;
+    flex-direction: row;
+    width: 110%;
+}
+
+#dropdownMenuButton3{
+    display: flex;
+    flex-direction: row;
+    width: 110%;
+}
+
+.fa-solid{
+    margin-left: 10%;
+}
   
   .dropdown1, .dropdown2, .dropdown3 {
     position: relative;
@@ -172,7 +193,8 @@ body{
     width: 227%;
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
-    transform: translate(0px, 0px);
+    transform: translate(0px, 0px)!important;
+    inset: 55px auto auto 0px !important;
     -webkit-columns: 3;
 }
 
@@ -180,8 +202,10 @@ body{
     width: 150%;
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
-    transform: translate(0px, 0px);
+    transform: translate(0px, 0px)!important;
+    inset: 55px auto auto 0px !important;
     -webkit-columns: 2;
+    
 
 }
 
@@ -189,7 +213,8 @@ body{
     width: 100%;
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
-    transform: translate(0px, 0px);
+    transform: translate(0px, 0px)!important;
+    inset: 55px auto auto 0px !important;
 
 }
 

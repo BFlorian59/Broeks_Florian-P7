@@ -35,7 +35,7 @@ class Dropdowns{
                 
             } else {
 
-                document.querySelector("#dropdownMenuButton1").setAttribute("style", "width: 133%;");
+                document.querySelector("#dropdownMenuButton1").setAttribute("style", "width: 110%;");
                 document.querySelector("#fleche_up").style.display = "none";
                 document.querySelector("#fleche_down").style.display = "block";
                 document.querySelector("#dropdownMenuButton1").setAttribute("aria-expanded", false);
@@ -60,7 +60,7 @@ class Dropdowns{
                 listboxOptions2.style.display = "block";
 
             } else {
-                document.querySelector("#dropdownMenuButton2").setAttribute("style", "width: 133%;");
+                document.querySelector("#dropdownMenuButton2").setAttribute("style", "width: 110%;");
                 document.querySelector("#fleche_up2").style.display = "none";
                 document.querySelector("#fleche_down2").style.display = "block";
                 document.querySelector("#dropdownMenuButton2").setAttribute("aria-expanded", false);
@@ -86,7 +86,7 @@ class Dropdowns{
                 listboxOptions3.style.display = "block";
             } else {
                 document.querySelector("#dropdownMenuButton3").setAttribute("aria-expanded", false);
-                document.querySelector("#dropdownMenuButton3").setAttribute("style", "width: 133%;");
+                document.querySelector("#dropdownMenuButton3").setAttribute("style", "width: 110%;");
                 document.querySelector("#Ustensils").style.display = "block";
                 document.querySelector("#Recherche3").style.display = "none";
                 document.querySelector("#fleche_up3").style.display = "none";
