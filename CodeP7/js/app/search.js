@@ -60,13 +60,13 @@
 
             
                 var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
-
+                console.log(tabingreselcted)
                 const result = result_searchs.concat(tabingreselcted);
                 this.resultset = [...new Set(result)];
 
                 const search = new Resultsearch(this.recipe, this.resultset);
                 search.displaysearch();
-               
+                console.log(this.resultset)
                 if (this.resultset.length == 0) {
                     var error ='';
                     error = `
