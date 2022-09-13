@@ -13,7 +13,106 @@
    
 
     // recherche mot clé 
-   
+    globalSearch(){
+        
+        const $recette = document.querySelector(".recette");
+        var lstrecipe = this.recipe;
+       
+        var buttonsearch = document.querySelector(".Recherche-Icone");
+        const input = document.querySelector('.Recherche-Input');
+        
+        buttonsearch.addEventListener('click', () => {
+
+            //condition tag selectionné
+            if(this.tabtag.length > 0){
+                lstrecipe =  this.addTagSearch();
+            }
+
+            // commencer la recherche si tu as plus de 3 caracteres
+            if (input.value.length > 2 ) {
+
+                const input_search = input.value;
+                //compléter la recherche (sur les ingrédients ... description )
+                let tabingreselcted = [];
+                
+                let resultIngre = getLstRecipes(lstrecipe)
+                var tabIngrediants_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                console.log("result après add Carotte tab ingredient ");
+                console.log(tabIngrediants_filtre);
+                let lstRecipesSelected = [];
+                // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
+                tabIngrediants_filtre.forEach(element => {
+                    element.id.forEach(id => {
+                        lstRecipesSelected.push(this.recipe[id-1]);
+                             
+                    })           
+                });
+                lstRecipesSelected.forEach(element => { 
+                    tabingreselcted.push(element);
+                });
+            
+                var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
+
+                const result = result_searchs.concat(tabingreselcted);
+                this.resultset = [...new Set(result)];
+
+                const search = new Resultsearch(this.recipe, this.resultset);
+                search.displaysearch();
+               
+                if (this.resultset.length == 0) {
+                    var error ='';
+                    error = `
+                    <div id= "error">
+                        <p>Aucune recette ne correspond à votre critère</p>
+                    </div>
+                        `
+
+                    $recette.innerHTML = error;
+                }
+            }else if (input.value.length < 3){
+
+                $recette.innerHTML ='';
+               
+                this.recipe.forEach((recipe) => {                    
+                    const pCard = new Recette_card(recipe);
+                    const pCardElement = pCard.createrecette();
+                    $recette.appendChild(pCardElement); 
+                
+                });
+            }  
+            
+        });    
+        function getLstRecipes( lstRecipes){
+            let tabIngrediants= [];
+            lstRecipes.forEach((recipe) => {
+               
+    
+                let recette = null;
+                recipe.ingredients.forEach(ingre => {   
+                    recette = null;
+                     recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
+                    //console.log(recette)
+                    if(recette != undefined){
+                        //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
+                        if(!recette.id.includes(recipe.id)){
+                            recette.id.push(recipe.id);
+                        }
+    
+                        tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+                    }else{              
+                    recette = {
+                        ingredient: ingre.ingredient,
+                        id: [recipe.id]
+                    };
+                    }
+                    tabIngrediants.push(recette)
+                    console.log(tabIngrediants)
+                });
+            });
+           
+            return tabIngrediants;
+        }
+    }
    
 
     //recherche par tag
