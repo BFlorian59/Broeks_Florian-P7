@@ -45,7 +45,6 @@
                     for (let i = 0; i < element.id.length; i++) {
                         const id = element.id[i];
                         lstRecipesSelected.push(this.recipe[id-1]);
-                        
                     }
                     
                 }
@@ -53,7 +52,6 @@
                 for (let index = 0; index < lstRecipesSelected.length; index++) {
                     const element = lstRecipesSelected[index];
                     tabingreselcted.push(element);
-                    console.log(tabingreselcted)
                     
                 }
 
