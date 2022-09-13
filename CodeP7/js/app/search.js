@@ -171,71 +171,76 @@
 
     //appeler les méthodes et mettre les tags dans un tableau quand on appuie sur les tags
     addEventtag (){
-        document.querySelectorAll('.items').forEach(ingredient => {
+
+        for (let index = 0; index < document.querySelectorAll('.items').length; index++) {
+            const ingredient = document.querySelectorAll('.items')[index];
             ingredient.addEventListener('click', () => {
                 this.tagingre.push(ingredient.innerHTML);
                 this.removeTagSearch();
                 this.addTagSearch();
                 this.globalSearch();
             });
-        });
-
+        }
         
-
-        document.querySelectorAll('.items3').forEach(appliance => {
+        for (let index = 0; index < document.querySelectorAll('.items3').length; index++) {
+            const appliance = document.querySelectorAll('.items3')[index];
             appliance.addEventListener('click', () => {
                 this.tagapp.push(appliance.innerHTML);
-                this.addTagSearch();
                 this.removeTagSearch();
+                this.addTagSearch();
                 this.globalSearch();
             });
-        });
-
-        document.querySelectorAll('.items2').forEach(ustensils => {
+        }
+        
+        for (let index = 0; index < document.querySelectorAll('.items2').length; index++) {
+            const ustensils = document.querySelectorAll('.items2')[index];
             ustensils.addEventListener('click', () => {
                 this.tagust.push(ustensils.innerHTML);
-                this.addTagSearch();
                 this.removeTagSearch();
+                this.addTagSearch();
                 this.globalSearch();
             });
-        });
+        }
 
         var Ingredientinput = document.querySelector('#Ingredient');
         Ingredientinput.addEventListener('keyup', () =>{
-            document.querySelectorAll('.items').forEach(ingredient => {
+            for (let index = 0; index < document.querySelectorAll('.items').length; index++) {
+                const ingredient = document.querySelectorAll('.items')[index];
                 ingredient.addEventListener('click', () => {
                     this.tagingre.push(ingredient.innerHTML);
-                    this.addTagSearch();
                     this.removeTagSearch();
+                    this.addTagSearch();
                     this.globalSearch();
                 });
-            });
+            }
     
         });
 
         const Appareilinput = document.querySelector('.Recherche-Appareil');
         Appareilinput.addEventListener('keyup', () =>{
-            document.querySelectorAll('.items3').forEach(appliance => {
+            for (let index = 0; index < document.querySelectorAll('.items3').length; index++) {
+                const appliance = document.querySelectorAll('.items3')[index];
                 appliance.addEventListener('click', () => {
                     this.tagapp.push(appliance.innerHTML);
-                    this.addTagSearch();
                     this.removeTagSearch();
+                    this.addTagSearch();
                     this.globalSearch();
                 });
-            });
+            }
     
         });
 
         const Ustensilsinput = document.querySelector('.Recherche-Ustensil');
         Ustensilsinput.addEventListener('keyup', () =>{
-            document.querySelectorAll('.items2').forEach(ustensils => {
+            for (let index = 0; index < document.querySelectorAll('.items2').length; index++) {
+                const ustensils = document.querySelectorAll('.items2')[index];
                 ustensils.addEventListener('click', () => {
                     this.tagust.push(ustensils.innerHTML);
-                    this.addTagSearch();
                     this.removeTagSearch();
+                    this.addTagSearch();
                     this.globalSearch();
                 });
-            });
+            }
     
         });      
     }
@@ -245,75 +250,81 @@
     removeTagSearch(){
 
         const $recette = document.querySelector(".recette")
-        document.querySelectorAll('.liste_tag').forEach(ingredients => {
+        for (let index = 0; index < document.querySelectorAll('.liste_tag').length; index++) {
+            const ingredients = document.querySelectorAll('.liste_tag')[index];
             ingredients.addEventListener('click', () => {
                 ingredients.remove();      
             });
-        });
-
-
-        document.querySelectorAll('.liste_tag b').forEach(ingredients => {
+            
+        }
+        
+        for (let index = 0; index < document.querySelectorAll('.liste_tag b').length; index++) {
+            const ingredients = document.querySelectorAll('.liste_tag b')[index];
             ingredients.addEventListener('click', () => {
                 this.tagingre.splice(this.tagingre.indexOf(ingredients.innerHTML),1);
                 this.addTagSearch();
                 if (this.tabtag.length < 1) {
-                    this.recipe.forEach((recipe) => {                    
+                    for (let index = 0; index < this.recipe.length; index++) {
+                        const recipe = this.recipe[index];
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
                         $recette.appendChild(pCardElement);
-                    });
-                        
+                    }                        
                 } 
                               
             });
-        });     
+        } 
         
 
-        document.querySelectorAll('.liste_tag2 ').forEach(ustensils => {
+        for (let index = 0; index < document.querySelectorAll('.liste_tag2 ').length; index++) {
+            const ustensils = document.querySelectorAll('.liste_tag2')[index];
             ustensils.addEventListener('click', () => {
                 ustensils.remove();      
             });
-        });
+            
+        }
 
-        document.querySelectorAll('.liste_tag2 b').forEach(ustensils => {
+        for (let index = 0; index <  document.querySelectorAll('.liste_tag2 b').length; index++) {
+            const ustensils =  document.querySelectorAll('.liste_tag2 b')[index];
             ustensils.addEventListener('click', () => {
-                this.tagust.splice(this.tagust.indexOf(ustensils.innerHTML),1);
+                this.tagingre.splice(this.tagingre.indexOf(ustensils.innerHTML),1);
                 this.addTagSearch();
-                if (this.tabtag.length < 1) {           
-                    this.recipe.forEach((recipe) => {                    
+                if (this.tabtag.length < 1) {
+                    for (let index = 0; index < this.recipe.length; index++) {
+                        const recipe = this.recipe[index];
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
                         $recette.appendChild(pCardElement);
-                    
-                    });
-                
-                }      
-
+                    }                        
+                } 
+                              
             });
-        });
+        } 
 
-        document.querySelectorAll('.liste_tag3 ').forEach(appliance => {
+        for (let index = 0; index < document.querySelectorAll('.liste_tag3 ').length; index++) {
+            const appliance = document.querySelectorAll('.liste_tag3 ')[index];
             appliance.addEventListener('click', () => {
                 appliance.remove();      
             });
-        });
+            
+        }
 
-        document.querySelectorAll('.liste_tag3 b').forEach(appliance => {
+        for (let index = 0; index <  document.querySelectorAll('.liste_tag3 ').length; index++) {
+            const appliance =  document.querySelectorAll('.liste_tag3 ')[index];
             appliance.addEventListener('click', () => {
-                console.log(appliance.innerHTML)
-                this.tagapp.splice(this.tagapp.indexOf(appliance.innerHTML),1);
-                this.addTagSearch();             
-                if (this.tabtag.length < 1) {          
-                    this.recipe.forEach((recipe) => {                    
+                this.tagingre.splice(this.tagingre.indexOf(appliance.innerHTML),1);
+                this.addTagSearch();
+                if (this.tabtag.length < 1) {
+                    for (let index = 0; index < this.recipe.length; index++) {
+                        const recipe = this.recipe[index];
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
                         $recette.appendChild(pCardElement);
-                    
-                    });
-                
-                }
+                    }                        
+                } 
+                              
             });
-        });        
+        }        
     }
 }
 
