@@ -30,26 +30,34 @@
 
             // commencer la recherche si tu as plus de 3 caracteres
             if (input.value.length > 2 ) {
-
                 const input_search = input.value;
                 //compléter la recherche (sur les ingrédients ... description )
                 let tabingreselcted = [];
                 
                 let resultIngre = getLstRecipes(lstrecipe)
                 var tabIngrediants_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-                console.log("result après add Carotte tab ingredient ");
-                console.log(tabIngrediants_filtre);
+                // console.log("result après add Carotte tab ingredient ");
+                // console.log(tabIngrediants_filtre);
                 let lstRecipesSelected = [];
-                // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
-                tabIngrediants_filtre.forEach(element => {
-                    element.id.forEach(id => {
+
+                for (let index = 0; index < tabIngrediants_filtre.length; index++) {
+                    const element = tabIngrediants_filtre[index];
+                    for (let i = 0; i < element.id.length; i++) {
+                        const id = element.id[i];
                         lstRecipesSelected.push(this.recipe[id-1]);
-                             
-                    })           
-                });
-                lstRecipesSelected.forEach(element => { 
+                        
+                    }
+                    
+                }
+
+                for (let index = 0; index < lstRecipesSelected.length; index++) {
+                    const element = lstRecipesSelected[index];
                     tabingreselcted.push(element);
-                });
+                    console.log(tabingreselcted)
+                    
+                }
+
+
             
                 var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
 
@@ -73,43 +81,41 @@
 
                 $recette.innerHTML ='';
                
-                this.recipe.forEach((recipe) => {                    
+                for (let index = 0; index < this.recipe.length; index++) {
+                    const recipe = this.recipe[index];
                     const pCard = new Recette_card(recipe);
                     const pCardElement = pCard.createrecette();
                     $recette.appendChild(pCardElement); 
-                
-                });
+                }
             }  
             
         });    
         function getLstRecipes( lstRecipes){
             let tabIngrediants= [];
-            lstRecipes.forEach((recipe) => {
-               
-    
+            for (let index = 0; index < lstRecipes.length; index++) {
+                const recipe = lstRecipes[index];
                 let recette = null;
-                recipe.ingredients.forEach(ingre => {   
+                for (let i = 0; i < recipe.length; i++) {
+                    const ingre = recipe[i];
                     recette = null;
-                     recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
-                    //console.log(recette)
+                    recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
                     if(recette != undefined){
-                        //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
+                    //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
                         if(!recette.id.includes(recipe.id)){
                             recette.id.push(recipe.id);
                         }
-    
-                        tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+                
+                    tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
                     }else{              
-                    recette = {
-                        ingredient: ingre.ingredient,
-                        id: [recipe.id]
-                    };
+                        recette = {
+                            ingredient: ingre.ingredient,
+                            id: [recipe.id]
+                        };
                     }
                     tabIngrediants.push(recette)
-                    console.log(tabIngrediants)
-                });
-            });
-           
+                }
+                
+            }
             return tabIngrediants;
         }
     }
@@ -120,28 +126,32 @@
         const $recette = document.querySelector(".recette");
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         this.tabtag = [...new Set(tag)];
-        var result_tag = [];   
+        var result_tag = [];  
+        
+        for (let index = 0; index < this.recipe.length; index++) {
+            const recipe = this.recipe[index];
 
-        this.recipe.forEach(recipe =>{
             if(this.tabtag.includes(recipe.appliance)){
                 result_tag.push(recipe);  
             }
 
-            recipe.ustensils.forEach(element => {
+            for (let i = 0; i < recipe.ustensils.length; i++) {
+                const element = recipe.ustensils[i];
                 if(this.tabtag.includes(element)){
                     result_tag.push(recipe);  
-
                 }
-            });
+            }
 
-            recipe.ingredients.forEach(element =>{
+            for (let i = 0; i < recipe.ingredients.length; i++) {
+                const element = recipe.ingredients[i];
                 if(this.tabtag.includes(element.ingredient)){
                     result_tag.push(recipe);            
-
+            
                 }
-            });
-        });
-        
+            }
+            
+        }
+       
         result_tag = result_tag.map(recette =>{
             if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
                 return recette;
