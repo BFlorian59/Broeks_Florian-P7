@@ -35,7 +35,10 @@
                 let tabingreselcted = [];
                 
                 let resultIngre = getLstRecipes(lstrecipe)
+                console.log(resultIngre)
                 var tabIngrediants_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                console.log(tabIngrediants_filtre)
+
                 // console.log("result après add Carotte tab ingredient ");
                 // console.log(tabIngrediants_filtre);
                 let lstRecipesSelected = [];
@@ -92,9 +95,12 @@
             let tabIngrediants= [];
             for (let index = 0; index < lstRecipes.length; index++) {
                 const recipe = lstRecipes[index];
+                console.log(recipe)
                 let recette = null;
                 for (let i = 0; i < recipe.length; i++) {
+                    console.log(recipe.length)
                     const ingre = recipe[i];
+                    
                     recette = null;
                     recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
                     if(recette != undefined){
@@ -114,6 +120,7 @@
                 }
                 
             }
+            console.log(tabIngrediants)
             return tabIngrediants;
         }
     }
