@@ -99,8 +99,6 @@ class Resultsearch{
                     </div>                                
                 ` 
             }
-                                        
-
             $recette.innerHTML = searchtag;
         }
         
