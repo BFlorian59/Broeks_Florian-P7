@@ -288,7 +288,7 @@
         for (let index = 0; index <  document.querySelectorAll('.liste_tag2 b').length; index++) {
             const ustensils =  document.querySelectorAll('.liste_tag2 b')[index];
             ustensils.addEventListener('click', () => {
-                this.tagingre.splice(this.tagingre.indexOf(ustensils.innerHTML),1);
+                this.tagust.splice(this.tagust.indexOf(ustensils.innerHTML),1);
                 this.addTagSearch();
                 if (this.tabtag.length < 1) {
                     for (let index = 0; index < this.recipe.length; index++) {
@@ -313,7 +313,7 @@
         for (let index = 0; index <  document.querySelectorAll('.liste_tag3 ').length; index++) {
             const appliance =  document.querySelectorAll('.liste_tag3 ')[index];
             appliance.addEventListener('click', () => {
-                this.tagingre.splice(this.tagingre.indexOf(appliance.innerHTML),1);
+                this.tagapp.splice(this.tagapp.indexOf(appliance.innerHTML),1);
                 this.addTagSearch();
                 if (this.tabtag.length < 1) {
                     for (let index = 0; index < this.recipe.length; index++) {
