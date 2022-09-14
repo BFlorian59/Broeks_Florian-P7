@@ -16,8 +16,8 @@ class Resultsearch{
         for (let index = 0; index <  this.resultset.length; index++) {
             const filtres = this.resultset[index];
             this.ingrediants = ''; 
-            for (let index = 0; index < filtres.length; index++) {
-                const ingre = filtres[index];
+            for (let index = 0; index < filtres.ingredients.length; index++) {
+                const ingre = filtres.ingredients[index];
                 if (ingre.unit) {
                     this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
                 }else if (!ingre.quantity){
@@ -66,10 +66,12 @@ class Resultsearch{
         }
 
         if(result_tag.length > 0 ){
-            result_tag.forEach((recipe)=>{
-            
+
+            for (let index = 0; index < result_tag.length; index++) {
+                const recipe = result_tag[index];
                 this.ingrediants = '';
-                recipe.ingredients.forEach((ingre) => { 
+                for (let index = 0; index < recipe.ingredients.length; index++) {
+                    const ingre = recipe.ingredients[index];
                     if (ingre.unit) {
                         this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
                     }else if (!ingre.quantity){
@@ -77,8 +79,8 @@ class Resultsearch{
                     }else{
                         this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
                     }
-                });
-                                        
+                    
+                }
                 searchtag += 
                 `
                     <div class="filtre_card_wrapper">
@@ -96,8 +98,9 @@ class Resultsearch{
                         </div>   
                     </div>                                
                 ` 
-            
-            })
+            }
+                                        
+
             $recette.innerHTML = searchtag;
         }
         
