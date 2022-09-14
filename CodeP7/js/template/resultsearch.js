@@ -13,10 +13,11 @@ class Resultsearch{
         var filtre ='';
         const $recette = document.querySelector(".recette");
         
-        this.resultset.forEach((filtres) => {
-            this.ingrediants = '';
-            filtres.ingredients.forEach((ingre) => { 
-                
+        for (let index = 0; index <  this.resultset.length; index++) {
+            const filtres = this.resultset[index];
+            this.ingrediants = ''; 
+            for (let index = 0; index < filtres.length; index++) {
+                const ingre = filtres[index];
                 if (ingre.unit) {
                     this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity } ${ingre.unit } </p>`;
                 }else if (!ingre.quantity){
@@ -24,7 +25,7 @@ class Resultsearch{
                 }else{
                     this.ingrediants += `<p><b>${ingre.ingredient}:</b> ${ingre.quantity }</p>`
                 }
-            });
+            }
             filtre += 
             `
                 <div class="filtre_card_wrapper">
@@ -44,9 +45,7 @@ class Resultsearch{
             `
     
             //console.log(filtre)
-            
-            
-        });
+        }
         $recette.innerHTML = filtre;
 
     }  

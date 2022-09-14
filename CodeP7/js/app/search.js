@@ -95,11 +95,9 @@
             let tabIngrediants= [];
             for (let index = 0; index < lstRecipes.length; index++) {
                 const recipe = lstRecipes[index];
-                console.log(recipe);
                 
                 for (let i = 0; i < recipe.ingredients.length; i++) {
-                    console.log(recipe.ingredients.length)
-                    const ingre = recipe[i];
+                    const ingre = recipe.ingredients[i];
                     
                    let recette = null;
                     recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
@@ -120,7 +118,6 @@
                 }
                 
             }
-            console.log(tabIngrediants)
             return tabIngrediants;
         }
     }

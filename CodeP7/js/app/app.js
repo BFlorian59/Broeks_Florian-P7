@@ -32,47 +32,26 @@ class App {
             tabAppareils.push(recipe.appliance);           
 
             let recette = null;
-            recipe.ingredients.forEach(ingre => {   
+            for (let i = 0; i < recipe.ingredients.length; i++) {
+                const ingre = recipe.ingredients[i];
+                
                 recette = null;
-                 recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
-                //console.log(recette)
+                recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
                 if(recette != undefined){
-                    //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
+                //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
                     if(!recette.id.includes(recipe.id)){
                         recette.id.push(recipe.id);
                     }
-
-                    tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+            
+                tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
                 }else{              
-                recette = {
-                    ingredient: ingre.ingredient,
-                    id: [recipe.id]
-                };
+                    recette = {
+                        ingredient: ingre.ingredient,
+                        id: [recipe.id]
+                    };
                 }
                 tabIngrediants.push(recette)
-            });
-            // let recette = null;
-            // for (let i = 0; i < recipe.length; i++) {
-            //     const ingre = recipe[i];
-            //     recette = null;
-            //     recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
-            //     if(recette != undefined){
-            //     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
-            //         if(!recette.id.includes(recipe.id)){
-            //             recette.id.push(recipe.id);
-            //         }
-                
-            //     tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
-            //     }else{              
-            //         recette = {
-            //             ingredient: ingre.ingredient,
-            //             id: [recipe.id]
-            //         };
-            //     }
-            //     tabIngrediants.push(recette)
-            //     console.log(tabIngrediants)
-            // }
-            
+            }            
         });
         const search = new Search(data.recipes);
         search.globalSearch();

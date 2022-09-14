@@ -6,6 +6,7 @@ class Recette_card{
     }
 
     createrecette(){       
+
         this.recipe.ingredients.forEach((ingrediant) => { 
 
             if (ingrediant.unit) {
