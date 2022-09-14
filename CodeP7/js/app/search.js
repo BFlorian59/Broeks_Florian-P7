@@ -99,8 +99,18 @@
                 for (let i = 0; i < recipe.ingredients.length; i++) {
                     const ingre = recipe.ingredients[i];
                     
-                   let recette = null;
-                    recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
+                   let recette = [];
+                   recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
+
+                    // for (let index = 0; index < tabIngrediants.length; index++) {
+                    //     const element = tabIngrediants[index];
+                    //     if (element.ingredient == ingre.ingredient) {
+                    //         console.log(ingre.ingredient)
+                    //         recette.push(element.ingredient);
+                    //         console.log(recette)
+                    //     }
+                        
+                    // }
                     if(recette != undefined){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
                         if(!recette.id.includes(recipe.id)){
