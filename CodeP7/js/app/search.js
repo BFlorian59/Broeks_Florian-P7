@@ -97,8 +97,8 @@
                 const recipe = lstRecipes[index];
                 console.log(recipe);
                 
-                for (let i = 0; i < recipe.length; i++) {
-                    console.log(recipe.length)
+                for (let i = 0; i < recipe.ingredients.length; i++) {
+                    console.log(recipe.ingredients.length)
                     const ingre = recipe[i];
                     
                    let recette = null;
