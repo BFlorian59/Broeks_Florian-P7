@@ -95,13 +95,13 @@
             let tabIngrediants= [];
             for (let index = 0; index < lstRecipes.length; index++) {
                 const recipe = lstRecipes[index];
-                console.log(recipe)
-                let recette = null;
+                console.log(recipe);
+                
                 for (let i = 0; i < recipe.length; i++) {
                     console.log(recipe.length)
                     const ingre = recipe[i];
                     
-                    recette = null;
+                   let recette = null;
                     recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
                     if(recette != undefined){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
