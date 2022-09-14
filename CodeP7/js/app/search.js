@@ -252,13 +252,12 @@
     removeTagSearch(){
 
         const $recette = document.querySelector(".recette")
-        for (let index = 0; index < document.querySelectorAll('.liste_tag').length; index++) {
-            const ingredients = document.querySelectorAll('.liste_tag')[index];
+        document.querySelectorAll('.liste_tag').forEach(ingredients => {
             ingredients.addEventListener('click', () => {
                 ingredients.remove();      
             });
-            
-        }
+        });
+
         
         for (let index = 0; index < document.querySelectorAll('.liste_tag b').length; index++) {
             const ingredients = document.querySelectorAll('.liste_tag b')[index];
