@@ -1,4 +1,4 @@
- class  Search{
+class  Search{
 
     constructor(recipe){
         this.ingrediants =' ';
@@ -57,8 +57,6 @@
                     tabingreselcted.push(element);
                     
                 }
-
-
             
                 var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
                 console.log(tabingreselcted)
@@ -163,8 +161,7 @@
                 if (tabtag  ==recipe.appliance ) {
                     
                     result_tag.push(recipe);
-                }
-                
+                }  
             }
 
             // if(this.tabtag.includes(recipe.appliance)){
@@ -209,8 +206,7 @@
         //     }
         // }
 
-        
-       
+
         result_tag = result_tag.map(recette =>{
             if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
                 return recette;
