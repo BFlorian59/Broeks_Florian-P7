@@ -99,25 +99,40 @@
                 for (let i = 0; i < recipe.ingredients.length; i++) {
                     const ingre = recipe.ingredients[i];
                     
-                   let recette = [];
-                   recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
+                    let recette = [];
+                    console.log(ingre)
+                    console.log(tabIngrediants)
 
+
+                    recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
+                   
+                   //console.log(tabIngrediants)
                     // for (let index = 0; index < tabIngrediants.length; index++) {
+                    //     console.log(tabIngrediants)
                     //     const element = tabIngrediants[index];
-                    //     if (element.ingredient == ingre.ingredient) {
-                    //         console.log(ingre.ingredient)
-                    //         recette.push(element.ingredient);
+                    //     console.log(element)
+                    //     console.log(ingre.ingredient)
+                    //         if (element.ingredient == ingre.ingredient) {                              
+
+                    //             recette = element
+                    //         }
                     //         console.log(recette)
-                    //     }
-                        
+                    //         return recette
                     // }
+
                     if(recette != undefined){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
-                        if(!recette.id.includes(recipe.id)){
+                        
+                        if (!recette.id == false) {
                             recette.id.push(recipe.id);
+                            console.log(recette.id)
                         }
+                        
+                        // if(!recette.id.includes(recipe.id)){ 
+                        //     recette.id.push(recipe.id);
+                        // }
                 
-                    tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+                        tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
                     }else{              
                         recette = {
                             ingredient: ingre.ingredient,
@@ -143,26 +158,58 @@
         for (let index = 0; index < this.recipe.length; index++) {
             const recipe = this.recipe[index];
 
-            if(this.tabtag.includes(recipe.appliance)){
-                result_tag.push(recipe);  
+            for (let index = 0; index < this.tabtag.length; index++) {
+                const tabtag = this.tabtag[index];
+                if (tabtag  ==recipe.appliance ) {
+                    
+                    result_tag.push(recipe);
+                }
+                
             }
 
+            // if(this.tabtag.includes(recipe.appliance)){
+            //     result_tag.push(recipe);  
+            // }
+
             for (let i = 0; i < recipe.ustensils.length; i++) {
-                const element = recipe.ustensils[i];
-                if(this.tabtag.includes(element)){
-                    result_tag.push(recipe);  
+                const ustensil = recipe.ustensils[i];
+
+                for (let index = 0; index < this.tabtag.length; index++) {
+                    const tabtag = this.tabtag[index];
+                    if (tabtag  == ustensil) {
+                        
+                        result_tag.push(recipe);
+                    }
+                    
                 }
             }
 
             for (let i = 0; i < recipe.ingredients.length; i++) {
-                const element = recipe.ingredients[i];
-                if(this.tabtag.includes(element.ingredient)){
-                    result_tag.push(recipe);            
-            
+                const ingredient = recipe.ingredients[i];
+
+                for (let index = 0; index < this.tabtag.length; index++) {
+                    const tabtag = this.tabtag[index];
+                    if (tabtag  == ingredient.ingredient) {
+                        
+                        result_tag.push(recipe);
+                    }
                 }
             }
             
         }
+
+        // for (let index = 0; index < result_tag.length; index++) {
+           
+        //     const recette = result_tag[index];
+        //     if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
+        //         result_tag.push(recette)
+        //         console.log(result_tag)
+        //         return recette;
+
+        //     }
+        // }
+
+        
        
         result_tag = result_tag.map(recette =>{
             if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
@@ -170,6 +217,8 @@
 
             }
         });
+        
+       
 
         result_tag = result_tag.filter(tag => tag !== undefined);
         result_tag = [...new Set(result_tag)];

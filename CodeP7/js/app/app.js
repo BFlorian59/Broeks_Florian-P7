@@ -39,9 +39,13 @@ class App {
                 recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
                 if(recette != undefined){
                 //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
-                    if(!recette.id.includes(recipe.id)){
-                        recette.id.push(recipe.id);
-                    }
+
+                if (!recette.id == false) {
+                    recette.id.push(recipe.id);
+                }
+                    // if(!recette.id.includes(recipe.id)){
+                    //     recette.id.push(recipe.id);
+                    // }
             
                 tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
                 }else{              
