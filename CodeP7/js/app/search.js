@@ -93,29 +93,21 @@ class  Search{
             let tabIngrediants= [];
             for (let index = 0; index < lstRecipes.length; index++) {
                 const recipe = lstRecipes[index];
-                
+
                 for (let i = 0; i < recipe.ingredients.length; i++) {
                     const ingre = recipe.ingredients[i];
                     
                     let recette = [];
-                    console.log(ingre)
-                    console.log(tabIngrediants)
-
-
+                    //console.log(ingre);
                     recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
-                   
-                   //console.log(tabIngrediants)
+                    console.log(tabIngrediants)
                     // for (let index = 0; index < tabIngrediants.length; index++) {
-                    //     console.log(tabIngrediants)
-                    //     const element = tabIngrediants[index];
-                    //     console.log(element)
-                    //     console.log(ingre.ingredient)
-                    //         if (element.ingredient == ingre.ingredient) {                              
 
-                    //             recette = element
-                    //         }
-                    //         console.log(recette)
-                    //         return recette
+                    //     const element = tabIngrediants[index];
+                    //     if (element.ingredient == ingre.ingredient) {                              
+                    //         return recette;
+                    //     }
+                        
                     // }
 
                     if(recette != undefined){
@@ -123,21 +115,31 @@ class  Search{
                         
                         if (!recette.id == false) {
                             recette.id.push(recipe.id);
-                            console.log(recette.id)
+                            console.log(recette.id);
                         }
                         
                         // if(!recette.id.includes(recipe.id)){ 
                         //     recette.id.push(recipe.id);
                         // }
-                
-                        tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+                        // tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+                        console.log(tabIngrediants)
+                        // for (let index = 0; index < tabIngrediants.length; index++) {
+                            
+                        //     const element = tabIngrediants[index];
+                        //     if (element == tabIngrediants.indexOf(recette),1) {
+                                
+                        //         console.log(el)
+                        //     }
+                        // }
+                        
                     }else{              
                         recette = {
                             ingredient: ingre.ingredient,
                             id: [recipe.id]
                         };
                     }
-                    tabIngrediants.push(recette)
+                    tabIngrediants.push(recette);
+
                 }
                 
             }
@@ -208,12 +210,15 @@ class  Search{
 
 
         result_tag = result_tag.map(recette =>{
+            
+
+            console.log(this.tabtag.length)
             if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
                 return recette;
 
             }
-        });
-        
+            
+        });     
        
 
         result_tag = result_tag.filter(tag => tag !== undefined);
