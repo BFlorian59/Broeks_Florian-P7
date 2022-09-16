@@ -106,7 +106,7 @@
                     };
                     }
                     tabIngrediants.push(recette)
-                    console.log(tabIngrediants)
+                    //console.log(tabIngrediants)
                 });
             });
            
