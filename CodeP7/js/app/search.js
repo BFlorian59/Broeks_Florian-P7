@@ -113,24 +113,15 @@ class  Search{
                     if(recette != undefined){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
                         
-                        // if (!recette.id == false) {
-                        //     recette.id.push(recipe.id);
-                        //     console.log(recette.id);
-                        // }
-                        
-                        if(!recette.id.includes(recipe.id)){ 
+                        if (!recette.id == false) {
                             recette.id.push(recipe.id);
+                            //console.log(recette.id);
                         }
-                        tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
-                        //console.log(tabIngrediants)
-                        // for (let index = 0; index < tabIngrediants.length; index++) {
-                            
-                        //     const element = tabIngrediants[index];
-                        //     if (element == tabIngrediants.indexOf(recette),1) {
-                                
-                        //         console.log(el)
-                        //     }
+                        
+                        // if(!recette.id.includes(recipe.id)){ 
+                        //     recette.id.push(recipe.id);
                         // }
+                        //tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
                         
                     }else{              
                         recette = {
@@ -178,8 +169,7 @@ class  Search{
                     if (tabtag  == ustensil) {
                         
                         result_tag.push(recipe);
-                    }
-                    
+                    }   
                 }
             }
 
