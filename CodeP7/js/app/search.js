@@ -1,4 +1,4 @@
- class  Search{
+ class Search{
 
     constructor(recipe){
         this.ingrediants =' ';
@@ -8,7 +8,7 @@
         this.tagust = [];
         this.tag =[];
         this.tabtag = [];
-        this.resultset =[];
+        this.tabsearchsset =[];
     }
    
 
@@ -53,13 +53,13 @@
             
                 var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
 
-                const result = result_searchs.concat(tabingreselcted);
-                this.resultset = [...new Set(result)];
+                const tabsearchs = result_searchs.concat(tabingreselcted);
+                this.tabsearchsset = [...new Set(tabsearchs)];
 
-                const search = new Resultsearch(this.recipe, this.resultset);
+                const search = new Resultsearch(this.recipe, this.tabsearchsset);
                 search.displaysearch();
                
-                if (this.resultset.length == 0) {
+                if (this.tabsearchsset.length == 0) {
                     var error ='';
                     error = `
                     <div id= "error">
@@ -100,11 +100,11 @@
                         tabIngredients.slice(tabIngredients.indexOf(lstingredient),1);
                     }else{              
                         lstingredient = {
-                        ingredient: ingre.ingredient,
-                        id: [recipe.id]
-                    };
+                            ingredient: ingre.ingredient,
+                            id: [recipe.id]
+                        };
                     }
-                    tabIngredients.push(lstingredient)
+                    tabIngredients.push(lstingredient);
                     //console.log(tabIngrediants)
                 });
             });
@@ -281,7 +281,8 @@
                 } 
                 appliance.remove();      
             });
-        });       
+        }); 
+              
     }
 }
 

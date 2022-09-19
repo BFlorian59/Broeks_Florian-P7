@@ -1,8 +1,8 @@
 class Resultsearch{
 
-    constructor(recipe, resultset, tabtag, searchtag, $recette){
+    constructor(recipe, tabsearchsset, tabtag, searchtag, $recette){
         this.recipe = recipe;
-        this.resultset = resultset;
+        this.tabsearchsset = tabsearchsset;
         this.tabtag = tabtag;
         this.searchtag = searchtag;
         this.$recette = $recette
@@ -13,7 +13,7 @@ class Resultsearch{
         var filtre ='';
         const $recette = document.querySelector(".recette");
         
-        this.resultset.forEach((filtres) => {
+        this.tabsearchsset.forEach((filtres) => {
             this.ingrediants = '';
             filtres.ingredients.forEach((ingre) => { 
                 
@@ -47,6 +47,7 @@ class Resultsearch{
             
             
         });
+
         $recette.innerHTML = filtre;
 
     }  
@@ -66,7 +67,7 @@ class Resultsearch{
             $recette.innerHTML = error;
         }
 
-        if(result_tag.length > 0 ){
+        if(result_tag.length > 0 && tabtag.length > 0 ){
             result_tag.forEach((recipe)=>{
                 this.ingrediants = '';
                 recipe.ingredients.forEach((ingre) => { 
@@ -99,6 +100,7 @@ class Resultsearch{
             
             })
             $recette.innerHTML = searchtag;
+            
         }
         
     }   
