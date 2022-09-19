@@ -191,8 +191,8 @@ class  Search{
            
         //     const recette = result_tag[index];
         //     if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
-        //         result_tag.push(recette)
-        //         console.log(result_tag)
+        //         result_tag =recette
+        //         console.log(recette)
         //         return recette;
 
         //     }
@@ -204,6 +204,7 @@ class  Search{
 
             console.log(this.tabtag.length)
             if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
+                console.log(recette)
                 return recette;
 
             }
