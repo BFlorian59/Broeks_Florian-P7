@@ -1,11 +1,11 @@
 class Dropdowns{
-    constructor(tabUstenssibles,tabAppareils,tabIngrediants, recipe)
+    constructor(tabUstenssibles,tabAppareils,tabIngredients, recipe)
     {
         this.$dropdowns = document.getElementById("dropdowns");
         this.$tag = document.getElementById("tag");
         this.recipe = recipe;
-        this.ingrediants = tabIngrediants;
-        this.ingrediant='';
+        this.ingredients = tabIngredients;
+        this.ingredient='';
         this.ustensils=tabUstenssibles;
         this.ustensil ='';
         this.appliances=tabAppareils;
@@ -292,14 +292,14 @@ class Dropdowns{
       
     createdropdowns(){
       
-        var removed = this.ingrediants.splice(10, 41);
+        var removed = this.ingredients.splice(10, 41);
         removed.forEach((ingre) => {    
                 if (!this.uniqueingre.includes(ingre.ingredient)) {
                     this.uniqueingre.push(ingre.ingredient);
                     this.uniqueingre.filter((item,
                         index) => this.uniqueingre.indexOf(item) === index);
                      
-                    this.ingrediant+= `<li ><a class=" items dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;                    
+                    this.ingredient+= `<li ><a class=" items dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;                    
                 }   
             });
            
@@ -343,7 +343,7 @@ class Dropdowns{
                 
             </button>
             <ul class="dropdown-menu" id="dropdown-menu1" aria-labelledby="dropdownMenuButton1">
-                ${this.ingrediant}
+                ${this.ingredient}
             </ul>
         </div>
 
