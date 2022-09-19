@@ -36,12 +36,12 @@
                 let tabingreselcted = [];
                 
                 let resultIngre = getLstRecipes(lstrecipe)
-                var tabIngrediants_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
                 console.log("result après add Carotte tab ingredient ");
-                console.log(tabIngrediants_filtre);
+                console.log(tabIngredients_filtre);
                 let lstRecipesSelected = [];
                 // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
-                tabIngrediants_filtre.forEach(element => {
+                tabIngredients_filtre.forEach(element => {
                     element.id.forEach(id => {
                         lstRecipesSelected.push(this.recipe[id-1]);
                              
@@ -83,34 +83,33 @@
             
         });    
         function getLstRecipes( lstRecipes){
-            let tabIngrediants= [];
+            let tabIngredients= [];
             lstRecipes.forEach((recipe) => {
                
     
-                let recette = null;
+                let lstingredient = null;
                 recipe.ingredients.forEach(ingre => {   
-                    recette = null;
-                     recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
-                    //console.log(recette)
-                    if(recette != undefined){
+                    lstingredient = null;
+                    lstingredient = tabIngredients.find(x => x.ingredient == ingre.ingredient);
+                    if(lstingredient != undefined){
                         //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
-                        if(!recette.id.includes(recipe.id)){
-                            recette.id.push(recipe.id);
+                        if(!lstingredient.id.includes(recipe.id)){
+                            lstingredient.id.push(recipe.id);
                         }
     
-                        tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+                        tabIngredients.slice(tabIngredients.indexOf(lstingredient),1);
                     }else{              
-                    recette = {
+                        lstingredient = {
                         ingredient: ingre.ingredient,
                         id: [recipe.id]
                     };
                     }
-                    tabIngrediants.push(recette)
+                    tabIngredients.push(lstingredient)
                     //console.log(tabIngrediants)
                 });
             });
            
-            return tabIngrediants;
+            return tabIngredients;
         }
     }
    

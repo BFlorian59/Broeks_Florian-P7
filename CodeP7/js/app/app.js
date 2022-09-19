@@ -1,4 +1,4 @@
-var tabIngrediants = [];
+var tabIngredients = [];
 class App {
     constructor() {
         this.ingrediants = '';
@@ -34,7 +34,7 @@ class App {
             let recette = null;
             recipe.ingredients.forEach(ingre => {   
                 recette = null;
-                 recette = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
+                 recette = tabIngredients.find(x => x.ingredient == ingre.ingredient);
                 //console.log(recette)
                 if(recette != undefined){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
@@ -42,20 +42,20 @@ class App {
                         recette.id.push(recipe.id);
                     }
 
-                    tabIngrediants.slice(tabIngrediants.indexOf(recette),1);
+                    tabIngredients.slice(tabIngredients.indexOf(recette),1);
                 }else{              
                 recette = {
                     ingredient: ingre.ingredient,
                     id: [recipe.id]
                 };
                 }
-                tabIngrediants.push(recette)
+                tabIngredients.push(recette)
             });
         });
         const search = new Search(data.recipes);
         search.globalSearch();
 
-        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngrediants, data.recipes);
+        const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngredients, data.recipes);
         dropdowns.createdropdowns();
 
 
