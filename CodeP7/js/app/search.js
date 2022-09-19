@@ -36,7 +36,17 @@ class  Search{
                 
                 let resultIngre = getLstRecipes(lstrecipe)
                 console.log(resultIngre)
-                var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                //var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                var tabIngredients_filtre = [];
+                for(let i = 0; i < resultIngre.length; i++ ){
+                    for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
+                        if(resultIngre[i].ingredient[j].toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                            tabIngredients_filtre.push(resultIngre[i]);
+                           // TODO à tester 'break;'
+                        }
+                    }
+                }
+                console.log("my filter")
                 console.log(tabIngredients_filtre)
 
                 // console.log("result après add Carotte tab ingredient ");
@@ -199,18 +209,45 @@ class  Search{
         // }
 
 
-        result_tag = result_tag.map(recette =>{
+        // result_tag = result_tag.map(recette =>{
+        //     console.log(this.tabtag.length)
+        //     if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
+        //         console.log(recette)
+        //         return recette;
+        //     }
             
+        // });
+        result_tag = mapByFlorian(result_tag);     
+       // mafonction doit me retourner la liste de recettes par rapport aux tags selectionnées et recherche global
+       // this.global.tag represente les tags selectionnés
+        function mapByFlorian(lstRecipes){
+            let ResultLstRecipes = [];
 
-            console.log(this.tabtag.length)
-            if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
-                console.log(recette)
-                return recette;
+            for(let i = 0; i < lstRecipes.length; i++){
+                let cpt =0;
+                for(let j = 0; j < lstRecipes.length; j++){
+                    if(lstRecipes[j].id==lstRecipes[i].id){
+                        cpt++;
+                     }
+                  
+                    let newcpt = j-1;
+                  
+                    if(lstRecipes.length == newcpt){
+                        if(cpt == this.tabtag.length){
+                            console.log("je passe là")
+                            ResultLstRecipes.push(lstRecipes[i]);
+                        }
+                    }
+            }            
+        }
+        return ResultLstRecipes;
+     }
 
-            }
-            
-        });     
-       
+      
+
+        //return ResultLstRecipes;
+
+        //console.log(result_tag)
 
         result_tag = result_tag.filter(tag => tag !== undefined);
         result_tag = [...new Set(result_tag)];
