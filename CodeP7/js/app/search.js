@@ -9,6 +9,8 @@
         this.tag =[];
         this.tabtag = [];
         this.resultset =[];
+        this.result_tag =[];
+        this.result_tag =[];
     }
    
 
@@ -115,11 +117,12 @@
    
 
     //recherche par tag
-    addTagSearch(){
+    addTagSearch(result_tag){
         const $recette = document.querySelector(".recette");
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         this.tabtag = [...new Set(tag)];
-        var result_tag = [];   
+        var result_tag = [];  
+
 
         this.recipe.forEach(recipe =>{
             if(this.tabtag.includes(recipe.appliance)){
@@ -154,7 +157,7 @@
         var tabtag = this.tabtag;
         const searchtag = new Resultsearch();
         searchtag.displaysearchtag(result_tag,$recette, tabtag);
-        
+
         return result_tag;
     }
 
@@ -236,14 +239,7 @@
         const $recette = document.querySelector(".recette")
         document.querySelectorAll('.liste_tag').forEach(ingredients => {
             ingredients.addEventListener('click', () => {
-                ingredients.remove();      
-            });
-        });
-
-
-        document.querySelectorAll('.liste_tag b').forEach(ingredients => {
-            ingredients.addEventListener('click', () => {
-                this.tagingre.splice(this.tagingre.indexOf(ingredients.innerHTML),1);
+                this.tagingre.splice(this.tagingre.indexOf(document.querySelectorAll('.liste_tag b').innerHTML),1);
                 this.addTagSearch();
                 if (this.tabtag.length < 1) {
                     this.recipe.forEach((recipe) => {                    
@@ -253,56 +249,41 @@
                     });
                         
                 } 
-                              
+                ingredients.remove();      
             });
-        });     
-        
+        });
 
-        document.querySelectorAll('.liste_tag2 ').forEach(ustensils => {
+        document.querySelectorAll('.liste_tag2').forEach(ustensils => {
             ustensils.addEventListener('click', () => {
+                this.tagust.splice(this.tagust.indexOf(document.querySelectorAll('.liste_tag2 b').innerHTML),1);
+                this.addTagSearch();
+                if (this.tabtag.length < 1) {
+                    this.recipe.forEach((recipe) => {                    
+                        const pCard = new Recette_card(recipe);
+                        const pCardElement = pCard.createrecette();
+                        $recette.appendChild(pCardElement);
+                    });
+                        
+                } 
                 ustensils.remove();      
             });
         });
 
-        document.querySelectorAll('.liste_tag2 b').forEach(ustensils => {
-            ustensils.addEventListener('click', () => {
-                this.tagust.splice(this.tagust.indexOf(ustensils.innerHTML),1);
+        document.querySelectorAll('.liste_tag3').forEach(appliance => {
+            appliance.addEventListener('click', () => {
+                this.tagapp.splice(this.tagapp.indexOf(document.querySelectorAll('.liste_tag3 b').innerHTML),1);
                 this.addTagSearch();
-                if (this.tabtag.length < 1) {           
+                if (this.tabtag.length < 1) {
                     this.recipe.forEach((recipe) => {                    
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
                         $recette.appendChild(pCardElement);
-                    
                     });
-                
-                }      
-
-            });
-        });
-
-        document.querySelectorAll('.liste_tag3 ').forEach(appliance => {
-            appliance.addEventListener('click', () => {
+                        
+                } 
                 appliance.remove();      
             });
-        });
-
-        document.querySelectorAll('.liste_tag3 b').forEach(appliance => {
-            appliance.addEventListener('click', () => {
-                console.log(appliance.innerHTML)
-                this.tagapp.splice(this.tagapp.indexOf(appliance.innerHTML),1);
-                this.addTagSearch();             
-                if (this.tabtag.length < 1) {          
-                    this.recipe.forEach((recipe) => {                    
-                        const pCard = new Recette_card(recipe);
-                        const pCardElement = pCard.createrecette();
-                        $recette.appendChild(pCardElement);
-                    
-                    });
-                
-                }
-            });
-        });        
+        });       
     }
 }
 

@@ -68,7 +68,6 @@ class Resultsearch{
 
         if(result_tag.length > 0 ){
             result_tag.forEach((recipe)=>{
-            
                 this.ingrediants = '';
                 recipe.ingredients.forEach((ingre) => { 
                     if (ingre.unit) {
