@@ -302,17 +302,11 @@ class  Search{
     removeTagSearch(){
 
         const $recette = document.querySelector(".recette")
-        document.querySelectorAll('.liste_tag').forEach(ingredients => {
-            ingredients.addEventListener('click', () => {
-                ingredients.remove();      
-            });
-        });
-
         
-        for (let index = 0; index < document.querySelectorAll('.liste_tag b').length; index++) {
-            const ingredients = document.querySelectorAll('.liste_tag b')[index];
+        for (let index = 0; index < document.querySelectorAll('.liste_tag').length; index++) {
+            const ingredients = document.querySelectorAll('.liste_tag')[index];
             ingredients.addEventListener('click', () => {
-                this.tagingre.splice(this.tagingre.indexOf(ingredients.innerHTML),1);
+                this.tagingre.splice(this.tagingre.indexOf(document.querySelectorAll('.liste_tag b').innerHTML),1);
                 this.addTagSearch();
                 if (this.tabtag.length < 1) {
                     for (let index = 0; index < this.recipe.length; index++) {
@@ -322,23 +316,14 @@ class  Search{
                         $recette.appendChild(pCardElement);
                     }                        
                 } 
-                              
+                ingredients.remove();              
             });
         } 
-        
 
-        for (let index = 0; index < document.querySelectorAll('.liste_tag2 ').length; index++) {
+        for (let index = 0; index < document.querySelectorAll('.liste_tag2').length; index++) {
             const ustensils = document.querySelectorAll('.liste_tag2')[index];
             ustensils.addEventListener('click', () => {
-                ustensils.remove();      
-            });
-            
-        }
-
-        for (let index = 0; index <  document.querySelectorAll('.liste_tag2 b').length; index++) {
-            const ustensils =  document.querySelectorAll('.liste_tag2 b')[index];
-            ustensils.addEventListener('click', () => {
-                this.tagust.splice(this.tagust.indexOf(ustensils.innerHTML),1);
+                this.tagust.splice(this.tagust.indexOf(document.querySelectorAll('.liste_tag2 b').innerHTML),1);
                 this.addTagSearch();
                 if (this.tabtag.length < 1) {
                     for (let index = 0; index < this.recipe.length; index++) {
@@ -348,22 +333,14 @@ class  Search{
                         $recette.appendChild(pCardElement);
                     }                        
                 } 
-                              
+                ustensils.remove();              
             });
         } 
 
-        for (let index = 0; index < document.querySelectorAll('.liste_tag3 ').length; index++) {
-            const appliance = document.querySelectorAll('.liste_tag3 ')[index];
+        for (let index = 0; index < document.querySelectorAll('.liste_tag3').length; index++) {
+            const appliance = document.querySelectorAll('.liste_tag3')[index];
             appliance.addEventListener('click', () => {
-                appliance.remove();      
-            });
-            
-        }
-
-        for (let index = 0; index <  document.querySelectorAll('.liste_tag3 ').length; index++) {
-            const appliance =  document.querySelectorAll('.liste_tag3 ')[index];
-            appliance.addEventListener('click', () => {
-                this.tagapp.splice(this.tagapp.indexOf(appliance.innerHTML),1);
+                this.tagapp.splice(this.tagapp.indexOf(document.querySelectorAll('.liste_tag3 b').innerHTML),1);
                 this.addTagSearch();
                 if (this.tabtag.length < 1) {
                     for (let index = 0; index < this.recipe.length; index++) {
@@ -373,9 +350,9 @@ class  Search{
                         $recette.appendChild(pCardElement);
                     }                        
                 } 
-                              
+                appliance.remove();              
             });
-        }        
+        }      
     }
 }
 
