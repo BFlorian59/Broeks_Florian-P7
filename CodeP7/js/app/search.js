@@ -9,8 +9,6 @@
         this.tag =[];
         this.tabtag = [];
         this.resultset =[];
-        this.result_tag =[];
-        this.result_tag =[];
     }
    
 
