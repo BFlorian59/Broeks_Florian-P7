@@ -28,6 +28,10 @@ class  Search{
                 lstrecipe =  this.addTagSearch();
             }
 
+            if (this.tabtag.length < 1) {
+                lstrecipe = this.recipe;
+            }
+
             // commencer la recherche si tu as plus de 3 caracteres
             if (input.value.length > 2 ) {
                 const input_search = input.value;
@@ -39,8 +43,8 @@ class  Search{
                 var tabIngredients_filtre = [];
                 for(let i = 0; i < resultIngre.length; i++ ){
                     for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
-                        console.log(resultIngre[i].ingredient[j])
-                        if(resultIngre[i].ingredient[j].toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                        //console.log(resultIngre[i].ingredient)
+                        if(resultIngre[i].ingredient.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
                             tabIngredients_filtre.push(resultIngre[i]);
                             console.log(tabIngredients_filtre)
                         }
@@ -78,12 +82,22 @@ class  Search{
                 for(let i = 0; i < lstrecipe.length; i++ ){
                     for(let j = 0; j < lstrecipe[i].name.length; j++ ){
                         if(lstrecipe[i].name.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
-                            console.log('ok')
                             result_searchs.push(lstrecipe[i]);
                            // TODO à tester 'break;'
                         }
                     }
+                    
                 }
+
+                // for(let i = 0; i < lstrecipe.length; i++ ){
+                //     for(let j = 0; j < lstrecipe[i].description.length; j++ ){
+                //         console.log(lstrecipe[i].description[j])
+                //         if(lstrecipe[i].description[j].toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                //             result_searchs.push(lstrecipe[i]);
+                //            // TODO à tester 'break;'
+                //         }
+                //     }                    
+                // }
                 console.log(result_searchs)
 
 
@@ -217,7 +231,16 @@ class  Search{
 
         result_tag = this.mapByFlorian(result_tag);   
 
-        result_tag = result_tag.filter(tag => tag !== undefined);
+        // for(let i = 0; i < result_tag.length; i++ ){
+        //     for(let j = 0; j < result_tag[i].length; j++ ){
+        //         console.log(lstrecipe[i].description[j])
+        //         if(result_tag[i]!== undefined){
+        //             result_searchs.push(result_searchs[i]);
+        //                 // TODO à tester 'break;'
+        //         }
+        //     }                    
+        // }
+        //result_tag = result_tag.filter(tag => tag !== undefined);
         result_tag = [...new Set(result_tag)];
 
         var tabtag = this.tabtag;
