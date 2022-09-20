@@ -44,7 +44,7 @@ class  Search{
                 for(let i = 0; i < resultIngre.length; i++ ){
                     for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
                         //console.log(resultIngre[i].ingredient)
-                        if(resultIngre[i].ingredient.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                        if(resultIngre[i].ingredient[j].toLocaleLowerCase() == input_search.toLocaleLowerCase()){
                             tabIngredients_filtre.push(resultIngre[i]);
                             console.log(tabIngredients_filtre)
                         }
@@ -229,7 +229,7 @@ class  Search{
             
         }
 
-        result_tag = this.mapByFlorian(result_tag);   
+        result_tag = this.Recherchepartags(result_tag);   
 
         // for(let i = 0; i < result_tag.length; i++ ){
         //     for(let j = 0; j < result_tag[i].length; j++ ){
@@ -251,7 +251,7 @@ class  Search{
     }
 
 
-    mapByFlorian(lstRecipes){
+    Recherchepartags(lstRecipes){
         // console.log(result_tag)
         // console.log(lstRecipes);
         // console.log(this.tabtag)
