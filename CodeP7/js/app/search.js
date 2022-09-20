@@ -28,6 +28,10 @@
                 lstrecipe =  this.addTagSearch();
             }
 
+            if (this.tabtag.length < 1) {
+                lstrecipe = this.recipe;
+            }
+
             // commencer la recherche si tu as plus de 3 caracteres
             if (input.value.length > 2 ) {
 
