@@ -44,15 +44,18 @@
                 tabIngredients_filtre.forEach(element => {
                     element.id.forEach(id => {
                         lstRecipesSelected.push(this.recipe[id-1]);
+                       
                              
                     })           
                 });
                 lstRecipesSelected.forEach(element => { 
                     tabingreselcted.push(element);
                 });
+
+                
             
                 var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
-
+                var result_searchs =[]
                 const tabsearchs = result_searchs.concat(tabingreselcted);
                 this.tabsearchsset = [...new Set(tabsearchs)];
 
