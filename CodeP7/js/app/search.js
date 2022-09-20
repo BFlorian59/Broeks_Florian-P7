@@ -58,6 +58,7 @@ class  Search{
                     for (let i = 0; i < element.id.length; i++) {
                         const id = element.id[i];
                         lstRecipesSelected.push(this.recipe[id-1]);
+                        //console.log(lstRecipesSelected)
                     }
                     
                 }
@@ -67,9 +68,27 @@ class  Search{
                     tabingreselcted.push(element);
                     
                 }
+                
             
-                var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
-                console.log(tabingreselcted)
+                //var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
+                
+
+                
+                 var result_searchs = [];
+                // for(let i = 0; i < lstrecipe.length; i++ ){
+                //     for(let j = 0; j < lstrecipe[i].name.length; j++ ){
+                //         console.log(input_search)
+                //         console.log(lstrecipe[i].name)
+                //         if(lstrecipe[i].name.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                //             console.log('ok')
+                //             result_searchs.push(lstrecipe[i]);
+                //            // TODO à tester 'break;'
+                //         }
+                //     }
+                // }
+                // console.log(result_searchs)
+
+
                 const result = result_searchs.concat(tabingreselcted);
                 this.resultset = [...new Set(result)];
 
@@ -197,57 +216,7 @@ class  Search{
             
         }
 
-        // for (let index = 0; index < result_tag.length; index++) {
-           
-        //     const recette = result_tag[index];
-        //     if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
-        //         result_tag =recette
-        //         console.log(recette)
-        //         return recette;
-
-        //     }
-        // }
-
-
-        // result_tag = result_tag.map(recette =>{
-        //     console.log(this.tabtag.length)
-        //     if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
-        //         console.log(recette)
-        //         return recette;
-        //     }
-            
-        // });
-        result_tag = mapByFlorian(result_tag);     
-       // mafonction doit me retourner la liste de recettes par rapport aux tags selectionnées et recherche global
-       // this.global.tag represente les tags selectionnés
-        function mapByFlorian(lstRecipes){
-            let ResultLstRecipes = [];
-
-            for(let i = 0; i < lstRecipes.length; i++){
-                let cpt =0;
-                for(let j = 0; j < lstRecipes.length; j++){
-                    if(lstRecipes[j].id==lstRecipes[i].id){
-                        cpt++;
-                     }
-                  
-                    let newcpt = j-1;
-                  
-                    if(lstRecipes.length == newcpt){
-                        if(cpt == this.tabtag.length){
-                            console.log("je passe là")
-                            ResultLstRecipes.push(lstRecipes[i]);
-                        }
-                    }
-            }            
-        }
-        return ResultLstRecipes;
-     }
-
-      
-
-        //return ResultLstRecipes;
-
-        //console.log(result_tag)
+        result_tag = this.mapByFlorian(result_tag);   
 
         result_tag = result_tag.filter(tag => tag !== undefined);
         result_tag = [...new Set(result_tag)];
@@ -258,6 +227,43 @@ class  Search{
         
         return result_tag;
     }
+
+
+    mapByFlorian(lstRecipes){
+        // console.log(result_tag)
+        // console.log(lstRecipes);
+        // console.log(this.tabtag)
+      
+        let ResultLstRecipes = [];
+        for(let i = 0; i < lstRecipes.length; i++){
+      
+            let cpt =0;
+            for(let j = 0; j < lstRecipes.length; j++){
+      
+                if(lstRecipes[j].id==lstRecipes[i].id){
+                    cpt++;
+                }
+                console.log("nombre d'occurrence ",cpt);
+                console.log("taille de tableau",lstRecipes.length);
+                console.log("mon incrément",j);
+      
+                let newcpt = (j+1);
+      
+                if(lstRecipes.length == newcpt){
+      
+                    console.log("Je dois passer trois fois ici")
+                    if(cpt == this.tabtag.length){
+                        console.log("je passe là")
+                        ResultLstRecipes.push(lstRecipes[i]);
+      
+                    }
+      
+                }
+            }            
+        }
+        return ResultLstRecipes;
+    }
+    
 
     //appeler les méthodes et mettre les tags dans un tableau quand on appuie sur les tags
     addEventtag (){
