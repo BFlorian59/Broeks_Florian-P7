@@ -183,10 +183,17 @@ class  Search{
 
     //recherche par tag
     addTagSearch(){
+        const input = document.querySelector('.Recherche-Input');
         const $recette = document.querySelector(".recette");
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         this.tabtag = [...new Set(tag)];
         var result_tag = [];  
+        var lstrecipe = this.recipe;
+
+        if(input.value.length > 2){
+            lstrecipe =  this.globalSearch();
+            console.log('ok')
+        }
         
         for (let index = 0; index < this.recipe.length; index++) {
             const recipe = this.recipe[index];
@@ -265,17 +272,17 @@ class  Search{
                 if(lstRecipes[j].id==lstRecipes[i].id){
                     cpt++;
                 }
-                console.log("nombre d'occurrence ",cpt);
-                console.log("taille de tableau",lstRecipes.length);
-                console.log("mon incrément",j);
+                //console.log("nombre d'occurrence ",cpt);
+                //console.log("taille de tableau",lstRecipes.length);
+                //console.log("mon incrément",j);
       
                 let newcpt = (j+1);
       
                 if(lstRecipes.length == newcpt){
       
-                    console.log("Je dois passer trois fois ici")
+                    //console.log("Je dois passer trois fois ici")
                     if(cpt == this.tabtag.length){
-                        console.log("je passe là")
+                        //console.log("je passe là")
                         ResultLstRecipes.push(lstRecipes[i]);
       
                     }
