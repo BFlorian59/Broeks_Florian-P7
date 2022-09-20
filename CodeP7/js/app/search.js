@@ -37,8 +37,8 @@ class  Search{
                 const input_search = input.value;
                 //compléter la recherche (sur les ingrédients ... description )
                 let tabingreselcted = [];
-                let resultIngre = getLstRecipes(lstrecipe)
-                console.log(resultIngre)
+                let resultIngre = getLstRecipes(lstrecipe);
+                console.log(resultIngre);
                 //var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
                 var tabIngredients_filtre = [];
                 for(let i = 0; i < resultIngre.length; i++ ){
