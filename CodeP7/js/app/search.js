@@ -33,21 +33,19 @@ class  Search{
                 const input_search = input.value;
                 //compléter la recherche (sur les ingrédients ... description )
                 let tabingreselcted = [];
-                console.log('halo')
                 let resultIngre = getLstRecipes(lstrecipe)
                 console.log(resultIngre)
-                var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-                // var tabIngredients_filtre = [];
-                // for(let i = 0; i < resultIngre.length; i++ ){
-                //     for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
-                //         console.log(resultIngre[i].ingredient)
-                //         console.log(input_search)
-                //         if(resultIngre[i].ingredient[j].toLocaleLowerCase() == input_search.toLocaleLowerCase()){
-                //             tabIngredients_filtre.push(resultIngre[i]);
-                //             console.log(tabIngredients_filtre)
-                //         }
-                //     }
-                // }
+                //var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                var tabIngredients_filtre = [];
+                for(let i = 0; i < resultIngre.length; i++ ){
+                    for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
+                        console.log(resultIngre[i].ingredient[j])
+                        if(resultIngre[i].ingredient[j].toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                            tabIngredients_filtre.push(resultIngre[i]);
+                            console.log(tabIngredients_filtre)
+                        }
+                    }
+                }
                 console.log("my filter")
                 console.log(tabIngredients_filtre)
 
@@ -72,23 +70,21 @@ class  Search{
                 }
                 
             
-                var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
+                //var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
                 
 
                 
-                // var result_searchs = [];
-                // for(let i = 0; i < lstrecipe.length; i++ ){
-                //     for(let j = 0; j < lstrecipe[i].name.length; j++ ){
-                //         console.log(input_search)
-                //         console.log(lstrecipe[i].name)
-                //         if(lstrecipe[i].name.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
-                //             console.log('ok')
-                //             result_searchs.push(lstrecipe[i]);
-                //            // TODO à tester 'break;'
-                //         }
-                //     }
-                // }
-                // console.log(result_searchs)
+                var result_searchs = [];
+                for(let i = 0; i < lstrecipe.length; i++ ){
+                    for(let j = 0; j < lstrecipe[i].name.length; j++ ){
+                        if(lstrecipe[i].name.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                            console.log('ok')
+                            result_searchs.push(lstrecipe[i]);
+                           // TODO à tester 'break;'
+                        }
+                    }
+                }
+                console.log(result_searchs)
 
 
                 const result = result_searchs.concat(tabingreselcted);
@@ -128,30 +124,31 @@ class  Search{
                 for (let i = 0; i < recipe.ingredients.length; i++) {
                     const ingre = recipe.ingredients[i];
                     
-                    let lstingredient = [];
+                    let lstingredient = null;
                     //console.log(ingre);
-                    //lstingredient = tabIngrediants.find(x => x.ingredient == ingre.ingredient);
-                    //console.log(tabIngrediants)
+                    //lstingredient = tabIngredients.find(x => x.ingredient == ingre.ingredient);
+                    
                     for (let index = 0; index < tabIngredients.length; index++) {
 
                         const element = tabIngredients[index];
-                        if (element.ingredient == ingre.ingredient) {                              
+                        if (element.ingredient == ingre.ingredient) {  
+                                                       
                              lstingredient = element;
                         }
-                        return lstingredient;
                     }
+                    //console.log(lstingredient)
 
-                    if(lstingredient != undefined){
+                    if(lstingredient != null){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
                         
-                        // if (!lstingredient.id == false) {
-                        //     lstingredient.id.push(recipe.id);
-                        //     //console.log(lstingredient.id);
-                        // }
-                        
-                        if(!lstingredient.id.includes(recipe.id)){ 
+                        if (!lstingredient.id == false) {
                             lstingredient.id.push(recipe.id);
+                            //console.log(lstingredient.id);
                         }
+                        
+                        // if(!lstingredient.id.includes(recipe.id)){ 
+                        //     lstingredient.id.push(recipe.id);
+                        // }
                         tabIngredients.slice(tabIngredients.indexOf(lstingredient),1);
                         
                     }else{              
