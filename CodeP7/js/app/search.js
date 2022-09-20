@@ -44,7 +44,7 @@ class  Search{
                 for(let i = 0; i < resultIngre.length; i++ ){
                     for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
                         //console.log(resultIngre[i].ingredient)
-                        if(resultIngre[i].ingredient[j].toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                        if(resultIngre[i].ingredient.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
                             tabIngredients_filtre.push(resultIngre[i]);
                             console.log(tabIngredients_filtre)
                         }
@@ -380,6 +380,7 @@ class  Search{
                         const pCard = new Recette_card(recipe);
                         const pCardElement = pCard.createrecette();
                         $recette.appendChild(pCardElement);
+
                     }                        
                 } 
                 ingredients.remove();              

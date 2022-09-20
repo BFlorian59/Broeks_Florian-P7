@@ -100,6 +100,10 @@ class Resultsearch{
                 ` 
             }
             $recette.innerHTML = searchtag;
+        }else if (tabtag.length < 1) {
+            searchtag += ` ` 
+                              
+                
         }
         
     }   
