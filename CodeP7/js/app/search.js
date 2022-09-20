@@ -144,15 +144,15 @@ class  Search{
                     if(lstingredient != undefined){
                     //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
                         
-                        if (!lstingredient.id == false) {
-                            lstingredient.id.push(recipe.id);
-                            //console.log(lstingredient.id);
-                        }
-                        
-                        // if(!lstingredient.id.includes(recipe.id)){ 
+                        // if (!lstingredient.id == false) {
                         //     lstingredient.id.push(recipe.id);
+                        //     //console.log(lstingredient.id);
                         // }
-                        //tabIngrediants.slice(tabIngrediants.indexOf(lstingredient),1);
+                        
+                        if(!lstingredient.id.includes(recipe.id)){ 
+                            lstingredient.id.push(recipe.id);
+                        }
+                        tabIngredients.slice(tabIngredients.indexOf(lstingredient),1);
                         
                     }else{              
                         lstingredient = {
