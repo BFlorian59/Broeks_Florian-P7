@@ -18,6 +18,7 @@ class Dropdowns{
     }
 
 
+    // permet de changer le css quand on click sur les 3 dropdowns pour afficher la barre de recherche
     addEventListeners () {
         document.querySelector("#fleche_up").style.display = "none";
         document.querySelector("#Recherche1").style.display = "none";
@@ -98,6 +99,7 @@ class Dropdowns{
 
     }
 
+    // permet d'afficher les tags sélectionnés en haut des dropdowns
     displaytag(){
         document.querySelectorAll('.items').forEach(ingredient => {
             ingredient.addEventListener('click', () => {
@@ -139,6 +141,8 @@ class Dropdowns{
         
     }
 
+    // permet de filtrer les ingrédients, ustensil et les appareils présents dans les dropdowns 
+    //et d'afficher les tags sélectionnés en haut des dropdowns quand on les filtre
     search(){
         var Ingredientinput = document.querySelector('#Ingredient');
         Ingredientinput.addEventListener('keyup', () =>{
@@ -289,7 +293,7 @@ class Dropdowns{
 
     }
    
-      
+    // permet d'afficher les ingrédients, ustensil et les appareils présents dans les dropdowns   
     createdropdowns(){
       
         var removed = this.ingredients.splice(10, 41);

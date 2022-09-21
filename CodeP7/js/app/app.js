@@ -27,10 +27,11 @@ class App {
             $recette.appendChild(pCardElement)  
 
             // ajouter les tableaux ingredients, ustensils et appareils
-            //TODO boucler sur les tableaux et associer par exemple l'ingrédient à la recette
+            
             Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
             tabAppareils.push(recipe.appliance);           
 
+            // boucler sur les tableaux et associer par exemple l'ingrédient à la recette
             let recette = null;
             recipe.ingredients.forEach(ingre => {   
                 recette = null;

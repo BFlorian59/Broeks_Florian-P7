@@ -8,6 +8,7 @@ class Resultsearch{
         this.$recette = $recette
     }
 
+     // permet d'afficher les recettes filtrer par la barre de recherche dans le html
     displaysearch(){
         
         var filtre ='';
@@ -53,6 +54,7 @@ class Resultsearch{
     }  
 
 
+    // permet d'afficher les recettes filtrer selon les tags sélectionnés dans le html
     displaysearchtag(result_tag, $recette, tabtag){
         console.log(result_tag)
         var searchtag ='';
