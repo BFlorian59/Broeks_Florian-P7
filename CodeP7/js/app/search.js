@@ -41,7 +41,7 @@
                 let tabingreselcted = [];
                 
                 let resultIngre = getLstRecipes(lstrecipe)
-                console.log(resultIngre)
+                 // filtrer les ingredient qui correspond au mot clé
                 var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
                 console.log("result après add Carotte tab ingredient ");
                 console.log(tabIngredients_filtre);
