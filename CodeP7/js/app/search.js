@@ -44,15 +44,12 @@ class  Search{
                 for(let i = 0; i < resultIngre.length; i++ ){
                     for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
                         //console.log(resultIngre[i].ingredient)
-                        if(resultIngre[i].ingredient.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                        let ingreinput = resultIngre[i].ingredient.toLocaleLowerCase().indexOf(input_search.toLocaleLowerCase());
+                        if(ingreinput > -1){
                             tabIngredients_filtre.push(resultIngre[i]);
-                            console.log(tabIngredients_filtre)
                         }
                     }
                 }
-                console.log("my filter")
-                console.log(tabIngredients_filtre)
-
                 // console.log("result après add Carotte tab ingredient ");
                 // console.log(tabIngrediants_filtre);
                 let lstRecipesSelected = [];
@@ -72,34 +69,26 @@ class  Search{
                     tabingreselcted.push(element);
                     
                 }
-                
-            
+                            
                 //var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
-                
-
                 
                 var result_searchs = [];
                 for(let i = 0; i < lstrecipe.length; i++ ){
-                    for(let j = 0; j < lstrecipe[i].name.length; j++ ){
-                        if(lstrecipe[i].name.toLocaleLowerCase() == input_search.toLocaleLowerCase()){
+                    for(let j = 0; j < lstrecipe[i].name.length ; j++ ){
+                        let nameinput = lstrecipe[i].name.toLocaleLowerCase().indexOf(input_search.toLocaleLowerCase());
+                        if(nameinput > -1){
                             result_searchs.push(lstrecipe[i]);
-                           // TODO à tester 'break;'
+                        }
+                    }
+
+                    for(let j = 0; j < lstrecipe[i].description.length ; j++ ){
+                        let descriptioninput = lstrecipe[i].description.toLocaleLowerCase().indexOf(input_search.toLocaleLowerCase());
+                        if(descriptioninput > -1){
+                            result_searchs.push(lstrecipe[i]);
                         }
                     }
                     
                 }
-
-                // for(let i = 0; i < lstrecipe.length; i++ ){
-                //     for(let j = 0; j < lstrecipe[i].description.length; j++ ){
-                //         console.log(lstrecipe[i].description[j])
-                //         if(lstrecipe[i].description[j].toLocaleLowerCase() == input_search.toLocaleLowerCase()){
-                //             result_searchs.push(lstrecipe[i]);
-                //            // TODO à tester 'break;'
-                //         }
-                //     }                    
-                // }
-                console.log(result_searchs)
-
 
                 const result = result_searchs.concat(tabingreselcted);
                 this.resultset = [...new Set(result)];
@@ -238,15 +227,6 @@ class  Search{
 
         result_tag = this.Recherchepartags(result_tag);   
 
-        // for(let i = 0; i < result_tag.length; i++ ){
-        //     for(let j = 0; j < result_tag[i].length; j++ ){
-        //         console.log(lstrecipe[i].description[j])
-        //         if(result_tag[i]!== undefined){
-        //             result_searchs.push(result_searchs[i]);
-        //                 // TODO à tester 'break;'
-        //         }
-        //     }                    
-        // }
         //result_tag = result_tag.filter(tag => tag !== undefined);
         result_tag = [...new Set(result_tag)];
 
