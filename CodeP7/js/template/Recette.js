@@ -5,6 +5,7 @@ class Recette_card{
         this.ingrediants = '';     
     }
 
+    // Afficher les recettes dans le html
     createrecette(){       
 
         this.recipe.ingredients.forEach((ingrediant) => { 

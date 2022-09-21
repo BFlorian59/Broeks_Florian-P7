@@ -40,6 +40,7 @@ class  Search{
                 let resultIngre = getLstRecipes(lstrecipe);
                 console.log(resultIngre);
                 //var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                // filtrer les ingredient qui correspond au mot clé 
                 var tabIngredients_filtre = [];
                 for(let i = 0; i < resultIngre.length; i++ ){
                     for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
@@ -52,26 +53,22 @@ class  Search{
                 }
                 // console.log("result après add Carotte tab ingredient ");
                 // console.log(tabIngrediants_filtre);
+
+                // mette dans un tableau les recettes qui correspond au ingredient qui ont était filtré 
                 let lstRecipesSelected = [];
 
                 for (let index = 0; index < tabIngredients_filtre.length; index++) {
                     const element = tabIngredients_filtre[index];
                     for (let i = 0; i < element.id.length; i++) {
                         const id = element.id[i];
-                        lstRecipesSelected.push(this.recipe[id-1]);
-                        //console.log(lstRecipesSelected)
+                        lstRecipesSelected.push(this.recipe[id-1]);     
                     }
-                    
-                }
-
-                for (let index = 0; index < lstRecipesSelected.length; index++) {
-                    const element = lstRecipesSelected[index];
-                    tabingreselcted.push(element);
                     
                 }
                             
                 //var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
                 
+                // filtrer les recettes qui correspond au mot clé présent dans le nom ou dans la description
                 var result_searchs = [];
                 for(let i = 0; i < lstrecipe.length; i++ ){
                     for(let j = 0; j < lstrecipe[i].name.length ; j++ ){
@@ -90,6 +87,8 @@ class  Search{
                     
                 }
 
+
+                // fusionner le tableau des recette filtré avec les ingrédients avec le tableau des recette filtré avec le nom et la description  
                 const result = result_searchs.concat(tabingreselcted);
                 this.resultset = [...new Set(result)];
 
@@ -119,6 +118,8 @@ class  Search{
             }  
             
         });    
+
+        // permet la recherche des tags sélectionnés et un mot clé
         function getLstRecipes( lstRecipes){
             let tabIngredients= [];
             for (let index = 0; index < lstRecipes.length; index++) {
@@ -142,7 +143,7 @@ class  Search{
                     //console.log(lstingredient)
 
                     if(lstingredient != null){
-                    //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
+                    //ici vérifier si l'id de la recette n'est pas déjà ajouté.
                         
                         if (!lstingredient.id == false) {
                             lstingredient.id.push(recipe.id);
@@ -179,11 +180,12 @@ class  Search{
         var result_tag = [];  
         var lstrecipe = this.recipe;
 
-        if(input.value.length > 2){
-            lstrecipe =  this.globalSearch();
-            console.log('ok')
-        }
+        // if(input.value.length > 2){
+        //     lstrecipe =  this.globalSearch();
+        //     console.log('ok')
+        // }
         
+        // filtrer les recettes selon les tags sélectionnés
         for (let index = 0; index < this.recipe.length; index++) {
             const recipe = this.recipe[index];
 
