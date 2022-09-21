@@ -149,9 +149,20 @@ class Dropdowns{
         Ingredientinput.addEventListener('keyup', () =>{
             if ( Ingredientinput.value.length > 2) {
                 const input = Ingredientinput.value;
-                const result = this.uniqueingre.filter(ingres => ingres.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
+                var resultingre = []
+                for(let i = 0; i < this.uniqueingre.length; i++ ){
+                    for(let j = 0; j < this.uniqueingre[i].length; j++ ){
+                        //console.log(resultIngre[i].ingredient)
+                        let uniqueingre = this.uniqueingre[i].toLocaleLowerCase().indexOf(input.toLocaleLowerCase());
+                        if(uniqueingre > -1){
+                            resultingre.push(this.uniqueingre[i]);
+                            resultingre = [...new Set(resultingre)];
+
+                        }
+                    }
+                }
                 let suggestion1 ='';
-                result.forEach(resultItems1 =>
+                resultingre.forEach(resultItems1 =>
                     suggestion1 += 
                     `<li ><a class="items dropdown-item"  href="#" >${resultItems1}</a></li>`
                 )
@@ -200,7 +211,19 @@ class Dropdowns{
         Appareilinput.addEventListener('keyup', () =>{
             if ( Appareilinput.value.length > 2) {
                 const input_appareil = Appareilinput.value;
-                const result_appareils = this.unique_appliances.filter(appareils => appareils.toLocaleLowerCase().includes(input_appareil.toLocaleLowerCase()));
+                var result_appareils = []
+                for(let i = 0; i < this.unique_appliances.length; i++ ){
+                    for(let j = 0; j < this.unique_appliances[i].length; j++ ){
+                        //console.log(resultIngre[i].ingredient)
+                        let unique_appliances = this.unique_appliances[i].toLocaleLowerCase().indexOf(input_appareil.toLocaleLowerCase());
+                        if(unique_appliances > -1){
+                            result_appareils.push(this.unique_appliances[i]);
+                            result_appareils = [...new Set(result_appareils)];
+
+                        }
+                    }
+                }
+
                 let suggestion ='';
                 result_appareils.forEach(resultItems2 =>
                 suggestion += 
@@ -248,7 +271,19 @@ class Dropdowns{
         Ustensilsinput.addEventListener('keyup', () =>{
             if ( Ustensilsinput.value.length > 2) {
                 const input_ustensils = Ustensilsinput.value;
-                const result_ustensils = this.unique_ustensil.filter(ustensils => ustensils.toLocaleLowerCase().includes(input_ustensils.toLocaleLowerCase()));
+                var result_ustensils = []
+                for(let i = 0; i < this.unique_ustensil.length; i++ ){
+                    for(let j = 0; j < this.unique_ustensil[i].length; j++ ){
+                        //console.log(resultIngre[i].ingredient)
+                        let unique_ustensil = this.unique_ustensil[i].toLocaleLowerCase().indexOf(input_ustensils.toLocaleLowerCase());
+                        if(unique_ustensil > -1){
+                            result_ustensils.push(this.unique_ustensil[i]);
+                            result_ustensils = [...new Set(result_ustensils)];
+
+                        }
+                    }
+                }
+                
                 let suggestion ='';
                 result_ustensils.forEach(resultItems3 =>
                     suggestion += 
