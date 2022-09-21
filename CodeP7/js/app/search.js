@@ -39,7 +39,7 @@ class  Search{
                 let tabingreselcted = [];
                 let resultIngre = getLstRecipes(lstrecipe);
                 console.log(resultIngre);
-                //var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                
                 // filtrer les ingredient qui correspond au mot clé 
                 var tabIngredients_filtre = [];
                 for(let i = 0; i < resultIngre.length; i++ ){
@@ -65,9 +65,7 @@ class  Search{
                     }
                     
                 }
-                            
-                //var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
-                
+                                        
                 // filtrer les recettes qui correspond au mot clé présent dans le nom ou dans la description
                 var result_searchs = [];
                 for(let i = 0; i < lstrecipe.length; i++ ){
@@ -86,7 +84,6 @@ class  Search{
                     }
                     
                 }
-
 
                 // fusionner le tableau des recette filtré avec les ingrédients avec le tableau des recette filtré avec le nom et la description  
                 const result = result_searchs.concat(tabingreselcted);
