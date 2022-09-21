@@ -88,7 +88,9 @@
                 });
             }  
             
-        });    
+        });   
+        
+        // obtenir une liste de recette avec les id de recette qui sont associés
         function getLstRecipes( lstRecipes){
             let tabIngredients= [];
             lstRecipes.forEach((recipe) => {
