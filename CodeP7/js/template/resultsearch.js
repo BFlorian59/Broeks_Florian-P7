@@ -100,10 +100,9 @@ class Resultsearch{
                 ` 
             }
             $recette.innerHTML = searchtag;
-        }else if (tabtag.length < 1) {
-            searchtag += ` ` 
-                              
-                
+        }
+        if (result_tag.length < 1 && tabtag.length < 1) {
+            $recette.innerHTML = ' ';
         }
         
     }   
