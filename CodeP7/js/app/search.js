@@ -54,14 +54,10 @@
                              
                     })           
                 });
-                lstRecipesSelected.forEach(element => { 
-                    tabingreselcted.push(element);
-                });
-
                 
                 var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
 
-                const tabsearchs = result_searchs.concat(tabingreselcted);
+                const tabsearchs = result_searchs.concat(lstRecipesSelected);
                 this.tabsearchsset = [...new Set(tabsearchs)];
 
                 const search = new Resultsearch(this.recipe, this.tabsearchsset);
