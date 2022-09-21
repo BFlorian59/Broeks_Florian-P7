@@ -47,16 +47,17 @@
                 console.log(tabIngredients_filtre);
                 let lstRecipesSelected = [];
                 // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
+                 // mette dans un tableau les recettes qui correspond au ingredient qui on était filtré 
                 tabIngredients_filtre.forEach(element => {
                     element.id.forEach(id => {
-                        lstRecipesSelected.push(this.recipe[id-1]);
-                       
-                             
+                        lstRecipesSelected.push(this.recipe[id-1]);         
                     })           
                 });
-                
+
+                // filtrer les recettes qui correspond au mot clé présent dans le nom ou dans la description
                 var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
 
+                // fusionner le tableau des recette filtré avec les ingrédients avec le tableau des recette filtré avec le nom et la description
                 const tabsearchs = result_searchs.concat(lstRecipesSelected);
                 this.tabsearchsset = [...new Set(tabsearchs)];
 
@@ -98,7 +99,7 @@
                     lstingredient = null;
                     lstingredient = tabIngredients.find(x => x.ingredient == ingre.ingredient);
                     if(lstingredient != undefined){
-                        //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
+                        //ici vérifier si l'id de la recette n'est pas déjà ajouté.
                         if(!lstingredient.id.includes(recipe.id)){
                             lstingredient.id.push(recipe.id);
                         }
@@ -117,7 +118,6 @@
            
             return tabIngredients;
         }
-        return this.tabsearchsset;
     }
    
 
@@ -130,6 +130,7 @@
         var result_tag = [];  
         var lstrecipe = this.recipe;
 
+        // filtrer les recettes selon les tags sélectionnés
         lstrecipe.forEach(recipe =>{
             if(this.tabtag.includes(recipe.appliance)){
                 result_tag.push(recipe);  
@@ -150,6 +151,7 @@
             });
         });
         
+        // recherche par plusieurs tags
         result_tag = result_tag.map(recette =>{
             if(result_tag.filter(tag => tag==recette).length == this.tabtag.length){
                 return recette;
