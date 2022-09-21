@@ -26,6 +26,7 @@
             //condition tag selectionné
             if(this.tabtag.length > 0){
                 lstrecipe =  this.addTagSearch();
+                console.log(lstrecipe)
             }
 
             if (this.tabtag.length < 1) {
@@ -40,6 +41,7 @@
                 let tabingreselcted = [];
                 
                 let resultIngre = getLstRecipes(lstrecipe)
+                console.log(resultIngre)
                 var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
                 console.log("result après add Carotte tab ingredient ");
                 console.log(tabIngredients_filtre);
@@ -57,9 +59,8 @@
                 });
 
                 
-            
                 var result_searchs = lstrecipe.filter(search => search.name.toLocaleLowerCase().includes(input_search)||search.description.toLocaleLowerCase().includes(input_search));
-                var result_searchs =[]
+
                 const tabsearchs = result_searchs.concat(tabingreselcted);
                 this.tabsearchsset = [...new Set(tabsearchs)];
 
@@ -120,18 +121,20 @@
            
             return tabIngredients;
         }
+        return this.tabsearchsset;
     }
    
 
     //recherche par tag
     addTagSearch(result_tag){
         const $recette = document.querySelector(".recette");
+        const input = document.querySelector('.Recherche-Input');
         const tag = this.tagingre.concat(this.tagapp).concat(this.tagust);
         this.tabtag = [...new Set(tag)];
         var result_tag = [];  
+        var lstrecipe = this.recipe;
 
-
-        this.recipe.forEach(recipe =>{
+        lstrecipe.forEach(recipe =>{
             if(this.tabtag.includes(recipe.appliance)){
                 result_tag.push(recipe);  
             }
