@@ -238,6 +238,7 @@ class  Search{
     }
 
 
+    // recherche par plusieurs tags
     Recherchepartags(lstRecipes){
         // console.log(result_tag)
         // console.log(lstRecipes);
@@ -260,9 +261,7 @@ class  Search{
       
                 if(lstRecipes.length == newcpt){
       
-                    //console.log("Je dois passer trois fois ici")
                     if(cpt == this.tabtag.length){
-                        //console.log("je passe là")
                         ResultLstRecipes.push(lstRecipes[i]);
       
                     }
