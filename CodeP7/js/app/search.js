@@ -17,6 +17,7 @@
         
         const $recette = document.querySelector(".recette");
         var lstrecipe = this.recipe;
+        var tabsearchsset = []
        
         var buttonsearch = document.querySelector(".Recherche-Icone");
         const input = document.querySelector('.Recherche-Input');
@@ -40,11 +41,11 @@
                 //compléter la recherche (sur les ingrédients ... description )
                 let tabingreselcted = [];
                 
-                let resultIngre = getLstRecipes(lstrecipe)
+                let resultIngre = getLstRecipes(lstrecipe);
                  // filtrer les ingredient qui correspond au mot clé
                 var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-                console.log("result après add Carotte tab ingredient ");
-                console.log(tabIngredients_filtre);
+                // console.log("result après add Carotte tab ingredient ");
+                // console.log(tabIngredients_filtre);
                 let lstRecipesSelected = [];
                 // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
                  // mette dans un tableau les recettes qui correspond au ingredient qui on était filtré 
@@ -60,6 +61,7 @@
                 // fusionner le tableau des recette filtré avec les ingrédients avec le tableau des recette filtré avec le nom et la description
                 const tabsearchs = result_searchs.concat(lstRecipesSelected);
                 this.tabsearchsset = [...new Set(tabsearchs)];
+                tabsearchsset = this.tabsearchsset
 
                 const search = new Resultsearch(this.recipe, this.tabsearchsset);
                 search.displaysearch();
@@ -74,6 +76,8 @@
 
                     $recette.innerHTML = error;
                 }
+                
+                return tabsearchsset
             }else if (input.value.length < 3){
 
                 $recette.innerHTML ='';
@@ -129,6 +133,14 @@
         this.tabtag = [...new Set(tag)];
         var result_tag = [];  
         var lstrecipe = this.recipe;
+            
+            // if(input.value.length > 2 && this.tabtag.length > 0){
+            //     lstrecipe =  this.globalSearch();
+            //     console.log(lstrecipe)
+
+            // }
+
+        
 
         // filtrer les recettes selon les tags sélectionnés
         lstrecipe.forEach(recipe =>{
