@@ -13,7 +13,7 @@ class  Search{
 
 
 
-    Search(){
+    search(){
         const $recette = document.querySelector(".recette");
         var lstrecipe = this.recipe;
        
@@ -436,7 +436,7 @@ class  Search{
                 this.tagingre.push(ingredient.innerHTML);
                 this.removeTagSearch();
                 this.addTagSearch();
-                this.Search();
+                this.search();
             });
         }
         
@@ -446,7 +446,7 @@ class  Search{
                 this.tagapp.push(appliance.innerHTML);
                 this.removeTagSearch();
                 this.addTagSearch();
-                this.Search();
+                this.search();
             });
         }
         
@@ -456,7 +456,7 @@ class  Search{
                 this.tagust.push(ustensils.innerHTML);
                 this.removeTagSearch();
                 this.addTagSearch();
-                this.Search();
+                this.search();
             });
         }
 
@@ -468,7 +468,7 @@ class  Search{
                     this.tagingre.push(ingredient.innerHTML);
                     this.removeTagSearch();
                     this.addTagSearch();
-                    this.Search();
+                    this.search();
                 });
             }
     
@@ -482,7 +482,7 @@ class  Search{
                     this.tagapp.push(appliance.innerHTML);
                     this.removeTagSearch();
                     this.addTagSearch();
-                    this.Search();
+                    this.search();
                 });
             }
     
@@ -496,7 +496,7 @@ class  Search{
                     this.tagust.push(ustensils.innerHTML);
                     this.removeTagSearch();
                     this.addTagSearch();
-                    this.Search();
+                    this.search();
                 });
             }
     
