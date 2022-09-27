@@ -13,50 +13,48 @@ class  Search{
 
 
 
-    search(){
-        const $recette = document.querySelector(".recette");
-        var lstrecipe = this.recipe;
-       
-        var buttonsearch = document.querySelector(".Recherche-Icone");
-        const input = document.querySelector('.Recherche-Input');
-        
-        buttonsearch.addEventListener('click', () => {
-
+        search(){
+            const $recette = document.querySelector(".recette");
+            var lstrecipe = this.recipe;
+            var tabsearchsset = []
+           
+            var buttonsearch = document.querySelector(".Recherche-Icone");
+            const input = document.querySelector('.Recherche-Input');
             //condition tag selectionné
             if(this.tabtag.length > 0){
                 lstrecipe =  this.addTagSearch();
+                console.log(lstrecipe)
             }
-
+    
             if (this.tabtag.length < 1) {
                 lstrecipe = this.recipe;
             }
-
+    
             // commencer la recherche si tu as plus de 3 caracteres
             if (input.value.length > 2 ) {
+    
                 const input_search = input.value;
                 //compléter la recherche (sur les ingrédients ... description )
                 let tabingreselcted = [];
-                let resultIngre = getLstRecipes(lstrecipe);
-                console.log(resultIngre);
                 
-                // filtrer les ingredient qui correspond au mot clé 
-                var tabIngredients_filtre = [];
-                for(let i = 0; i < resultIngre.length; i++ ){
-                    for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
-                        //console.log(resultIngre[i].ingredient)
-                        let ingreinput = resultIngre[i].ingredient.toLocaleLowerCase().indexOf(input_search.toLocaleLowerCase());
-                        if(ingreinput > -1){
-                            tabIngredients_filtre.push(resultIngre[i]);
-                        }
-                    }
-                }
+                let resultIngre = getLstRecipes(lstrecipe);
+                 // filtrer les ingredient qui correspond au mot clé
+                 var tabIngredients_filtre = [];
+                 for(let i = 0; i < resultIngre.length; i++ ){
+                     for(let j = 0; j < resultIngre[i].ingredient.length; j++ ){
+                         //console.log(resultIngre[i].ingredient)
+                         let ingreinput = resultIngre[i].ingredient.toLocaleLowerCase().indexOf(input_search.toLocaleLowerCase());
+                         if(ingreinput > -1){
+                             tabIngredients_filtre.push(resultIngre[i]);
+                         }
+                     }
+                 }
                 // console.log("result après add Carotte tab ingredient ");
-                // console.log(tabIngrediants_filtre);
-
-                // mette dans un tableau les recettes qui correspond au ingredient qui ont était filtré 
+                // console.log(tabIngredients_filtre);
                 let lstRecipesSelected = [];
-
-                for (let index = 0; index < tabIngredients_filtre.length; index++) {
+                // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
+                 // mette dans un tableau les recettes qui correspond au ingredient qui on était filtré 
+                 for (let index = 0; index < tabIngredients_filtre.length; index++) {
                     const element = tabIngredients_filtre[index];
                     for (let i = 0; i < element.id.length; i++) {
                         const id = element.id[i];
@@ -64,7 +62,7 @@ class  Search{
                     }
                     
                 }
-                                        
+    
                 // filtrer les recettes qui correspond au mot clé présent dans le nom ou dans la description
                 var result_searchs = [];
                 for(let i = 0; i < lstrecipe.length; i++ ){
@@ -74,50 +72,30 @@ class  Search{
                             result_searchs.push(lstrecipe[i]);
                         }
                     }
-
-                    for(let j = 0; j < lstrecipe[i].description.length ; j++ ){
-                        let descriptioninput = lstrecipe[i].description.toLocaleLowerCase().indexOf(input_search.toLocaleLowerCase());
-                        if(descriptioninput > -1){
-                            result_searchs.push(lstrecipe[i]);
-                        }
-                    }
-                    
                 }
-
-                // fusionner le tableau des recette filtré avec les ingrédients avec le tableau des recette filtré avec le nom et la description  
-                const result = result_searchs.concat(tabingreselcted);
-                this.resultset = [...new Set(result)];
-
-                const search = new Resultsearch(this.recipe, this.resultset);
+                // fusionner le tableau des recette filtré avec les ingrédients avec le tableau des recette filtré avec le nom et la description
+                const tabsearchs = result_searchs.concat(lstRecipesSelected);
+                this.tabsearchsset = [...new Set(tabsearchs)];
+                tabsearchsset = this.tabsearchsset
+    
+                const search = new Resultsearch(this.recipe, this.tabsearchsset);
                 search.displaysearch();
-                console.log(this.resultset)
-                if (this.resultset.length == 0) {
+               
+                if (this.tabsearchsset.length == 0) {
                     var error ='';
                     error = `
                     <div id= "error">
                         <p>Aucune recette ne correspond à votre critère</p>
                     </div>
                         `
-
+    
                     $recette.innerHTML = error;
                 }
-            }else if (input.value.length < 3){
-
-                $recette.innerHTML ='';
-               
-                for (let index = 0; index < this.recipe.length; index++) {
-                    const recipe = this.recipe[index];
-                    const pCard = new Recette_card(recipe);
-                    const pCardElement = pCard.createrecette();
-                    $recette.appendChild(pCardElement); 
-                }
-            }  
-            
-        });    
-
-        // permet la recherche des tags sélectionnés et un mot clé
-        function getLstRecipes( lstRecipes){
-            let tabIngredients= [];
+                
+                return tabsearchsset
+            }
+            function getLstRecipes( lstRecipes){
+                let tabIngredients= [];
             for (let index = 0; index < lstRecipes.length; index++) {
                 const recipe = lstRecipes[index];
 
@@ -164,7 +142,8 @@ class  Search{
             }
             return tabIngredients;
         }
-    }
+        }
+    
    
 
     // recherche mot clé 
