@@ -284,6 +284,7 @@
                 this.removeTagSearch();
                 this.addTagSearch();
                 this.search();
+                this.globalSearch();
             });
         });
 
@@ -295,6 +296,7 @@
                 this.addTagSearch();
                 this.removeTagSearch();
                 this.search();
+                this.globalSearch();
             });
         });
 
@@ -304,6 +306,7 @@
                 this.addTagSearch();
                 this.removeTagSearch();
                 this.search();
+                this.globalSearch();
             });
         });
 
@@ -316,6 +319,7 @@
                     this.addTagSearch();
                     this.removeTagSearch();
                     this.search();
+                    this.globalSearch();
                 });
             });
     
@@ -330,6 +334,7 @@
                     this.addTagSearch();
                     this.removeTagSearch();
                     this.search();
+                    this.globalSearch();
                 });
             });
     
@@ -344,6 +349,7 @@
                     this.addTagSearch();
                     this.removeTagSearch();
                     this.search();
+                    this.globalSearch();
                 });
             });
     

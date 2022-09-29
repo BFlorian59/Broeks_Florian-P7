@@ -130,6 +130,7 @@ body{
     display: flex;
     flex-direction: row;
     width: 110%;
+    
 }
 
 #dropdownMenuButton2{
@@ -146,6 +147,7 @@ body{
 
 .fa-solid{
     margin-left: 10%;
+    padding-top: 4%;
 }
   
   .dropdown1, .dropdown2, .dropdown3 {
@@ -161,7 +163,7 @@ body{
 }
 .Recherche-Ustensil{
     border: none;
-    width: 75%;
+    width: 100%;
 }
 
 
@@ -204,7 +206,7 @@ body{
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
     transform: translate(0px, 0px)!important;
-    inset: 55px auto auto 0px !important;
+    inset: 24px auto auto 0px !important;
     -webkit-columns: 2;
     
 
@@ -215,7 +217,7 @@ body{
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
     transform: translate(0px, 0px)!important;
-    inset: 55px auto auto 0px !important;
+    inset: 24px auto auto 0px !important;
 
 }
 
