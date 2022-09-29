@@ -417,6 +417,7 @@ class  Search{
                 this.removeTagSearch();
                 this.addTagSearch();
                 this.search();
+                this.globalSearch();
             });
         }
         
@@ -427,6 +428,7 @@ class  Search{
                 this.removeTagSearch();
                 this.addTagSearch();
                 this.search();
+                this.globalSearch();
             });
         }
         
@@ -437,6 +439,7 @@ class  Search{
                 this.removeTagSearch();
                 this.addTagSearch();
                 this.search();
+                this.globalSearch();
             });
         }
 
@@ -449,6 +452,7 @@ class  Search{
                     this.removeTagSearch();
                     this.addTagSearch();
                     this.search();
+                    this.globalSearch();
                 });
             }
     
@@ -463,6 +467,7 @@ class  Search{
                     this.removeTagSearch();
                     this.addTagSearch();
                     this.search();
+                    this.globalSearch();
                 });
             }
     
@@ -477,6 +482,7 @@ class  Search{
                     this.removeTagSearch();
                     this.addTagSearch();
                     this.search();
+                    this.globalSearch();
                 });
             }
     
