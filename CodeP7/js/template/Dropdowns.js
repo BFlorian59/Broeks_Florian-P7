@@ -378,8 +378,8 @@ class Dropdowns{
             </div>
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown">
                 <b id ="Ingredients">Ingredients</b>
-                <i class="fa-solid fa-sort-up" id="fleche_up"></i>
-                <i class="fa-solid fa-sort-down" id="fleche_down"></i>
+                <i class="fa-sharp fa-solid fa-angle-up" id="fleche_up"></i>
+                <i class="fa-sharp fa-solid fa-angle-down" id="fleche_down"></i>
                 
             </button>
             <ul class="dropdown-menu" id="dropdown-menu1" aria-labelledby="dropdownMenuButton1">
@@ -398,8 +398,9 @@ class Dropdowns{
             </div>
             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <b id ="Appareils">Appareils</b>
-                <i class="fa-solid fa-sort-up" id="fleche_up2"></i>
-                <i class="fa-solid fa-sort-down" id="fleche_down2"></i>
+                <i class="fa-sharp fa-solid fa-angle-up" id="fleche_up2"></i>
+                <i class="fa-sharp fa-solid fa-angle-down" id="fleche_down2"></i>
+
             </button>
             <ul class="dropdown-menu" id="dropdown-menu2" aria-labelledby="dropdownMenuButton2">
             ${this.appliance}
@@ -416,8 +417,8 @@ class Dropdowns{
             </div>
             <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                 <b id ="Ustensils">Ustensils</b>
-                <i class="fa-solid fa-sort-up" id="fleche_up3"></i>
-                <i class="fa-solid fa-sort-down" id="fleche_down3"></i>
+                <i class="fa-sharp fa-solid fa-angle-up" id="fleche_up3"></i>
+                <i class="fa-sharp fa-solid fa-angle-down" id="fleche_down3"></i>
             </button>
             <ul class="dropdown-menu" id="dropdown-menu3" aria-labelledby="dropdownMenuButton3">
                ${this.ustensil}
