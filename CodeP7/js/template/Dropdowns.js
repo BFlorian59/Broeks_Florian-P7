@@ -30,8 +30,8 @@ class Dropdowns{
                 document.querySelector("#Ingredients").style.display = "none";
                 document.querySelector("#Recherche1").style.display = "block";
                 document.querySelector("#fleche_up").style.display = "block";
-                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 227%;");
-                document.querySelector(".dropdown1").setAttribute("style", "margin-right: 25%;")
+                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 22%; margin-right: -124%; padding-top: 3%;");
+                document.querySelector(".dropdown1").setAttribute("style", "margin-right: 32%;")
                 listboxOptions.style.display = "block";
                 
             } else {
@@ -54,7 +54,7 @@ class Dropdowns{
                 document.querySelector("#dropdownMenuButton2").setAttribute("aria-expanded", true);
                 document.querySelector("#Appareils").style.display = "none";
                 document.querySelector("#Recherche2").style.display = "block";
-                document.querySelector("#dropdownMenuButton2").setAttribute("style", "border-radius: 0%; width: 100%;");
+                document.querySelector("#dropdownMenuButton2").setAttribute("style", "border-radius: 0%; width: 18%; padding-top: 3%;");
                 document.querySelector("#fleche_down2").style.display = "none";
                 document.querySelector("#fleche_up2").style.display = "block";
                 document.querySelector(".dropdown2").setAttribute("style", "margin-right: 11%;")
@@ -81,7 +81,7 @@ class Dropdowns{
                 document.querySelector("#dropdownMenuButton3").setAttribute("aria-expanded", true);
                 document.querySelector("#Ustensils").style.display = "none";
                 document.querySelector("#Recherche3").style.display = "block";
-                document.querySelector("#dropdownMenuButton3").setAttribute("style", "border-radius: 0%; width: 150%;");
+                document.querySelector("#dropdownMenuButton3").setAttribute("style", "border-radius: 0%; width: 28%; margin-right: -50%; padding-top: 3%;");
                 document.querySelector("#fleche_down3").style.display = "none";
                 document.querySelector("#fleche_up3").style.display = "block";
                 listboxOptions3.style.display = "block";
