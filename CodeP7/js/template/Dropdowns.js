@@ -30,7 +30,7 @@ class Dropdowns{
                 document.querySelector("#Ingredients").style.display = "none";
                 document.querySelector("#Recherche1").style.display = "block";
                 document.querySelector("#fleche_up").style.display = "block";
-                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 227%;");
+                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 22%; margin-right: -124%; padding-top: 4%;");
                 document.querySelector(".dropdown1").setAttribute("style", "margin-right: 25%;")
                 listboxOptions.style.display = "block";
                 
@@ -293,7 +293,7 @@ class Dropdowns{
 
     }
    
-    // permet d'afficher les ingrédients, ustensil et les appareils présents dans les dropdowns   
+    // permet d'afficher et filtrer les doublons les ingrédients, ustensil et les appareils présents dans les dropdowns   
     createdropdowns(){
       
         var removed = this.ingredients.splice(10, 41);
@@ -301,33 +301,30 @@ class Dropdowns{
                 if (!this.uniqueingre.includes(ingre.ingredient)) {
                     this.uniqueingre.push(ingre.ingredient);
                     this.uniqueingre.filter((item,
-                        index) => this.uniqueingre.indexOf(item) === index);
-                     
+                        index) => this.uniqueingre.indexOf(item) === index);  
                     this.ingredient+= `<li ><a class=" items dropdown-item"  href="#" >${ingre.ingredient}</a></li>`;                    
                 }   
             });
            
 
         this.ustensils.forEach((ustensil) => {
-        if (!this.unique_ustensil.includes(ustensil.toLocaleLowerCase())) {
-            this.unique_ustensil.push(ustensil.toLocaleLowerCase());
-            this.unique_ustensil.filter((item,
-                index) => this.unique_ustensil.indexOf(item) === index);
-            //console.log(ustensil);
-            this.ustensil+= `<li><a class="items2 dropdown-item" href="#">${ustensil}</a></li>`;
+            if (!this.unique_ustensil.includes(ustensil.toLocaleLowerCase())) {
+                this.unique_ustensil.push(ustensil.toLocaleLowerCase());
+                this.unique_ustensil.filter((item,
+                    index) => this.unique_ustensil.indexOf(item) === index);
+                this.ustensil+= `<li><a class="items2 dropdown-item" href="#">${ustensil}</a></li>`;
             }
         
         });
-        //console.log(unique_ustensil)
+
 
         this.appliances.forEach((appliances) => {
             if (!this.unique_appliances.includes(appliances)) {
                 this.unique_appliances.push(appliances);
                 this.unique_appliances.filter((item,
                     index) => this.unique_appliances.indexOf(item) === index);
-                //console.log(ustensil);
                 this.appliance+= `<li><a class="items3 dropdown-item" href="#">${appliances}</a></li>`;  
-                }
+            }
         });
 
         const inner = `

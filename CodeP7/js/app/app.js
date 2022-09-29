@@ -9,15 +9,15 @@ class App {
         const data = await api.getRecettes();
     
         const $recette = document.querySelector(".recette")
-        //const $ingrediant = document.querySelector(".ingrediant")
 
+        // tableau de tes tags selectionnés
         let tabUstenssibles = [];
         
         let tabAppareils = [];
 
 
-        // Tableau du resultat de ta recherche
-        // tableau de tes tags selectionnés
+        
+        
 
         //Création d'une card pour chaque recette
         data.recipes.forEach((recipe) => {
@@ -69,6 +69,9 @@ class App {
 
         const dropdowns = new Dropdowns(this.recipe);
         dropdowns.createdropdowns();
+
+        const result = new Resultsearch();
+        result.displaysearchtag();
 
     }
 }

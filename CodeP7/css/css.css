@@ -152,6 +152,7 @@ body{
     position: relative;
     display: inline-block;
     margin-right: 9%;
+    display: flex;
   }
 
   .Recherche-Ingredient, .Recherche-Appareil{
@@ -190,11 +191,11 @@ body{
 }
 
 #dropdown-menu1{
-    width: 227%;
+    width: 221%;
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
     transform: translate(0px, 0px)!important;
-    inset: 55px auto auto 0px !important;
+    inset: 24px auto auto 0px !important;
     -webkit-columns: 3;
 }
 
@@ -228,7 +229,7 @@ body{
 }
 
 #Recherche1 {
-    width: 227%;
+    width: 199%;
 }
 
 #Recherche2 {
