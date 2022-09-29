@@ -134,6 +134,7 @@ class  Search{
                             ingredient: ingre.ingredient,
                             id: [recipe.id]
                         };
+                        
                     }
                     tabIngredients.push(lstingredient);
 
