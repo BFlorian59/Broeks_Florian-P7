@@ -11,7 +11,8 @@
         this.tabsearchsset =[];
     }
    
-    // permet de rechercher les recettes via le mot clé et les tags en même temps
+
+    // permet de rechercher les recettes via le mot clé et les tags
     search(){
         const $recette = document.querySelector(".recette");
         var lstrecipe = this.recipe;
@@ -38,6 +39,8 @@
             let resultIngre = getLstRecipes(lstrecipe);
              // filtrer les ingredient qui correspond au mot clé
             var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+            // console.log("result après add Carotte tab ingredient ");
+            // console.log(tabIngredients_filtre);
             let lstRecipesSelected = [];
             // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
              // mette dans un tableau les recettes qui correspond au ingredient qui on était filtré 
@@ -104,6 +107,7 @@
                         };
                     }
                     tabIngredients.push(lstingredient);
+                    //console.log(tabIngrediants)
                 });
             });
            
@@ -138,10 +142,13 @@
 
                 const input_search = input.value;
                 //compléter la recherche (sur les ingrédients ... description )
+                let tabingreselcted = [];
                 
                 let resultIngre = getLstRecipes(lstrecipe);
                  // filtrer les ingredient qui correspond au mot clé
                 var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
+                // console.log("result après add Carotte tab ingredient ");
+                // console.log(tabIngredients_filtre);
                 let lstRecipesSelected = [];
                 // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
                  // mette dans un tableau les recettes qui correspond au ingredient qui on était filtré 
@@ -212,15 +219,13 @@
                         };
                     }
                     tabIngredients.push(lstingredient);
+                    //console.log(tabIngrediants)
                 });
             });
            
             return tabIngredients;
         }
     }
-
-
-     
    
 
     //recherche par tag
@@ -231,6 +236,14 @@
         this.tabtag = [...new Set(tag)];
         var result_tag = [];  
         var lstrecipe = this.recipe;
+            
+            // if(input.value.length > 2 && this.tabtag.length > 0){
+            //     lstrecipe =  this.globalSearch();
+            //     console.log(lstrecipe)
+
+            // }
+
+        
 
         // filtrer les recettes selon les tags sélectionnés
         lstrecipe.forEach(recipe =>{
@@ -265,8 +278,6 @@
         result_tag = [...new Set(result_tag)];
 
         var tabtag = this.tabtag;
-
-        // appeler la class Resultsearch pour afficher le résultat dans le html
         const searchtag = new Resultsearch();
         searchtag.displaysearchtag(result_tag,$recette, tabtag);
 
@@ -277,6 +288,7 @@
     addEventtag (){
         document.querySelectorAll('.items').forEach(ingredient => {
             ingredient.addEventListener('click', () => {
+                console.log("ptn d'ingredients")
                 this.tagingre.push(ingredient.innerHTML);
                 this.removeTagSearch();
                 this.addTagSearch();

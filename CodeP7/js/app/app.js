@@ -9,15 +9,15 @@ class App {
         const data = await api.getRecettes();
     
         const $recette = document.querySelector(".recette")
+        //const $ingrediant = document.querySelector(".ingrediant")
 
-        // tableau de tes tags selectionnés
         let tabUstenssibles = [];
         
         let tabAppareils = [];
 
 
-        
-        
+        // Tableau du resultat de ta recherche
+        // tableau de tes tags selectionnés
 
         //Création d'une card pour chaque recette
         data.recipes.forEach((recipe) => {
@@ -26,32 +26,36 @@ class App {
 
             $recette.appendChild(pCardElement)  
 
-            // ajouter les tableaux ingredients, ustensils et appareils
             
             Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
             tabAppareils.push(recipe.appliance);           
 
-            // boucler sur les tableaux et associer par exemple l'ingrédient à la recette
+            // boucler sur les tableaux et associer l'ingrédient à la recette
             let recette = null;
-            recipe.ingredients.forEach(ingre => {   
+            for (let i = 0; i < recipe.ingredients.length; i++) {
+                const ingre = recipe.ingredients[i];
+                
                 recette = null;
-                 recette = tabIngredients.find(x => x.ingredient == ingre.ingredient);
-                //console.log(recette)
+                recette = tabIngredients.find(x => x.ingredient == ingre.ingredient);
                 if(recette != undefined){
-                    //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
-                    if(!recette.id.includes(recipe.id)){
-                        recette.id.push(recipe.id);
-                    }
+                //TODO ici vérifier si l'id de la recette n'est pas déjà ajouté.
 
-                    tabIngredients.slice(tabIngredients.indexOf(recette),1);
+                if (!recette.id == false) {
+                    recette.id.push(recipe.id);
+                }
+                    // if(!recette.id.includes(recipe.id)){
+                    //     recette.id.push(recipe.id);
+                    // }
+            
+                tabIngredients.slice(tabIngredients.indexOf(recette),1);
                 }else{              
-                recette = {
-                    ingredient: ingre.ingredient,
-                    id: [recipe.id]
-                };
+                    recette = {
+                        ingredient: ingre.ingredient,
+                        id: [recipe.id]
+                    };
                 }
                 tabIngredients.push(recette)
-            });
+            }            
         });
         const search = new Search(data.recipes);
         search.globalSearch();
@@ -69,9 +73,6 @@ class App {
 
         const dropdowns = new Dropdowns(this.recipe);
         dropdowns.createdropdowns();
-
-        const result = new Resultsearch();
-        result.displaysearchtag();
 
     }
 }

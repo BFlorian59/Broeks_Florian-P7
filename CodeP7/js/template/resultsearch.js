@@ -102,7 +102,7 @@ class Resultsearch{
             
             })
             $recette.innerHTML = searchtag;
-
+            
         }
 
         if (result_tag.length < 1 && tabtag.length < 1) {
