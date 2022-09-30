@@ -332,8 +332,8 @@ class Dropdowns{
     // permet d'afficher les ingrédients, ustensil et les appareils présents dans les dropdowns 
     createdropdowns(){
       
-        var removed = this.ingredients.splice(10, 41);
-        removed.forEach((ingre) => {    
+        
+        this.ingredients.forEach((ingre) => {    
                 if (!this.uniqueingre.includes(ingre.ingredient)) {
                     this.uniqueingre.push(ingre.ingredient);
                     this.uniqueingre.filter((item,
