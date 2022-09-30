@@ -30,7 +30,7 @@ class Dropdowns{
                 document.querySelector("#Ingredients").style.display = "none";
                 document.querySelector("#Recherche1").style.display = "block";
                 document.querySelector("#fleche_up").style.display = "block";
-                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 22%; margin-right: -124%; padding-top: 3%;");
+                document.querySelector("#dropdownMenuButton1").setAttribute("style", "border-radius: 0%; width: 71%; margin-right: -170%; padding-top: 3%;");
                 document.querySelector(".dropdown1").setAttribute("style", "margin-right: 32%;")
                 listboxOptions.style.display = "block";
                 
