@@ -192,8 +192,12 @@ body{
     font-size: 74%;
 }
 
+#fleche_up{
+    margin-left: 70%;
+}
+
 #dropdown-menu1{
-    width: 221%;
+    width: 270%;
     border-top-right-radius: 0%;
     border-top-left-radius: 0%;
     transform: translate(0px, 0px)!important;

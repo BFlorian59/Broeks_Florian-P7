@@ -7,7 +7,7 @@ class App {
     async fetch() {
         const api = new Api("data/recipes.json");
         const data = await api.getRecettes();
-    
+
         const $recette = document.querySelector(".recette")
         //const $ingrediant = document.querySelector(".ingrediant")
 
@@ -15,7 +15,7 @@ class App {
         
         let tabAppareils = [];
 
-
+        
         // Tableau du resultat de ta recherche
         // tableau de tes tags selectionnés
 
@@ -26,10 +26,11 @@ class App {
 
             $recette.appendChild(pCardElement)  
 
-            
+           
             Array.prototype.push.apply(tabUstenssibles,recipe.ustensils)
-            tabAppareils.push(recipe.appliance);           
-
+            tabAppareils.push(recipe.appliance); 
+            
+            
             // boucler sur les tableaux et associer l'ingrédient à la recette
             let recette = null;
             for (let i = 0; i < recipe.ingredients.length; i++) {
@@ -57,12 +58,12 @@ class App {
                 tabIngredients.push(recette)
             }            
         });
-        const search = new Search(data.recipes);
+        const search = new Search(data.recipes, tabAppareils, this.tabsearchsset);
         search.globalSearch();
-
         const dropdowns = new Dropdowns(tabUstenssibles,tabAppareils,tabIngredients, data.recipes);
         dropdowns.createdropdowns();
 
+        
 
     }
 
@@ -71,7 +72,7 @@ class App {
         const recette = new Recette_card(this.recipe);
         recette.createrecette();
 
-        const dropdowns = new Dropdowns(this.recipe);
+        const dropdowns = new Dropdowns(this.recipe, this.tabsearchsset );
         dropdowns.createdropdowns();
 
     }

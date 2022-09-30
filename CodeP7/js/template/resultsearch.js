@@ -10,7 +10,9 @@ class Resultsearch{
 
      // permet d'afficher les recettes filtrer par la barre de recherche dans le html
     displaysearch(){
-        
+
+
+
         var filtre ='';
         const $recette = document.querySelector(".recette");
         
@@ -43,10 +45,6 @@ class Resultsearch{
                     </div>   
                 </div>                                
             `
-    
-            //console.log(filtre)
-            
-            
         });
 
         $recette.innerHTML = filtre;
@@ -56,9 +54,7 @@ class Resultsearch{
 
     // permet d'afficher les recettes filtrer selon les tags sélectionnés dans le html
     displaysearchtag(result_tag, $recette, tabtag){
-        console.log(result_tag)
         var searchtag ='';
-        console.log(result_tag.length)
         if(result_tag.length == 0 && tabtag.length > 1){
             var error ='';
             error = `

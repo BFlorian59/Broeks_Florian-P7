@@ -40,8 +40,6 @@
             let resultIngre = getLstRecipes(lstrecipe);
              // filtrer les ingredient qui correspond au mot clé
              var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-            // console.log("result après add Carotte tab ingredient ");
-            // console.log(tabIngredients_filtre);
             let lstRecipesSelected = [];
             // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
              // mette dans un tableau les recettes qui correspond au ingredient qui on était filtré 
@@ -71,7 +69,7 @@
 
                 $recette.innerHTML = error;
             }
-            
+
             return tabsearchsset
         }
         function getLstRecipes( lstRecipes){
@@ -97,22 +95,23 @@
                         };
                     }
                     tabIngredients.push(lstingredient);
-                    //console.log(tabIngrediants)
                 });
             });
            
             return tabIngredients;
-        }        
+        }
+        
+        
     }
     
 
     // recherche mot clé 
-    globalSearch(){
+    globalSearch(tabsearchsset){
         
         const $recette = document.querySelector(".recette");
         var lstrecipe = this.recipe;
-        var tabsearchsset = []
-       
+        
+
         var buttonsearch = document.querySelector(".Recherche-Icone");
         const input = document.querySelector('.Recherche-Input');
         
@@ -121,7 +120,6 @@
             //condition tag selectionné
             if(this.tabtag.length > 0){
                 lstrecipe =  this.addTagSearch();
-                console.log(lstrecipe)
             }
 
             if (this.tabtag.length < 1) {
@@ -138,8 +136,6 @@
                 let resultIngre = getLstRecipes(lstrecipe);
                  // filtrer les ingredient qui correspond au mot clé
                 var tabIngredients_filtre =  resultIngre.filter(tab => tab.ingredient.toLocaleLowerCase().includes(input_search.toLocaleLowerCase()));
-                // console.log("result après add Carotte tab ingredient ");
-                // console.log(tabIngredients_filtre);
                 let lstRecipesSelected = [];
                 // tabingreselcted => liste de recttes selectionnés sur la liste global par rapport aux ingrédiants
                  // mette dans un tableau les recettes qui correspond au ingredient qui on était filtré 
@@ -170,7 +166,6 @@
 
                     $recette.innerHTML = error;
                 }
-                
                 return tabsearchsset
             }else if (input.value.length < 3){
 
@@ -210,12 +205,13 @@
                         };
                     }
                     tabIngredients.push(lstingredient);
-                    //console.log(tabIngrediants)
                 });
             });
            
             return tabIngredients;
         }
+
+        
     }
    
 
@@ -227,14 +223,6 @@
         this.tabtag = [...new Set(tag)];
         var result_tag = [];  
         var lstrecipe = this.recipe;
-            
-            // if(input.value.length > 2 && this.tabtag.length > 0){
-            //     lstrecipe =  this.globalSearch();
-            //     console.log(lstrecipe)
-
-            // }
-
-        
 
         // filtrer les recettes selon les tags sélectionnés
         lstrecipe.forEach(recipe =>{
@@ -277,9 +265,9 @@
 
     //appeler les méthodes et mettre les tags dans un tableau quand on appuie sur les tags
     addEventtag (){
+
         document.querySelectorAll('.items').forEach(ingredient => {
             ingredient.addEventListener('click', () => {
-                console.log("ptn d'ingredients")
                 this.tagingre.push(ingredient.innerHTML);
                 this.removeTagSearch();
                 this.addTagSearch();
