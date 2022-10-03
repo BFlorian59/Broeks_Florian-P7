@@ -374,10 +374,7 @@ class  Search{
 
     // recherche par plusieurs tags
     Recherchepartags(lstRecipes){
-        // console.log(result_tag)
-        // console.log(lstRecipes);
-        // console.log(this.tabtag)
-      
+     
         let ResultLstRecipes = [];
         for(let i = 0; i < lstRecipes.length; i++){
       
@@ -387,9 +384,6 @@ class  Search{
                 if(lstRecipes[j].id==lstRecipes[i].id){
                     cpt++;
                 }
-                //console.log("nombre d'occurrence ",cpt);
-                //console.log("taille de tableau",lstRecipes.length);
-                //console.log("mon incrément",j);
       
                 let newcpt = (j+1);
       
