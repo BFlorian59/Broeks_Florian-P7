@@ -106,7 +106,7 @@
     
 
     // recherche mot clé 
-    globalSearch(tabsearchsset){
+    globalSearch(){
         
         const $recette = document.querySelector(".recette");
         var lstrecipe = this.recipe;
@@ -302,7 +302,6 @@
         Ingredientinput.addEventListener('keyup', () =>{
             document.querySelectorAll('.items').forEach(ingredient => {
                 ingredient.addEventListener('click', () => {
-                    console.log("lala")
                     this.tagingre.push(ingredient.innerHTML);
                     this.addTagSearch();
                     this.removeTagSearch();
@@ -317,7 +316,6 @@
         Appareilinput.addEventListener('keyup', () =>{
             document.querySelectorAll('.items3').forEach(appliance => {
                 appliance.addEventListener('click', () => {
-                    console.log("lala")
                     this.tagapp.push(appliance.innerHTML);
                     this.addTagSearch();
                     this.removeTagSearch();
@@ -332,7 +330,6 @@
         Ustensilsinput.addEventListener('keyup', () =>{
             document.querySelectorAll('.items2').forEach(ustensils => {
                 ustensils.addEventListener('click', () => {
-                    console.log("lala")
                     this.tagust.push(ustensils.innerHTML);
                     this.addTagSearch();
                     this.removeTagSearch();
