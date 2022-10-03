@@ -106,7 +106,7 @@
     
 
     // recherche mot clé 
-    globalSearch(){
+    globalSearch(tabsearchsset){
         
         const $recette = document.querySelector(".recette");
         var lstrecipe = this.recipe;
