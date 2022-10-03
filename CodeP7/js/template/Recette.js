@@ -7,7 +7,6 @@ class Recette_card{
 
     // Afficher les recettes dans le html
     createrecette(){       
-
         this.recipe.ingredients.forEach((ingrediant) => { 
 
             if (ingrediant.unit) {
